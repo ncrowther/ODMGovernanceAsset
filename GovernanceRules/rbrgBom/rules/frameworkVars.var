@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:VariableSet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>frameworkVars</name>
+  <uuid>85eee71c-5dcb-440b-8d7f-97cf8a80f767</uuid>
+  <variables name="params" type="java.util.Map" initialValue="new java.util.HashMap()" verbalization=""/>
+  <variables name="outputParamNames" type="java.util.Set" initialValue="new java.util.HashSet()" verbalization=""/>
+  <variables name="inputParamNames" type="java.util.Set" initialValue="new java.util.HashSet()" verbalization=""/>
+  <variables name="errors" type="java.util.List" initialValue="new java.util.ArrayList()" verbalization=""/>
+</ilog.rules.studio.model.base:VariableSet>

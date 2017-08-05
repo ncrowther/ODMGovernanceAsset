@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="" login="rtsAdmin" url="http://localhost:9082/teamserver"/>
+<entry baseType="Ruleflow" checksum="658258868" projectName="rbrgSharedRuleflow" qualifiedName="AdvancedGovernance.advancedGovernanceFlow" sourceCS="348641E7C80CDEE2B834D7D5513BDDD5" targetCS="658258868" type="Ruleflow" uuid="366be719-9180-42fc-8927-447c622cf613"/>
+<entry baseType="Ruleflow" checksum="4097250825" projectName="rbrgSharedRuleflow" qualifiedName="AdvancedGovernance.fieldValidation" sourceCS="4A1EC68438A5D49DB9A82F6D2A942D56" targetCS="4097250825" type="Ruleflow" uuid="149ef501-5797-441b-b0f0-e3db966169e5"/>
+<entry baseType="Ruleflow" checksum="1209820701" projectName="rbrgSharedRuleflow" qualifiedName="AdvancedGovernance.onCommit" sourceCS="FB4A44A4CAABF9C926A45BEB11BD4CD3" targetCS="1209820701" type="Ruleflow" uuid="1b082c7c-6508-44d7-a905-581202531ada"/>
+<entry baseType="Ruleflow" checksum="1188154410" projectName="rbrgSharedRuleflow" qualifiedName="AdvancedGovernance.permissions" sourceCS="8C176129CF8F4181735FA3CFF8801AE6" targetCS="1188154410" type="Ruleflow" uuid="2ea27ea1-1c4f-41ee-8234-2bb43a30f77e"/>
+<entry baseType="Ruleflow" checksum="1071292068" projectName="rbrgSharedRuleflow" qualifiedName="AdvancedGovernance.status" sourceCS="C1CAC0127D72DEE0F76CF1E958B2EE49" targetCS="1071292068" type="Ruleflow" uuid="fd18268a-7cda-41df-bef8-dbeb06b6dbe2"/>
+<entry baseType="Ruleflow" checksum="3073473316" projectName="rbrgSharedRuleflow" qualifiedName="sharedFlow" sourceCS="8F47F098BD86AC38CAC0D909F3A92F50" targetCS="3073473316" type="Ruleflow" uuid="5746dfb6-e72a-4457-a716-b6c230b7167c"/>
+<entry baseType="RulePackageInfo" checksum="747458718" projectName="rbrgSharedRuleflow" qualifiedName="AdvancedGovernance" sourceCS="B994757AB4D52C1FCE420065753AD46F" targetCS="747458718" type="RulePackageInfo" uuid="25d8bbab-5aee-4397-a11d-811ccefde868"/>
+<entry baseType="RuleProjectInfo" checksum="2112047050" projectName="rbrgSharedRuleflow" qualifiedName="rbrgSharedRuleflow" sourceCS="B4B1B88230E5B8BFC00B1F59940A9065" targetCS="2112047050" type="RuleProjectInfo" uuid="0e5811b6-3855-4bae-b163-c1d856bca3a0"/>
+</teamserver>
+</teamservers>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * IBM Confidential
+ * OCO Source Materials
+ * 5725-B69 5655-Y31 5655-Y17
+ * Copyright IBM Corp. 1987, 2013
+ * The source code for this program is not published or otherwise
+ * divested of its trade secrets, irrespective of what has
+ * been deposited with the U.S. Copyright Office.
+-->
+
+<Users>
+  <User><LoginId>Paul</LoginId></User>
+  <User><LoginId>Abu</LoginId></User>
+  <User><LoginId>Bea</LoginId></User>
+</Users>

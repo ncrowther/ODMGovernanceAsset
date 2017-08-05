@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="ilog.rules.studio.launching.JRulesLocalApplication">
+<stringAttribute key="ilog.rules.studio.launching.BEFORE_LAUNCHING_EXTRACTOR" value=""/>
+<stringAttribute key="ilog.rules.studio.launching.BEFORE_LAUNCHING_EXTRACTOR_ARCHIVE" value="..\rbrgSimpleTester\rbrgRules.jar"/>
+<stringAttribute key="ilog.rules.studio.launching.BEFORE_LAUNCHING_PROJECT" value="rbrgDecisionService"/>
+<booleanAttribute key="ilog.rules.studio.launching.BEFORE_LAUNCHING_USE_ALL_RULES" value="true"/>
+<booleanAttribute key="ilog.rules.studio.launching.BEFORE_LAUNCHING_USE_EXTRACTOR" value="true"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/rbrgSimpleTester/src/RuleEngineRunner.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.debug.core.source_locator_id" value="ilog.rules.studio.debug.ui.jrulesSourceLocator"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="RuleEngineRunner"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="rbrgSimpleTester"/>
+</launchConfiguration>

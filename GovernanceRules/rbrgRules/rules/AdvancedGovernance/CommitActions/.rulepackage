@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>CommitActions</name>
+  <uuid>4ec964b6-f339-4f85-9be8-9ad313ad420c</uuid>
+</ilog.rules.studio.model.base:RulePackage>

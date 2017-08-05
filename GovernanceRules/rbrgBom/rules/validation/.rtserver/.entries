@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><teamserver>
+<entry modificationStamp="2" name="validation" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="RulePackage" uuid="5dc093bb-f96b-4b70-a42b-b8636ca04142" version="1.0"/>
+<entry modificationStamp="2" name="getNumberOnlyFromString" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Function" uuid="1b1b06fd-d980-466f-bc2c-0a93895fafdd" version="1.0"/>
+</teamserver>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>statusParams</name>
+  <uuid>c6ef4785-e0df-4ba7-8335-fcd131ad7d06</uuid>
+</ilog.rules.studio.model.base:RulePackage>

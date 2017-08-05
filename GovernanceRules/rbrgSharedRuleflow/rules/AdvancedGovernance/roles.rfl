@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>roles</name>
+  <uuid>fe669b38-7584-43c5-8ab0-51d42b1934a2</uuid>
+  <locale>en_GB</locale>
+  <categories>any</categories>
+  <rfModel>
+<Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+  <Body>
+    <TaskList>
+      <StartTask Identifier="task_0"/>
+      <RuleTask ExecutionMode="RetePlus" ExitCriteria="None" Identifier="Roles" Ordering="Default">
+        <RuleList>
+          <Package Name="AdvancedGovernance.Roles"/>
+        </RuleList>
+      </RuleTask>
+      <RuleTask ExecutionMode="RetePlus" ExitCriteria="None" Identifier="roleParams" Ordering="Default">
+        <RuleList>
+          <Package Name="parameters.roleParams"/>
+        </RuleList>
+      </RuleTask>
+      <StopTask Identifier="task_1"/>
+    </TaskList>
+    <NodeList>
+      <TaskNode Identifier="node_0" Task="task_0"/>
+      <TaskNode Identifier="node_1" Task="task_1"/>
+      <TaskNode Identifier="node_2" Task="Roles"/>
+      <TaskNode Identifier="node_4" Task="roleParams"/>
+    </NodeList>
+    <TransitionList>
+      <Transition Identifier="transition_2" Source="node_2" Target="node_1"/>
+      <Transition Identifier="transition_0" Source="node_0" Target="node_4"/>
+      <Transition Identifier="transition_1" Source="node_4" Target="node_2"/>
+    </TransitionList>
+  </Body>
+  <Resources>
+    <ResourceSet Locale="en_GB">
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_2#height">40.0</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_4#x">52.676758</Data>
+      <Data Name="node_4#y">91.0</Data>
+      <Data Name="node_4#name">node_4</Data>
+      <Data Name="node_2#width">102.0</Data>
+      <Data Name="node_1#name">node_2</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_0#x">51.676758</Data>
+      <Data Name="node_4#height">40.0</Data>
+      <Data Name="node_4#width">103.353516</Data>
+      <Data Name="node_1#x">51.676758</Data>
+      <Data Name="node_1#width">22.0</Data>
+      <Data Name="node_1#y">262.0</Data>
+      <Data Name="node_1#height">22.0</Data>
+      <Data Name="node_2#x">51.676758</Data>
+      <Data Name="node_2#y">181.0</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+    </ResourceSet>
+  </Resources>
+  <Properties/>
+</Ruleflow></rfModel>
+</ilog.rules.studio.model.ruleflow:RuleFlow>

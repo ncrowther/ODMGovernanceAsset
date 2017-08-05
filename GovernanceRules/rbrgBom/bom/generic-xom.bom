@@ -1,0 +1,67 @@
+
+property loadGetterSetterAsProperties "true"
+property origin "xom:/exampleRuleProjectUsingGenericXom//generic-xom"
+property uuid "4d225ae8-9291-4989-8056-6135181eb519"
+package com.ibm.genericvars;
+
+
+public class Parameters
+{
+    public static final void addBooleanParameter(dynamic.dt.parameters.BooleanParameter name, java.lang.Boolean defaultValue, java.lang.Boolean input, java.lang.Boolean output);
+    public static final void addChangeRequestIds(string changeRequestId, dynamic.dt.parameters.ListParameter changeRequestIds);
+    public static final void addDtParameter(dynamic.dt.parameters.DecisionTableParameter name, java.lang.Boolean input, java.lang.Boolean output);
+    public static final void addInteger(dynamic.dt.parameters.IntegerParameter name, java.lang.Integer defaultValue, java.lang.Boolean input, java.lang.Boolean output);
+    public static final void addListItem(dynamic.dt.parameters.ListParameter varName, string varValue);
+    public static final void addListParameter(dynamic.dt.parameters.ListParameter name, java.lang.Boolean input, java.lang.Boolean output);
+    public static final void addRoles(java.util.List roles domain 0,* class dynamic.dt.StringDomains.RoleDomain);
+    public static final void addStates(dynamic.dt.parameters.ListParameter varName, 
+        java.util.List stateList domain 0,* class dynamic.dt.StringDomains.LifecycleStatesDomain);
+    public static final void addStringParameter(dynamic.dt.parameters.StringParameter name, string defaultValue, java.lang.Boolean input, java.lang.Boolean output);
+    public static final void addWarning(string warning, dynamic.dt.parameters.StringParameter warningParam);
+    public static final boolean dtDiff(dynamic.dt.parameters.StringParameter editedDT, dynamic.dt.parameters.StringParameter persistedDT)
+                property update "true";
+    public static final java.lang.Boolean getBoolean(dynamic.dt.parameters.BooleanParameter paramName);
+    public static final java.lang.Object[] getDTPercentageDelta(dynamic.dt.parameters.DecisionTableParameter editedDT, dynamic.dt.parameters.DecisionTableParameter persistedDT, string colName);
+    public static final boolean getElementType(dynamic.dt.StringDomains.TypeDomain type);
+    public static final int getInteger(dynamic.dt.parameters.IntegerParameter paramName);
+    public static final java.util.List getList(dynamic.dt.parameters.ListParameter paramName);
+    public static final string getString(dynamic.dt.parameters.StringParameter paramName);
+    public static final boolean isInRoles(dynamic.dt.StringDomains.RoleDomain requiredRole, dynamic.dt.parameters.ListParameter rolesParam);
+    public static final void setBoolean(dynamic.dt.parameters.BooleanParameter paramName, java.lang.Boolean paramValue);
+    public static final void setString(dynamic.dt.parameters.StringParameter varName, string varValue);
+    public static final void setTag(string tagName, string tagValue);
+}
+
+package com.ibm.util;
+
+
+public class DateUtil
+{
+    public static final readonly java.util.Date today;
+    public static final string dateAsString(java.util.Date date);
+    public static java.util.Date getDate(string dateAsString, string format);
+}
+
+public class Logger
+{
+    public static final boolean isFineLoggable();
+    public static final boolean isInfoLoggable();
+    public static final void logFine(string message);
+    public static final void logInfo(string message);
+}
+
+public class NumberUtil
+{
+    public static final boolean varianceAboveThreshold(double variance, double threshold);
+}
+
+public class RegexUtil
+{
+    public static final boolean matches(string name, string regex);
+}
+
+public class StringUtil
+{
+    public static final int countString(string regex, string str);
+}
+

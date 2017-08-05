@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.rule:Function xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.rule="http://ilog.rules.studio/model/rule.ecore">
+  <name>getDTDeltas</name>
+  <uuid>70ee9ef0-da36-4da6-98f7-1308aa61e7a6</uuid>
+  <returnType>java.util.List</returnType>
+  <definition><![CDATA[List editedRow = null;
+List persistedRow = null;
+List deltas = new ArrayList();
+
+if (editDT != null) {
+	editedRow = (List) editDT.get(colName);
+}
+if (persistedDT != null) {
+	persistedRow = (List) persistedDT.get(colName);
+}
+
+if ((editedRow == null) || (persistedRow == null) || (editedRow.size() != persistedRow.size())) {
+	return deltas;
+}
+
+Iterator persistedRowIter = persistedRow.iterator();
+// rest of code assumes persistedRowIter and editedRowIter have same number of elements
+for (Iterator editedRowIter = editedRow.iterator(); editedRowIter.hasNext();) {
+	String cellStrE = (String) editedRowIter.next();
+	String cellStrP = (String) persistedRowIter.next();
+			
+	if ( (cellStrE.length() > 0) && (cellStrP.length() > 0) ) {
+
+		double eCellVal = getNumberOnlyFromString(cellStrE);
+		double pCellVal = getNumberOnlyFromString(cellStrP);
+
+		double result = 0.0;
+		double diff = (eCellVal - pCellVal);
+		if (diff == 0.0 ) {
+			result = 0.0;
+		} else {
+	        if ("p".equals(type)) {
+				// percentage changes
+				if (pCellVal == 0) {
+					pCellVal = 1;
+				}
+				double change = diff / pCellVal;
+		    	result =  change * 100.0;
+			} else {
+				// absolute changes
+				result = diff * 100.0;
+			}
+		}
+
+		if (result!=0.0) {
+            int roundedResult = (int)result;
+			System.out.println("**Result: " + roundedResult);
+			deltas.add(new Double(roundedResult));
+		}
+	}
+}
+return deltas;
+]]></definition>
+  <imports>import java.util.List;</imports>
+  <imports>import java.util.ArrayList;</imports>
+  <imports>use getParam(java.lang.String,java.lang.Class);</imports>
+  <imports>import java.util.Iterator;</imports>
+  <imports>use validation.getNumberOnlyFromString(java.lang.String);</imports>
+  <arguments name="editDT" type="java.util.Map"/>
+  <arguments name="persistedDT" type="java.util.Map"/>
+  <arguments name="colName" type="java.lang.String"/>
+  <arguments name="type" type="java.lang.String"/>
+</ilog.rules.studio.model.rule:Function>

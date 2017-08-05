@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.query:Query xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.query="http://ilog.rules.studio/model/query.ecore">
+  <name>testCopy</name>
+  <uuid>fb53f1f7-e037-4103-a84b-9418abb59125</uuid>
+  <definition><![CDATA[]]></definition>
+  <locale>en_US</locale>
+</ilog.rules.studio.model.query:Query>

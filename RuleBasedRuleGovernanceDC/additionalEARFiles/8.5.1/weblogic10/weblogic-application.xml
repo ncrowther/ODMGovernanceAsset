@@ -1,0 +1,56 @@
+<weblogic-application xmlns="http://www.bea.com/ns/weblogic/90" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/90 http://www.bea.com/ns/weblogic/90/weblogic-application.xsd">
+
+	<security>
+		<security-role-assignment>
+			<role-name>rtsUser</role-name>
+			<principal-name>rtsUser</principal-name>
+		</security-role-assignment>
+		<security-role-assignment>
+			<role-name>rtsConfigManager</role-name>
+			<principal-name>rtsConfigManager</principal-name>
+		</security-role-assignment>
+		<security-role-assignment>
+			<role-name>rtsAdministrator</role-name>
+			<principal-name>rtsAdministrator</principal-name>
+		</security-role-assignment>
+		<security-role-assignment>
+			<role-name>rtsInstaller</role-name>
+			<principal-name>rtsInstaller</principal-name>
+		</security-role-assignment>
+		
+<!-- Add your custom security roles here if needed -->
+		<security-role-assignment>
+			<role-name>authorL1</role-name>
+			<principal-name>authorL1</principal-name>
+		</security-role-assignment>
+		
+		<security-role-assignment>
+			<role-name>authorL2</role-name>
+			<principal-name>authorL2</principal-name>
+		</security-role-assignment>		
+		
+		<security-role-assignment>
+			<role-name>tester</role-name>
+			<principal-name>tester</principal-name>
+		</security-role-assignment>		
+		
+		<security-role-assignment>
+			<role-name>reviewer</role-name>
+			<principal-name>reviewer</principal-name>
+		</security-role-assignment>	
+		
+		<security-role-assignment>
+			<role-name>deployer</role-name>
+			<principal-name>deployer</principal-name>
+		</security-role-assignment>
+		
+		<security-role-assignment>
+			<role-name>MiniLoanProject</role-name>
+			<principal-name>MiniLoanProject</principal-name>
+		</security-role-assignment>		
+		
+	</security>
+	
+
+</weblogic-application>
+

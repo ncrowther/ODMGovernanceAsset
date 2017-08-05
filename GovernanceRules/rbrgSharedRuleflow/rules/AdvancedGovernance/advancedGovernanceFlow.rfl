@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>advancedGovernanceFlow</name>
+  <uuid>366be719-9180-42fc-8927-447c622cf613</uuid>
+  <locale>en_GB</locale>
+  <categories>any</categories>
+  <rfModel>
+<Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+  <Body>
+    <TaskList>
+      <StartTask Identifier="task_1"/>
+      <SubflowTask Identifier="task_6" Uuid="1b082c7c-6508-44d7-a905-581202531ada"/>
+      <SubflowTask Identifier="task_7" Uuid="149ef501-5797-441b-b0f0-e3db966169e5"/>
+      <StopTask Identifier="task_2"/>
+    </TaskList>
+    <NodeList>
+      <TaskNode Identifier="node_0" Task="task_1"/>
+      <TaskNode Identifier="node_1" Task="task_2"/>
+      <TaskNode Identifier="node_14" Task="task_6"/>
+      <TaskNode Identifier="node_15" Task="task_7"/>
+      <BranchNode Identifier="node_2"/>
+    </NodeList>
+    <TransitionList>
+      <Transition Identifier="transition_10" Source="node_15" Target="node_1"/>
+      <Transition Identifier="transition_16" Source="node_14" Target="node_1"/>
+      <Transition Identifier="transition_14" Source="node_2" Target="node_1"/>
+      <Transition Identifier="transition_15" Source="node_0" Target="node_2"/>
+      <Transition Identifier="transition_5" Source="node_2" Target="node_14">
+        <Conditions Language="bal"><![CDATA[the string requestType is ONCOMMIT ]]></Conditions>
+      </Transition>
+      <Transition Identifier="transition_9" Source="node_2" Target="node_15">
+        <Conditions Language="bal"><![CDATA[the string requestType is ONCOMMIT 
+and ( the rule artefact type is DecisionTable or the rule artefact type is ActionRule or the rule artefact type is DecisionTree  )]]></Conditions>
+      </Transition>
+    </TransitionList>
+  </Body>
+  <Resources>
+    <ResourceSet Locale="en_US">
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_2#height">36.414215</Data>
+      <Data Name="node_14#width">102.0</Data>
+      <Data Name="node_15#x">240.35938</Data>
+      <Data Name="node_15#y">206.41422</Data>
+      <Data Name="node_1#name">node_1</Data>
+      <Data Name="node_1#width">16.000004</Data>
+      <Data Name="node_14#name">node_14</Data>
+      <Data Name="transition_5#label">commit</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_2#width">36.414185</Data>
+      <Data Name="node_15#height">40.0</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_0#x">334.59082</Data>
+      <Data Name="node_15#name">node_15</Data>
+      <Data Name="node_1#x">334.59082</Data>
+      <Data Name="node_1#y">315.41418</Data>
+      <Data Name="node_14#height">40.0</Data>
+      <Data Name="node_14#x">404.71875</Data>
+      <Data Name="node_1#height">15.999981</Data>
+      <Data Name="transition_9#label">validate</Data>
+      <Data Name="node_2#x">334.59082</Data>
+      <Data Name="node_2#y">89.20711</Data>
+      <Data Name="node_14#y">207.41422</Data>
+      <Data Name="node_15#width">116.71875</Data>
+    </ResourceSet>
+    <ResourceSet Locale="en_GB">
+      <Data Name="node_3#height">40.0</Data>
+      <Data Name="node_12#name">node_12</Data>
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_2#height">40.0</Data>
+      <Data Name="transition_3#label">getStatusValues</Data>
+      <Data Name="node_14#width">142.70508</Data>
+      <Data Name="node_15#x">215.35938</Data>
+      <Data Name="node_16#height">40.0</Data>
+      <Data Name="node_3#width">102.0</Data>
+      <Data Name="node_3#y">211.0</Data>
+      <Data Name="node_15#y">211.0</Data>
+      <Data Name="node_1#name">node_2</Data>
+      <Data Name="node_3#x">51.0</Data>
+      <Data Name="node_12#height">40.0</Data>
+      <Data Name="node_16#width">102.0</Data>
+      <Data Name="node_1#width">22.000015</Data>
+      <Data Name="node_12#width">106.01953</Data>
+      <Data Name="node_14#name">node_14</Data>
+      <Data Name="transition_5#label">ElementCommitted</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_12#y">211.0</Data>
+      <Data Name="transition_1#label">Permission</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_2#width">103.353516</Data>
+      <Data Name="node_12#x">579.4336</Data>
+      <Data Name="node_15#height">40.0</Data>
+      <Data Name="transition_8#label">Get Roles</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_15#name">node_15</Data>
+      <Data Name="node_0#x">466.4585</Data>
+      <Data Name="node_16#x">738.44336</Data>
+      <Data Name="node_1#x">466.4585</Data>
+      <Data Name="node_1#y">322.0</Data>
+      <Data Name="node_14#x">400.0713</Data>
+      <Data Name="node_14#height">40.0</Data>
+      <Data Name="node_1#height">22.0</Data>
+      <Data Name="transition_9#label">OnCommit</Data>
+      <Data Name="node_2#x">466.4585</Data>
+      <Data Name="node_14#y">211.0</Data>
+      <Data Name="node_16#y">211.0</Data>
+      <Data Name="node_2#y">91.0</Data>
+      <Data Name="node_16#name">node_16</Data>
+      <Data Name="node_15#width">116.71875</Data>
+    </ResourceSet>
+  </Resources>
+  <Properties>
+    <imports><![CDATA[use roleIter;
+use roles;
+use role;]]></imports>
+  </Properties>
+</Ruleflow></rfModel>
+</ilog.rules.studio.model.ruleflow:RuleFlow>

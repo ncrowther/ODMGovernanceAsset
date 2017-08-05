@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84                                     -->
+<!-- Copyright IBM Corp. 1987, 2013. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+<project name="lifecycleGovernance"  default="run" basedir=".">
+
+  <description>How to implement rule governance in Decision Center</description>
+
+   <property file="build.properties" />
+	
+  <property name="dc.home" location="${basedir}/../../.." />
+  <property name="teamserver.home" value="${dc.home}/teamserver"/>
+  <property file="${dc.home}/shared/samplesServer/was/build.properties"/>
+  <property file="${data.home}/was.properties"/>
+  <property name="server.url" value="http://${server.host}:${server.port}/teamserver" />
+
+  <property name="jrules.was.scripts.dir" value="${dc.home}/shared/samplesServer/was" />
+  <import file="${jrules.was.scripts.dir}/build.xml"/>
+
+  <import file="${teamserver.home}/lib/classpath-teamserver.xml"/>
+  <import file="${teamserver.home}/bin/build.xml"/>
+  
+  <property name="lib.dir"    location="${basedir}/lib"/>
+  <property name="src.dir"    location="${basedir}/src"/>
+  <property name="build.dir"    location="${basedir}/build"/>
+  <property name="data.dir"     location="${basedir}/data"/>
+  <property name="webresources.dir"   location="${build.dir}/webresources"/>
+  <property name="classes.dir"    location="${build.dir}/classes"/>
+  <property name="temp"     location="${basedir}/temp"/>
+  <property name="coreRGA.jar"  location="../../RGACore/CoreSessionController/build/lib/rga.jar" />	
+  <property name="rulegovjar" location="${build.dir}/lib/rulegov.jar"/>	
+  <property name="teamserver.appli.name" value="jrules-teamserver-${application.server.name}.ear"/>
+  <property name="teamserver.appli.source" value="${teamserver.home}/applicationservers/Websphere85/${teamserver.appli.name}"/>
+  <property name="res.jar"           location="${dc.home}/executionserver/lib/jrules-res-session-java.jar" />
+  <property name="htmlParser" location="${lib.dir}/htmlparser.jar" />
+  <property name="htmlLexer" location="${lib.dir}/htmllexer.jar" />
+  <property name="web.descriptors.dir" location="./additionalEARWARFiles/8.5" />
+    
+  <path id="build.path">
+    <path refid="teamserver.classpath"/>
+    <pathelement location="${classes.dir}"/>
+    <pathelement location="${data.dir}"/>
+    <path refid="teamserver.classpath"/>
+	<pathelement location="${coreRGA.jar}" />  	
+	<pathelement location="${res.jar}" />
+	<pathelement location="${htmlParser}" />
+	<pathelement location="${htmlLexer}" />
+  </path> 
+  
+  <!-- I N I T -->
+  <target name="init">
+  <property file="build.properties" />
+  </target>
+  
+  <!-- C L E A N -->
+  <target name="clean" depends="init" description="Clean the built files">
+    <delete dir="${build.dir}/lib"  failonerror="false"/>
+    <delete dir="${build.dir}"  failonerror="false"/>
+    <delete dir="${generatepermission.dir}" failonerror="false" />
+  </target>
+
+  <!-- B U I L D -->
+  <target name="build" depends="clean,init" description="Compile the source" >
+    <mkdir dir="${classes.dir}"/>
+    <!-- Copy the WAS properties -->
+    <copy file="${data.home}/was.properties"
+          todir="${classes.dir}" />
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" nowarn="true" source="1.6" target="1.6" classpathref="build.path" debug="true" fork="true" deprecation="off"  />
+    <mkdir dir="${build.dir}/lib" />
+	<jar jarfile="${rulegovjar}">		
+		<fileset dir="${classes.dir}" includes="**/rulegovernance/**" />
+	</jar>
+  </target>
+	
+
+  <!-- S E T - E X T E N S I O N S -->
+  <target name="set-extensions" depends="init" description="Define the extension model" >
+    <set-extensions
+      username="${rtsAdmin.login}"
+      password="${rtsAdmin.password}"
+      serverURL="${server.url}"
+      datasourceName="${db.dataSource}"
+      extensionModel="${data.dir}/model/extensionModel.brmx"
+      extensionData="${data.dir}/model/extensionData.brdx"
+      roles="rtsUser rtsAdministrator rtsConfigManager rtsInstaller"
+       />
+  </target>
+	
+	<!-- U P L O A D - R O L E S -->
+	<target name="upload-project-roles" depends="init" description="Upload the custom roles">
+		<echo>Repackaging of the teamserver application...</echo>
+		<upload-roles 
+			username="${rtsAdmin.login}" 
+			password="${rtsAdmin.password}" 
+			serverURL="${server.url}" 
+			datasourceName="${db.dataSource}" 
+			roles="${project.roles}" />
+	</target>	
+  
+  <!-- U P L O A D - M E S S A G E S -->
+    <target name="upload-messages" depends="init" >
+      <upload-messages
+        username="${rtsAdmin.login}"
+        password="${rtsAdmin.password}"
+        serverURL="${server.url}"
+        datasourceName="${db.dataSource}"
+        locale="${extension.messages.locale.us.name}"
+        messageFile="${data.dir}/${extension.messages.en.name}"/>	
+    </target>
+  
+	 
+		  <!-- U P L O A D - U S E R S -->
+		  <target name="upload-users">
+		    <fail message="Please define path property" unless="userFilePath"/>
+		    <upload-users
+		      username="${rtsAdmin.login}"
+		      password="${rtsAdmin.password}"
+		      serverURL="${server.url}"
+		      datasourceName="${datasourceName}"
+		      userFilePath="${userFilePath}"/>
+		  </target>	
+
+	  <!-- R E P A C K A G E - W A R  -->
+	<target name="repack" depends="init,clean,build" >
+	<echo>Repackaging of the ${console} application...</echo>
+    <repackage-ear
+      sourceEar="${teamserver.appli.source}"
+      targetEar="${build.dir}/${teamserver.appli.name}"
+      additionalJars="${coreRGA.jar},${rulegovjar},${res.jar},${htmlParser},${htmlLexer}"
+  	  webResourcesDir="${web.descriptors.dir}/${console}" 
+	  console="${console}"
+       />
+  </target>
+ 
+  <!-- R E M O V E - C O N F I G - P A R A M -->
+  <target name="remove-config-param" depends="init">
+    <remove-config-param
+      key="teamserver.controller.class"
+      username="${rtsAdmin.login}"
+      password="${rtsAdmin.password}"
+      serverURL="${server.url}"
+      datasourceName="${db.dataSource}"
+      />
+  </target>  
+	
+	<target name="set-config-params" depends="init,build">
+		<set-config-param 
+			key="teamserver.rbrg.notification.enabled" 
+			value="false" 
+			username="${rtsAdmin.login}" 
+			password="${rtsAdmin.password}" 
+			serverURL="${server.url}" 
+			datasourceName="${db.dataSource}" />
+	
+		<set-config-param 
+			key="teamserver.controller.class" 
+			value="${install.controller.class}" 
+			username="${rtsAdmin.login}" 
+			password="${rtsAdmin.password}" 
+			serverURL="${server.url}" 
+			datasourceName="${db.dataSource}" />
+	</target>
+  
+  <!-- RUN THE SAMPLE -->
+  <target name="run" description="Install rule governance data in Decision Center" depends="deploy,setup"> 
+  </target>
+	
+  <!-- D E P L O Y -->
+  <target name="deploy" depends="repack" description="Deploy the custom EAR to Sample Server" >
+    <module.deploy name="rts" path="${build.dir}/${teamserver.appli.name}"  />
+    <!--module.deploy name="rts" path="C:/IBM/ODM851/ODM/teamserver/applicationservers/WebSphere85/${teamserver.appli.name}"  /-->  	
+  	
+  </target>
+	
+  <target name="deployNoBuild"  description="Deploy the custom EAR to Sample Server" >
+    <module.deploy name="rts" path="${build.dir}/${teamserver.appli.name}"  />
+  </target>
+    	
+  <target name="setup" depends="set-extensions,upload-project-roles,upload-messages,remove-config-param,set-config-params" description="Setup DC with RGA" >
+  </target>
+  
+</project>
+
+
+

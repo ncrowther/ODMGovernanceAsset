@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.rule:Function xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.rule="http://ilog.rules.studio/model/rule.ecore">
+  <name>dtValuesExceedLength</name>
+  <uuid>f4070a2a-6998-44a9-9e0c-0ef5d52c9031</uuid>
+  <returnType>java.lang.String</returnType>
+  <definition><![CDATA[List editedRow = null;
+StringBuffer values = new StringBuffer();
+
+if (editDT != null) {
+	editedRow = (List) editDT.get(colName);
+}
+
+if (editedRow == null) {
+	return "";
+}
+
+for (Iterator editedRowIter = editedRow.iterator(); editedRowIter.hasNext();) {
+	String cellStr = (String) editedRowIter.next();
+	if (cellStr.length() > maxLen) {
+		values.append(cellStr);
+		values.append(";");	
+	}
+}
+
+return values.toString();
+]]></definition>
+  <imports>import java.util.List;</imports>
+  <imports>import java.util.Set;</imports>
+  <imports>import java.util.HashSet;</imports>
+  <imports>import java.util.ArrayList;</imports>
+  <imports>use getParam(java.lang.String,java.lang.Class);</imports>
+  <imports>import java.util.Iterator;</imports>
+  <imports>use validation.getNumberOnlyFromString(java.lang.String);</imports>
+  <arguments name="editDT" type="java.util.Map"/>
+  <arguments name="colName" type="java.lang.String"/>
+  <arguments name="maxLen" type="java.lang.Integer"/>
+</ilog.rules.studio.model.rule:Function>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>documentationProvided</name>
+  <uuid>ecb78fb9-6b73-400c-a254-c73309fc6032</uuid>
+  <documentation><![CDATA[]]></documentation>
+  <locale>en_GB</locale>
+  <definition><![CDATA[if
+    the string documentation is "null"
+    and the string status is defined
+then
+    set validationError as "Please add documentation" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

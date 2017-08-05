@@ -1,0 +1,274 @@
+
+property uuid "7e630e1a-affd-40f6-8193-1b35ae156228"
+package dynamic.dt.StringDomains;
+
+
+public class Commands
+        extends string
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "10"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static GETROLES, static ONCOMMIT, static ELEMENTCOMMITTED, static PERMISSION, static GETSTATUSVALUES}
+    public static final readonly dynamic.dt.StringDomains.Commands ELEMENTCOMMITTED;
+    public static final readonly dynamic.dt.StringDomains.Commands GETROLES;
+    public static final readonly dynamic.dt.StringDomains.Commands GETSTATUSVALUES;
+    public static final readonly dynamic.dt.StringDomains.Commands ONCOMMIT;
+    public static final readonly dynamic.dt.StringDomains.Commands PERMISSION;
+}
+
+public class LifecycleStatesDomain
+        extends string
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "5"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain 
+    {
+        static initialState,
+        static newState,
+        static defined,
+        static tested,
+        static reviewed,
+        static deployed,
+        static deprecated,
+        static inactive,
+        static refused,
+        static ReadyForApproval,
+        static Complete,
+        static retired,
+        static deployable,
+        static rekeyed
+    }
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain Complete;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain ReadyForApproval;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain defined;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain deployable
+                property deprecated "true";
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain deployed;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain deprecated;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain inactive;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain initialState;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain newState;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain refused;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain rekeyed
+                property deprecated "true";
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain retired
+                property deprecated "true";
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain reviewed;
+    public static final readonly dynamic.dt.StringDomains.LifecycleStatesDomain tested;
+}
+
+public class RoleDomain
+        extends string
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "6"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static administrator, static author, static tester, static reviewer, static deployer, static fastTrackReviewer, static reader, static gfm}
+    public static final readonly dynamic.dt.StringDomains.RoleDomain administrator;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain author;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain deployer;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain fastTrackReviewer;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain gfm;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain reader;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain reviewer;
+    public static final readonly dynamic.dt.StringDomains.RoleDomain tester;
+}
+
+public class TypeDomain
+        extends string
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.documentationColumn.en" "3"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "9"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain 
+    {
+        static ActionRule,
+        static DecisionTree,
+        static DecisionTable,
+        static Folder,
+        static RulePackage,
+        static Query,
+        static TestSuite,
+        static Lock,
+        static RuleArtifactTag,
+        static ScenarioSuiteReport,
+        static Function,
+        static Simulation,
+        static SmartView,
+        static Template,
+        static VariableSet
+    }
+    public static final readonly dynamic.dt.StringDomains.TypeDomain ActionRule;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain DecisionTable;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain DecisionTree;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain Folder;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain Function;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain Lock;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain Query;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain RuleArtifactTag;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain RulePackage;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain ScenarioSuiteReport;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain Simulation;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain SmartView;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain Template;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain TestSuite;
+    public static final readonly dynamic.dt.StringDomains.TypeDomain VariableSet;
+}
+
+package dynamic.dt.parameters;
+
+
+public class BooleanParameter
+        extends string
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "4"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static active, static Deployed, static permissionGranted}
+    public static final readonly dynamic.dt.parameters.BooleanParameter Deployed;
+    public static final readonly dynamic.dt.parameters.BooleanParameter active;
+    public static final readonly dynamic.dt.parameters.BooleanParameter permissionGranted;
+}
+
+public class DecisionTableParameter
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "3"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static editedDT, static persistedDT, static tags}
+    public static final readonly dynamic.dt.parameters.DecisionTableParameter editedDT;
+    public static final readonly dynamic.dt.parameters.DecisionTableParameter persistedDT;
+    public static final readonly dynamic.dt.parameters.DecisionTableParameter tags;
+}
+
+public class IntegerParameter
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "0"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static logicalOperatorCount}
+    public static final readonly dynamic.dt.parameters.IntegerParameter logicalOperatorCount;
+}
+
+public class ListParameter
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "2"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain {static statusValues, static roles}
+    public static final readonly dynamic.dt.parameters.ListParameter roles;
+    public static final readonly dynamic.dt.parameters.ListParameter statusValues;
+}
+
+public class StringParameter
+        extends string
+        property "com.ibm.rules.domainProvider.msexcel.b2xColumn" "1"
+        property "com.ibm.rules.domainProvider.msexcel.hasHeader" "true"
+        property "com.ibm.rules.domainProvider.msexcel.labelColumn.en" "2"
+        property "com.ibm.rules.domainProvider.msexcel.sheetIndex" "1"
+        property "com.ibm.rules.domainProvider.msexcel.valueColumn" "0"
+        property domainProviderResource "Domains.xlsx"
+        property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
+{
+    domain 
+    {
+        static status,
+        static feature,
+        static type,
+        static statuscomment,
+        static response,
+        static requestType,
+        static validationError,
+        static effectiveDate,
+        static expirationDate,
+        static name,
+        static loginUser,
+        static lastChangedBy,
+        static createdBy,
+        static definition,
+        static documentation,
+        static currentChangeRequestId,
+        static historicalChangeRequestId,
+        static baseline,
+        static actionRuleBody,
+        static operation,
+        static rulePackage,
+        static project,
+        static action,
+        static lastChangedByOnOriginal,
+        static createdByOnOriginal,
+        static oldStatus,
+        static role,
+        static text,
+        static Release,
+        static oldProperty,
+        static newProperty
+    }
+    public static final readonly dynamic.dt.parameters.StringParameter Release;
+    public static final readonly dynamic.dt.parameters.StringParameter action;
+    public static final readonly dynamic.dt.parameters.StringParameter actionRuleBody;
+    public static final readonly dynamic.dt.parameters.StringParameter baseline;
+    public static final readonly dynamic.dt.parameters.StringParameter createdBy;
+    public static final readonly dynamic.dt.parameters.StringParameter createdByOnOriginal;
+    public static final readonly dynamic.dt.parameters.StringParameter currentChangeRequestId;
+    public static final readonly dynamic.dt.parameters.StringParameter definition;
+    public static final readonly dynamic.dt.parameters.StringParameter documentation;
+    public static final readonly dynamic.dt.parameters.StringParameter effectiveDate;
+    public static final readonly dynamic.dt.parameters.StringParameter expirationDate;
+    public static final readonly dynamic.dt.parameters.StringParameter feature;
+    public static final readonly dynamic.dt.parameters.StringParameter historicalChangeRequestId;
+    public static final readonly dynamic.dt.parameters.StringParameter lastChangedBy;
+    public static final readonly dynamic.dt.parameters.StringParameter lastChangedByOnOriginal;
+    public static final readonly dynamic.dt.parameters.StringParameter loginUser;
+    public static final readonly dynamic.dt.parameters.StringParameter name;
+    public static final readonly dynamic.dt.parameters.StringParameter newProperty;
+    public static final readonly dynamic.dt.parameters.StringParameter oldProperty;
+    public static final readonly dynamic.dt.parameters.StringParameter oldStatus;
+    public static final readonly dynamic.dt.parameters.StringParameter operation;
+    public static final readonly dynamic.dt.parameters.StringParameter project;
+    public static final readonly dynamic.dt.parameters.StringParameter requestType;
+    public static final readonly dynamic.dt.parameters.StringParameter response;
+    public static final readonly dynamic.dt.parameters.StringParameter role;
+    public static final readonly dynamic.dt.parameters.StringParameter rulePackage;
+    public static final readonly dynamic.dt.parameters.StringParameter status;
+    public static final readonly dynamic.dt.parameters.StringParameter statuscomment;
+    public static final readonly dynamic.dt.parameters.StringParameter text;
+    public static final readonly dynamic.dt.parameters.StringParameter type;
+    public static final readonly dynamic.dt.parameters.StringParameter validationError;
+}
+

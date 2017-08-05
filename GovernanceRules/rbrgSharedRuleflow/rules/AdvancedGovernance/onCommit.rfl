@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>fieldValidation</name>
+  <uuid>149ef501-5797-441b-b0f0-e3db966169e5</uuid>
+  <locale>en_GB</locale>
+  <categories>any</categories>
+  <rfModel>
+    <Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+      <Body>
+        <TaskList>
+          <StartTask Identifier="task_0"/>
+          <RuleTask ExecutionMode="RetePlus" ExitCriteria="None"
+            Identifier="FieldValidation" Ordering="Default">
+            <RuleList>
+              <Package Name="AdvancedGovernance.Validation"/>
+            </RuleList>
+          </RuleTask>
+          <RuleTask ExecutionMode="RetePlus" ExitCriteria="None"
+            Identifier="fieldValidationParams" Ordering="Default">
+            <RuleList>
+              <Package Name="parameters.fieldValidationParams"/>
+            </RuleList>
+          </RuleTask>
+          <StopTask Identifier="task_1"/>
+        </TaskList>
+        <NodeList>
+          <TaskNode Identifier="node_0" Task="task_0"/>
+          <TaskNode Identifier="node_1" Task="task_1"/>
+          <TaskNode Identifier="node_8" Task="FieldValidation"/>
+          <TaskNode Identifier="node_2" Task="fieldValidationParams"/>
+        </NodeList>
+        <TransitionList>
+          <Transition Identifier="transition_0" Source="node_8" Target="node_1"/>
+          <Transition Identifier="transition_1" Source="node_0" Target="node_2"/>
+          <Transition Identifier="transition_2" Source="node_2" Target="node_8"/>
+        </TransitionList>
+      </Body>
+      <Resources>
+        <ResourceSet Locale="en_GB">
+          <Data Name="node_0#x">79.03125</Data>
+          <Data Name="node_0#y">10.5</Data>
+          <Data Name="node_1#x">79.03125</Data>
+          <Data Name="node_2#x">79.03125</Data>
+          <Data Name="node_1#y">275.90234375</Data>
+          <Data Name="node_2#y">90.0</Data>
+          <Data Name="node_8#label">Field Validation</Data>
+          <Data Name="node_8#height">53.402344</Data>
+          <Data Name="node_8#x">79.03121185302734</Data>
+          <Data Name="node_8#y">187.701171875</Data>
+          <Data Name="node_8#name">node_8</Data>
+          <Data Name="node_2#height">40.0</Data>
+          <Data Name="node_1#height">23.0</Data>
+          <Data Name="node_0#width">21.0</Data>
+          <Data Name="node_1#width">23.0</Data>
+          <Data Name="node_0#height">21.0</Data>
+          <Data Name="node_2#width">158.0625</Data>
+          <Data Name="node_2#name">node_2</Data>
+          <Data Name="node_1#name">node_2</Data>
+          <Data Name="node_0#name">node_0</Data>
+          <Data Name="node_8#width">120.7148</Data>
+        </ResourceSet>
+        <ResourceSet Locale="en_US">
+          <Data Name="node_0#x">79.03125</Data>
+          <Data Name="node_0#y">10.5</Data>
+          <Data Name="node_1#x">79.03125</Data>
+          <Data Name="node_2#x">79.03125</Data>
+          <Data Name="node_1#y">262.0</Data>
+          <Data Name="node_2#y">91.0</Data>
+          <Data Name="node_8#height">40.0</Data>
+          <Data Name="node_8#x">80.03125</Data>
+          <Data Name="node_8#y">182.0</Data>
+          <Data Name="node_8#name">node_8</Data>
+          <Data Name="node_2#height">40.0</Data>
+          <Data Name="node_0#width">21.0</Data>
+          <Data Name="node_1#height">22.0</Data>
+          <Data Name="node_0#height">21.0</Data>
+          <Data Name="node_1#width">22.0</Data>
+          <Data Name="node_2#width">158.0625</Data>
+          <Data Name="node_2#name">node_2</Data>
+          <Data Name="node_1#name">node_1</Data>
+          <Data Name="node_0#name">node_0</Data>
+          <Data Name="node_8#width">120.71484</Data>
+        </ResourceSet>
+      </Resources>
+      <Properties/>
+    </Ruleflow>
+</rfModel>
+</ilog.rules.studio.model.ruleflow:RuleFlow>

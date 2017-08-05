@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84                                     -->
+<!-- Copyright IBM Corp. 1987, 2013. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+<project name="rga_core"  default="build.jar" basedir=".">
+
+  <description>Rule Governance Asset Core</description>
+	
+  <property name="dc.home" location="C:\IBM\ODM881" />
+  <property name="teamserver.home" value="${dc.home}/teamserver"/>
+  <property file="${dc.home}/shared/samplesServer/was/build.properties"/>
+  <property file="${data.home}/was.properties"/>
+
+  <import file="${teamserver.home}/bin/build.xml"/>
+  
+  <property name="lib.dir"    location="${basedir}/lib"/>
+  <property name="src.dir"    location="${basedir}/src"/>
+  <property name="build.dir"    location="${basedir}/build"/>
+  <property name="data.dir"     location="${basedir}/data"/>
+  <property name="classes.dir"    location="${build.dir}/classes"/>
+  <property name="temp"     location="${basedir}/temp"/>
+  <property name="resjar"   location="${dc.home}/executionserver/lib/jrules-res-session-java.jar" />
+  <property name="rga.jar" location="${build.dir}/lib/rga.jar"/>
+    
+  <path id="build.path">
+    <path refid="teamserver.classpath"/>
+    <pathelement location="${classes.dir}"/>
+    <pathelement location="${data.dir}"/>
+	<pathelement location="${resjar}" />
+  </path> 
+  
+  <!-- C L E A N -->
+  <target name="clean"  description="Clean the built files">
+    <delete dir="${build.dir}/lib"  failonerror="false"/>
+    <delete dir="${build.dir}"  failonerror="false"/>
+  </target>
+
+  <!-- B U I L D -->
+  <target name="build.jar" depends="clean" description="Compile the source" >
+    <mkdir dir="${classes.dir}"/>
+    <!-- Copy the WAS properties -->
+    <copy file="${data.home}/was.properties"
+          todir="${classes.dir}" />
+    <javac srcdir="${src.dir}" destdir="${classes.dir}" nowarn="true" source="1.6" target="1.6" classpathref="build.path" debug="true" fork="true" deprecation="off"  />
+    <mkdir dir="${build.dir}/lib" />
+	<jar jarfile="${rga.jar}">		
+		<fileset dir="${classes.dir}" includes="**/rulegovernance/**" />
+	</jar>
+  </target>
+  
+</project>
+
+
+

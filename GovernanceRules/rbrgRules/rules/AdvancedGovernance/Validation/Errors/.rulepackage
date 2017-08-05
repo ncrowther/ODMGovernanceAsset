@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>Errors</name>
+  <uuid>7ac4dd35-fcc2-455f-b9cc-e33de5a2f814</uuid>
+  <orderedMembers>TooManyDTRows</orderedMembers>
+  <orderedMembers>TooManyLogicalOperators</orderedMembers>
+  <orderedMembers>checkEditedDTColumnNames</orderedMembers>
+</ilog.rules.studio.model.base:RulePackage>

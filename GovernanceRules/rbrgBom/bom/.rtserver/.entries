@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><teamserver>
+<entry modificationStamp="34" name="domains" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="BOM2XOMMapping" uuid="3c5800cc-2192-4d34-b276-d99a5871cb6f" version="1.0"/>
+<entry modificationStamp="2" name="generic-xom" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Vocabulary" uuid="40e7e45e-1249-4f9b-97e0-9b66f0e7a6df" version="1.0"/>
+<entry modificationStamp="34" name="domains" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Vocabulary" uuid="206dd147-a38b-4126-9919-a45a4b93b753" version="1.0"/>
+<entry modificationStamp="34" name="domains" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="BOM" uuid="7e630e1a-affd-40f6-8193-1b35ae156228" version="1.0"/>
+<entry modificationStamp="2" name="generic-xom" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="BOM" uuid="4d225ae8-9291-4989-8056-6135181eb519" version="1.0"/>
+<entry modificationStamp="2" name="generic-xom" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="BOM2XOMMapping" uuid="b92a2437-c7c4-4e90-9e6c-3218448512ac" version="1.0"/>
+</teamserver>

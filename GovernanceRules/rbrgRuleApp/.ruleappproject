@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RuleApp>
+   <ruleset>
+      <kind>ruleproject</kind>
+      <display-name>rbrgDecisionService</display-name>
+      <name>rbrgDecisionService</name>
+      <version>1.0</version>
+      <fullpath>runtime/rbrgDecisionService10.jar</fullpath>
+      <location>rbrgDecisionService</location>
+      <export>true</export>
+   </ruleset>
+</RuleApp>
+

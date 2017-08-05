@@ -1,0 +1,533 @@
+<b2x:translation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.ilog.com/JRules/1.1/Translation ilog/rules/schemas/1_1/b2x.xsd"
+        xmlns:b2x="http://schemas.ilog.com/JRules/1.1/Translation">
+    <id>3c5800cc-2192-4d34-b276-d99a5871cb6f</id>
+    <class>
+        <businessName>dynamic.dt.StringDomains.Commands</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>ELEMENTCOMMITTED</name>
+            <getter language="irl"><![CDATA[
+            return "ELEMENTCOMMITTED";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>GETROLES</name>
+            <getter language="irl"><![CDATA[
+            return "GETROLES";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>GETSTATUSVALUES</name>
+            <getter language="irl"><![CDATA[
+            return "GETSTATUSVALUES";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>ONCOMMIT</name>
+            <getter language="irl"><![CDATA[
+            return "ONCOMMIT";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>PERMISSION</name>
+            <getter language="irl"><![CDATA[
+            return "PERMISSION";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.StringDomains.LifecycleStatesDomain</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>Complete</name>
+            <getter language="irl"><![CDATA[
+            return "Complete";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>ReadyForApproval</name>
+            <getter language="irl"><![CDATA[
+            return "ReadyForApproval";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>defined</name>
+            <getter language="irl"><![CDATA[
+            return "defined";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>deployable</name>
+            <getter language="irl"><![CDATA[
+            return "deployable";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>deployed</name>
+            <getter language="irl"><![CDATA[
+            return "deployed";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>deprecated</name>
+            <getter language="irl"><![CDATA[
+            return "deprecated";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>inactive</name>
+            <getter language="irl"><![CDATA[
+            return "inactive";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>initialState</name>
+            <getter language="irl"><![CDATA[
+            return "initialState";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>newState</name>
+            <getter language="irl"><![CDATA[
+            return "new";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>refused</name>
+            <getter language="irl"><![CDATA[
+            return "refused";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>rekeyed</name>
+            <getter language="irl"><![CDATA[
+            return "rekeyed";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>retired</name>
+            <getter language="irl"><![CDATA[
+            return "retired";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>reviewed</name>
+            <getter language="irl"><![CDATA[
+            return "reviewed";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>tested</name>
+            <getter language="irl"><![CDATA[
+            return "tested";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.StringDomains.RoleDomain</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>administrator</name>
+            <getter language="irl"><![CDATA[
+            return "administrator";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>author</name>
+            <getter language="irl"><![CDATA[
+            return "author";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>deployer</name>
+            <getter language="irl"><![CDATA[
+            return "deployer";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>fastTrackReviewer</name>
+            <getter language="irl"><![CDATA[
+            return "fastTrackReviewer";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>gfm</name>
+            <getter language="irl"><![CDATA[
+            return "gfm";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>reader</name>
+            <getter language="irl"><![CDATA[
+            return "reader";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>reviewer</name>
+            <getter language="irl"><![CDATA[
+            return "reviewer";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>tester</name>
+            <getter language="irl"><![CDATA[
+            return "tester";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.StringDomains.TypeDomain</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>ActionRule</name>
+            <getter language="irl"><![CDATA[
+            return "ActionRule";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>DecisionTable</name>
+            <getter language="irl"><![CDATA[
+            return "DecisionTable";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>DecisionTree</name>
+            <getter language="irl"><![CDATA[
+            return "DecisionTree";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Folder</name>
+            <getter language="irl"><![CDATA[
+            return "Folder";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Function</name>
+            <getter language="irl"><![CDATA[
+            return "Function";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Lock</name>
+            <getter language="irl"><![CDATA[
+            return "Lock";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Query</name>
+            <getter language="irl"><![CDATA[
+            return "Query";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>RuleArtifactTag</name>
+            <getter language="irl"><![CDATA[
+            return "RuleArtifactTag";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>RulePackage</name>
+            <getter language="irl"><![CDATA[
+            return "rulePackage";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>ScenarioSuiteReport</name>
+            <getter language="irl"><![CDATA[
+            return "ScenarioSuiteReport";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Simulation</name>
+            <getter language="irl"><![CDATA[
+            return "Simulation";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>SmartView</name>
+            <getter language="irl"><![CDATA[
+            return "SmartView";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>Template</name>
+            <getter language="irl"><![CDATA[
+            return "Template";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>TestSuite</name>
+            <getter language="irl"><![CDATA[
+            return "TestSuite";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>VariableSet</name>
+            <getter language="irl"><![CDATA[
+            return "VariableSet";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.parameters.BooleanParameter</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>Deployed</name>
+            <getter language="irl"><![CDATA[
+            return "Deployed";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>active</name>
+            <getter language="irl"><![CDATA[
+            return "active";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>permissionGranted</name>
+            <getter language="irl"><![CDATA[
+            return "permissionGranted";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.parameters.DecisionTableParameter</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>editedDT</name>
+            <getter language="irl"><![CDATA[
+            return "editedDT";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>persistedDT</name>
+            <getter language="irl"><![CDATA[
+            return "persistedDT";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>tags</name>
+            <getter language="irl"><![CDATA[
+            return "tags";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.parameters.IntegerParameter</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>logicalOperatorCount</name>
+            <getter language="irl"><![CDATA[
+            return "logicalOperatorCount";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.parameters.ListParameter</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>roles</name>
+            <getter language="irl"><![CDATA[
+            return "roles";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>statusValues</name>
+            <getter language="irl"><![CDATA[
+            return "statusValues";
+            ]]></getter>
+        </attribute>
+    </class>
+    <class>
+        <businessName>dynamic.dt.parameters.StringParameter</businessName>
+        <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>Release</name>
+            <getter language="irl"><![CDATA[
+            return "Release";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>action</name>
+            <getter language="irl"><![CDATA[
+            return "action";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>actionRuleBody</name>
+            <getter language="irl"><![CDATA[
+            return "actionRuleBody";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>baseline</name>
+            <getter language="irl"><![CDATA[
+            return "baseline";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>createdBy</name>
+            <getter language="irl"><![CDATA[
+            return "createdBy";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>createdByOnOriginal</name>
+            <getter language="irl"><![CDATA[
+            return "createdByOnOriginal";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>currentChangeRequestId</name>
+            <getter language="irl"><![CDATA[
+            return "currentChangeRequestId";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>definition</name>
+            <getter language="irl"><![CDATA[
+            return "definition";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>documentation</name>
+            <getter language="irl"><![CDATA[
+            return "documentation";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>effectiveDate</name>
+            <getter language="irl"><![CDATA[
+            return "effectiveDate";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>expirationDate</name>
+            <getter language="irl"><![CDATA[
+            return "expirationDate";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>feature</name>
+            <getter language="irl"><![CDATA[
+            return "feature";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>historicalChangeRequestId</name>
+            <getter language="irl"><![CDATA[
+            return "historicalChangeRequestId";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>lastChangedBy</name>
+            <getter language="irl"><![CDATA[
+            return "lastChangedBy";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>lastChangedByOnOriginal</name>
+            <getter language="irl"><![CDATA[
+            return "lastChangedByOnOriginal";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>loginUser</name>
+            <getter language="irl"><![CDATA[
+            return "loginUser";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <getter language="irl"><![CDATA[
+            return "name";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>newProperty</name>
+            <getter language="irl"><![CDATA[
+            return "newProperty";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>oldProperty</name>
+            <getter language="irl"><![CDATA[
+            return "oldProperty";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>oldStatus</name>
+            <getter language="irl"><![CDATA[
+            return "oldStatus";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>operation</name>
+            <getter language="irl"><![CDATA[
+            return "operation";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>project</name>
+            <getter language="irl"><![CDATA[
+            return "project";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>requestType</name>
+            <getter language="irl"><![CDATA[
+            return "requestType";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>response</name>
+            <getter language="irl"><![CDATA[
+            return "response";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>role</name>
+            <getter language="irl"><![CDATA[
+            return "role";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>rulePackage</name>
+            <getter language="irl"><![CDATA[
+            return "rulePackage";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>status</name>
+            <getter language="irl"><![CDATA[
+            return "status";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>statuscomment</name>
+            <getter language="irl"><![CDATA[
+            return "statuscomment";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>text</name>
+            <getter language="irl"><![CDATA[
+            return "text";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>type</name>
+            <getter language="irl"><![CDATA[
+            return "type";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>validationError</name>
+            <getter language="irl"><![CDATA[
+            return "validationError";
+            ]]></getter>
+        </attribute>
+    </class>
+</b2x:translation>

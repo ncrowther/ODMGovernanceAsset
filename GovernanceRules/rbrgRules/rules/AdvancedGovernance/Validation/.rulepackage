@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>Validation</name>
+  <uuid>d8b3778b-d371-482b-b917-d3a497dfe6e5</uuid>
+  <orderedMembers>DocumentationProvided</orderedMembers>
+  <orderedMembers>checkActive</orderedMembers>
+  <orderedMembers>checkDTColumnNames</orderedMembers>
+  <orderedMembers>checkExpiryDate</orderedMembers>
+  <orderedMembers>checkL1Approval</orderedMembers>
+  <orderedMembers>checkL2Approval</orderedMembers>
+  <orderedMembers>checkRuleName</orderedMembers>
+  <orderedMembers>checkTesterIsNotAuthor</orderedMembers>
+  <orderedMembers>set deployed flag to false if status is retired</orderedMembers>
+  <orderedMembers>setDeployedStatusComment</orderedMembers>
+  <orderedMembers>set deployed flag to true if status is deployed</orderedMembers>
+  <orderedMembers>setRetiredStatusComment</orderedMembers>
+</ilog.rules.studio.model.base:RulePackage>

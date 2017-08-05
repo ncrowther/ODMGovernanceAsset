@@ -1,0 +1,124 @@
+# Vocabulary Properties
+dynamic.customer.AEON.AeonStringAttributesDomain#concept.label = dynamic.customer.AEON.AeonStringAttributesDomain
+dynamic.customer.AEON.AeonStringAttributesDomain.aeonVar1#instance.documentation = aeonVar1
+dynamic.customer.AEON.AeonStringAttributesDomain.aeonVar1#instance.label = aeonVar1
+dynamic.customer.AEON.AeonStringAttributesDomain.aeonVar2#instance.documentation = aeonVar2
+dynamic.customer.AEON.AeonStringAttributesDomain.aeonVar2#instance.label = aeonVar2
+uuid = 206dd147-a38b-4126-9919-a45a4b93b753
+
+# dynamic.dt.StringDomains.Commands
+dynamic.dt.StringDomains.Commands#concept.label = dynamic.dt.StringDomains.Commands
+dynamic.dt.StringDomains.Commands.ELEMENTCOMMITTED#instance.label = ELEMENTCOMMITTED
+dynamic.dt.StringDomains.Commands.GETROLES#instance.label = GETROLES
+dynamic.dt.StringDomains.Commands.GETSTATUSVALUES#instance.label = GETSTATUSVALUES
+dynamic.dt.StringDomains.Commands.ONCOMMIT#instance.label = ONCOMMIT
+dynamic.dt.StringDomains.Commands.PERMISSION#instance.label = PERMISSION
+
+# dynamic.dt.StringDomains.LifecycleStatesDomain
+dynamic.dt.StringDomains.LifecycleStatesDomain#concept.label = dynamic.dt.StringDomains.LifecycleStatesDomain
+dynamic.dt.StringDomains.LifecycleStatesDomain.Complete#instance.label = Complete
+dynamic.dt.StringDomains.LifecycleStatesDomain.ReadyForApproval#instance.label = ReadyForApproval
+dynamic.dt.StringDomains.LifecycleStatesDomain.defined#instance.label = defined
+dynamic.dt.StringDomains.LifecycleStatesDomain.deployable#instance.label = deployable
+dynamic.dt.StringDomains.LifecycleStatesDomain.deployed#instance.label = deployed
+dynamic.dt.StringDomains.LifecycleStatesDomain.deprecated#instance.label = deprecated
+dynamic.dt.StringDomains.LifecycleStatesDomain.inactive#instance.label = inactive
+dynamic.dt.StringDomains.LifecycleStatesDomain.initialState#instance.label = initialState
+dynamic.dt.StringDomains.LifecycleStatesDomain.newState#instance.label = newState
+dynamic.dt.StringDomains.LifecycleStatesDomain.refused#instance.label = refused
+dynamic.dt.StringDomains.LifecycleStatesDomain.rekeyed#instance.label = rekeyed
+dynamic.dt.StringDomains.LifecycleStatesDomain.retired#instance.label = retired
+dynamic.dt.StringDomains.LifecycleStatesDomain.reviewed#instance.label = reviewed
+dynamic.dt.StringDomains.LifecycleStatesDomain.tested#instance.label = tested
+
+# dynamic.dt.StringDomains.RoleDomain
+dynamic.dt.StringDomains.RoleDomain#concept.label = dynamic.dt.StringDomains.RoleDomain
+dynamic.dt.StringDomains.RoleDomain.administrator#instance.label = administrator
+dynamic.dt.StringDomains.RoleDomain.author#instance.label = author
+dynamic.dt.StringDomains.RoleDomain.deployer#instance.label = deployer
+dynamic.dt.StringDomains.RoleDomain.fastTrackReviewer#instance.label = fast track reviewer
+dynamic.dt.StringDomains.RoleDomain.gfm#instance.label = gfm
+dynamic.dt.StringDomains.RoleDomain.reader#instance.label = reader
+dynamic.dt.StringDomains.RoleDomain.reviewer#instance.label = reviewer
+dynamic.dt.StringDomains.RoleDomain.tester#instance.label = tester
+
+# dynamic.dt.StringDomains.TypeDomain
+dynamic.dt.StringDomains.TypeDomain#concept.label = dynamic.dt.StringDomains.TypeDomain
+dynamic.dt.StringDomains.TypeDomain.ActionRule#instance.documentation = ActionRule
+dynamic.dt.StringDomains.TypeDomain.ActionRule#instance.label = ActionRule
+dynamic.dt.StringDomains.TypeDomain.DecisionTable#instance.documentation = DecisionTable
+dynamic.dt.StringDomains.TypeDomain.DecisionTable#instance.label = DecisionTable
+dynamic.dt.StringDomains.TypeDomain.DecisionTree#instance.documentation = DecisionTree
+dynamic.dt.StringDomains.TypeDomain.DecisionTree#instance.label = DecisionTree
+dynamic.dt.StringDomains.TypeDomain.Folder#instance.documentation = Folder
+dynamic.dt.StringDomains.TypeDomain.Folder#instance.label = Folder
+dynamic.dt.StringDomains.TypeDomain.Function#instance.label = Function
+dynamic.dt.StringDomains.TypeDomain.Lock#instance.documentation = Lock
+dynamic.dt.StringDomains.TypeDomain.Lock#instance.label = Lock
+dynamic.dt.StringDomains.TypeDomain.Query#instance.documentation = Query
+dynamic.dt.StringDomains.TypeDomain.Query#instance.label = Query
+dynamic.dt.StringDomains.TypeDomain.RuleArtifactTag#instance.label = RuleArtifactTag
+dynamic.dt.StringDomains.TypeDomain.RulePackage#instance.documentation = RulePackage
+dynamic.dt.StringDomains.TypeDomain.RulePackage#instance.label = RulePackage
+dynamic.dt.StringDomains.TypeDomain.ScenarioSuiteReport#instance.label = ScenarioSuiteReport
+dynamic.dt.StringDomains.TypeDomain.Simulation#instance.label = Simulation
+dynamic.dt.StringDomains.TypeDomain.SmartView#instance.label = SmartView
+dynamic.dt.StringDomains.TypeDomain.Template#instance.label = Template
+dynamic.dt.StringDomains.TypeDomain.TestSuite#instance.documentation = TestSuite
+dynamic.dt.StringDomains.TypeDomain.TestSuite#instance.label = TestSuite
+dynamic.dt.StringDomains.TypeDomain.VariableSet#instance.label = VariableSet
+
+# dynamic.dt.parameters.BooleanParameter
+dynamic.dt.parameters.BooleanParameter#concept.label = dynamic.dt.parameters.BooleanParameter
+dynamic.dt.parameters.BooleanParameter.Deployed#instance.label = Deployed
+dynamic.dt.parameters.BooleanParameter.active#instance.label = active
+dynamic.dt.parameters.BooleanParameter.permissionGranted#instance.label = permissionGranted
+
+# dynamic.dt.parameters.DecisionTableParameter
+dynamic.dt.parameters.DecisionTableParameter#concept.label = DT attributes domain
+dynamic.dt.parameters.DecisionTableParameter.editedDT#instance.label = editedDT
+dynamic.dt.parameters.DecisionTableParameter.persistedDT#instance.label = persistedDT
+dynamic.dt.parameters.DecisionTableParameter.tags#instance.label = tags
+
+# dynamic.dt.parameters.IntegerParameter
+dynamic.dt.parameters.IntegerParameter#concept.label = integer attributes domain
+dynamic.dt.parameters.IntegerParameter.logicalOperatorCount#instance.label = logicalOperatorCount
+
+# dynamic.dt.parameters.ListParameter
+dynamic.dt.parameters.ListParameter#concept.label = list attributes domain
+dynamic.dt.parameters.ListParameter.roles#instance.label = roles
+dynamic.dt.parameters.ListParameter.statusValues#instance.label = statusValues
+
+# dynamic.dt.parameters.StringParameter
+dynamic.dt.parameters.StringParameter#concept.label = string attributes domain
+dynamic.dt.parameters.StringParameter.Release#instance.label = Release
+dynamic.dt.parameters.StringParameter.action#instance.label = action
+dynamic.dt.parameters.StringParameter.actionRuleBody#instance.label = actionRuleBody
+dynamic.dt.parameters.StringParameter.baseline#instance.label = baseline
+dynamic.dt.parameters.StringParameter.createdBy#instance.label = createdBy
+dynamic.dt.parameters.StringParameter.createdByOnOriginal#instance.label = createdByOnOriginal
+dynamic.dt.parameters.StringParameter.currentChangeRequestId#instance.label = currentChangeRequestId
+dynamic.dt.parameters.StringParameter.definition#instance.label = definition
+dynamic.dt.parameters.StringParameter.documentation#instance.label = documentation
+dynamic.dt.parameters.StringParameter.effectiveDate#instance.label = effectiveDate
+dynamic.dt.parameters.StringParameter.expirationDate#instance.label = expirationDate
+dynamic.dt.parameters.StringParameter.feature#instance.label = feature
+dynamic.dt.parameters.StringParameter.historicalChangeRequestId#instance.label = historicalChangeRequestId
+dynamic.dt.parameters.StringParameter.lastChangedBy#instance.label = lastChangedBy
+dynamic.dt.parameters.StringParameter.lastChangedByOnOriginal#instance.label = lastChangedByOnOriginal
+dynamic.dt.parameters.StringParameter.loginUser#instance.label = loginUser
+dynamic.dt.parameters.StringParameter.name#instance.label = name
+dynamic.dt.parameters.StringParameter.newProperty#instance.label = newProperty
+dynamic.dt.parameters.StringParameter.oldProperty#instance.label = oldProperty
+dynamic.dt.parameters.StringParameter.oldStatus#instance.label = oldStatus
+dynamic.dt.parameters.StringParameter.operation#instance.label = operation
+dynamic.dt.parameters.StringParameter.project#instance.label = project
+dynamic.dt.parameters.StringParameter.requestType#instance.label = requestType
+dynamic.dt.parameters.StringParameter.response#instance.label = response
+dynamic.dt.parameters.StringParameter.role#instance.label = role
+dynamic.dt.parameters.StringParameter.rulePackage#instance.label = rulePackage
+dynamic.dt.parameters.StringParameter.status#instance.label = status
+dynamic.dt.parameters.StringParameter.statuscomment#instance.label = statuscomment
+dynamic.dt.parameters.StringParameter.text#instance.label = text
+dynamic.dt.parameters.StringParameter.type#instance.label = type
+dynamic.dt.parameters.StringParameter.validationError#instance.label = validationError

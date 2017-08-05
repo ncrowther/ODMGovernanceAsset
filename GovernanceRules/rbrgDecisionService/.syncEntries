@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><teamservers>
+<teamserver>
+<target dataSource="" login="rtsAdmin" url="http://localhost:9082/teamserver"/>
+<entry baseType="Ruleflow" checksum="3385777532" projectName="rbrgDecisionService" qualifiedName="mainRuleflow" sourceCS="2A1EC36E811CF2DCC755AF5F3F412F1F" targetCS="3385777532" type="Ruleflow" uuid="f36c31d7-092f-4954-9d16-42dfb7a3f7ac"/>
+<entry baseType="RuleProjectInfo" checksum="1921505569" projectName="rbrgDecisionService" qualifiedName="rbrgDecisionService" sourceCS="90028731198BD7ADC0720DB8B3D77F94" targetCS="1921505569" type="RuleProjectInfo" uuid="90c3f7ed-98b2-45fc-8a54-d1b9d92aacfc"/>
+</teamserver>
+<teamserver>
+<target dataSource="" login="rtsAdmin" url="http://localhost:9080/teamserver"/>
+<entry baseType="Query" checksum="3859947076" projectName="rbrgDecisionService" qualifiedName="copyRule" sourceCS="8FA48A7B47367840C553181D61E2285D" targetCS="3859947076" type="Query" uuid="9d6b0a93-e31a-4c54-afdc-d149d5c089f3"/>
+<entry baseType="Query" checksum="2584538241" projectName="rbrgDecisionService" qualifiedName="deleteRule" sourceCS="C5B0B6337A6BE5B8F599165BCED5BBE7" targetCS="2584538241" type="Query" uuid="c141d8ea-ba79-43d2-89d3-eab0194bf8af"/>
+<entry baseType="Ruleflow" checksum="3385777532" projectName="rbrgDecisionService" qualifiedName="mainRuleflow" sourceCS="6E65CF84BA6EA5AEFF2A3789CA3F0F3E" targetCS="3385777532" type="Ruleflow" uuid="f36c31d7-092f-4954-9d16-42dfb7a3f7ac"/>
+<entry baseType="RuleProjectInfo" checksum="1921505569" projectName="rbrgDecisionService" qualifiedName="rbrgDecisionService" sourceCS="590D605AFE757361562CCBED3CCAA0DB" targetCS="1921505569" type="RuleProjectInfo" uuid="90c3f7ed-98b2-45fc-8a54-d1b9d92aacfc"/>
+</teamserver>
+</teamservers>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.rule:Function xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.rule="http://ilog.rules.studio/model/rule.ecore">
+  <name>checkParam</name>
+  <uuid>d27309b7-454f-49c1-9f7f-5cc8565c5deb</uuid>
+  <definition><![CDATA[// Check the var has been passed in the input hashmap
+Map vars = (Map)getParameterValue("params");
+Object value = (Object)vars.get(name);
+
+if (value==null)  {
+
+	// The var was not set so create a default value for it.  This applies to both input and output vars
+   	vars.put(name, defaultValue);
+   
+   	if (Logger.isFineLoggable()) {
+  		Logger.logFine("****default value " + name + "=" + value + ": " + paramType);
+   	}
+   	
+  	// Check var is of correct parameter type (i.e. a String parameter is defined in the StringParameters DT)
+} else if (!(paramType.isInstance(value)))  {
+
+   	// If var is of the wrong type then create a default correct value for it
+   	vars.put(name, defaultValue);
+
+   	// Add it to the wrong type input vars
+   	   	if (Logger.isFineLoggable()) {
+  		Logger.logFine("****Incorrect Parameter Type: value " + name + "=" + value + ": " + paramType);
+   	}
+ 
+   	List errors = (List)getParameterValue("errors");
+}
+
+if (input) {	
+	// Mark variable for input 
+	Set inputVarNames = (Set)getParameterValue("inputParamNames");
+	inputVarNames.add(name);
+}
+
+if (output) {
+	// Mark variable for output 
+	Set outputParamNames = (Set)getParameterValue("outputParamNames");
+	outputParamNames.add(name);
+}
+]]></definition>
+  <imports>import java.util.Map;</imports>
+  <imports>import java.util.Set;</imports>
+  <imports>import java.util.List;</imports>
+  <imports>import java.util.ArrayList;</imports>
+  <imports>import java.util.HashMap;</imports>
+  <imports>import com.ibm.util.Logger;</imports>
+  <arguments name="name" type="java.lang.String"/>
+  <arguments name="defaultValue" type="java.lang.Object"/>
+  <arguments name="paramType" type="java.lang.Class"/>
+  <arguments name="input" type="java.lang.Boolean"/>
+  <arguments name="output" type="java.lang.Boolean"/>
+</ilog.rules.studio.model.rule:Function>

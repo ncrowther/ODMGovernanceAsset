@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>mainRuleflow</name>
+  <uuid>f36c31d7-092f-4954-9d16-42dfb7a3f7ac</uuid>
+  <locale>en_GB</locale>
+  <categories>any</categories>
+  <rfModel>
+<Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+  <Body>
+    <TaskList>
+      <StartTask Identifier="task_1"/>
+      <SubflowTask Identifier="task_0" Uuid="5746dfb6-e72a-4457-a716-b6c230b7167c"/>
+      <ActionTask Identifier="extractRequest">
+        <Actions Language="irl"><![CDATA[
+params.putAll(request);
+
+// print the input vars as java to test within simpleRuleEngineRunner
+java.util.Set keys = params.keySet();
+Iterator iter = keys.iterator();
+
+String command = (String)params.get("requestType");
+
+System.out.println("Command: " + command);
+
+if (command != null && (command.equals(dynamic.dt.StringDomains.Commands.PERMISSION) )) {
+
+    Object value = params.get(dynamic.dt.parameters.StringParameter.feature);
+     System.out.println("*vars.put(\"feature\",\"" + value + "\"); ");
+     
+     while (iter.hasNext()) {
+     String key = (String)iter.next();
+     value = params.get(key);
+     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); ");
+     }
+}
+
+if (command != null && (command.equals(dynamic.dt.StringDomains.Commands.ONCOMMIT ))) {
+while (iter.hasNext()) {
+     String key = (String)iter.next();
+     Object value = params.get(key);
+     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); ");
+     }
+}
+
+if (command != null && (command.equals(dynamic.dt.StringDomains.Commands.ELEMENTCOMMITTED ))) {
+while (iter.hasNext()) {
+     String key = (String)iter.next();
+     Object value = params.get(key);
+     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); ");
+     }
+}
+]]></Actions>
+      </ActionTask>
+      <ActionTask Identifier="createResponse">
+        <Actions Language="irl"><![CDATA[// Remap vars to params
+response = params;
+// errors
+errorList = errors;
+
+System.out.println("Response="+response);]]></Actions>
+      </ActionTask>
+      <StopTask Identifier="task_2"/>
+    </TaskList>
+    <NodeList>
+      <TaskNode Identifier="node_0" Task="task_1"/>
+      <TaskNode Identifier="node_1" Task="task_2"/>
+      <TaskNode Identifier="node_2" Task="task_0"/>
+      <TaskNode Identifier="node_3" Task="extractRequest"/>
+      <TaskNode Identifier="node_4" Task="createResponse"/>
+    </NodeList>
+    <TransitionList>
+      <Transition Identifier="transition_0" Source="node_0" Target="node_3"/>
+      <Transition Identifier="transition_1" Source="node_2" Target="node_4"/>
+      <Transition Identifier="transition_2" Source="node_4" Target="node_1"/>
+      <Transition Identifier="transition_3" Source="node_3" Target="node_2"/>
+    </TransitionList>
+  </Body>
+  <Resources>
+    <ResourceSet Locale="en_US">
+      <Data Name="node_3#height">40.0</Data>
+      <Data Name="node_2#height">40.0</Data>
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_4#x">65.69336</Data>
+      <Data Name="node_4#y">272.0</Data>
+      <Data Name="node_4#name">node_4</Data>
+      <Data Name="node_3#width">122.70703</Data>
+      <Data Name="node_3#y">91.0</Data>
+      <Data Name="node_3#name">node_3</Data>
+      <Data Name="node_1#name">node_1</Data>
+      <Data Name="node_3#x">65.69336</Data>
+      <Data Name="node_1#width">22.0</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_2#width">104.02734</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_0#x">64.69336</Data>
+      <Data Name="node_4#height">40.0</Data>
+      <Data Name="node_1#x">64.69336</Data>
+      <Data Name="node_4#width">129.38672</Data>
+      <Data Name="node_1#y">352.0</Data>
+      <Data Name="node_1#height">22.0</Data>
+      <Data Name="node_2#x">62.69336</Data>
+      <Data Name="node_2#y">181.0</Data>
+    </ResourceSet>
+    <ResourceSet Locale="en_GB">
+      <Data Name="node_3#height">53.402344</Data>
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_2#height">53.402344</Data>
+      <Data Name="node_4#x">63.69336</Data>
+      <Data Name="node_4#name">node_4</Data>
+      <Data Name="node_4#y">304.50586</Data>
+      <Data Name="node_3#y">97.70117</Data>
+      <Data Name="node_3#width">122.70703</Data>
+      <Data Name="node_2#label">Run Rules</Data>
+      <Data Name="node_3#name">node_3</Data>
+      <Data Name="node_1#name">node_1</Data>
+      <Data Name="node_4#label">Create Response</Data>
+      <Data Name="node_3#x">65.69336</Data>
+      <Data Name="node_1#width">22.0</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_2#name">node_2</Data>
+      <Data Name="node_2#width">104.02734</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_0#x">64.69336</Data>
+      <Data Name="node_3#label">Extract Request</Data>
+      <Data Name="node_4#height">53.402344</Data>
+      <Data Name="node_4#width">129.38672</Data>
+      <Data Name="node_1#x">64.69336</Data>
+      <Data Name="node_1#y">392.20703</Data>
+      <Data Name="node_1#height">22.0</Data>
+      <Data Name="node_2#x">64.69336</Data>
+      <Data Name="node_2#y">201.10352</Data>
+    </ResourceSet>
+  </Resources>
+  <Properties>
+    <imports><![CDATA[use params;
+import java.util.Set;
+import java.util.Iterator;
+import dynamic.dt.parameters.StringParameter;
+import com.ibm.util.Logger;
+]]></imports>
+  </Properties>
+</Ruleflow></rfModel>
+  <mainFlowTask>true</mainFlowTask>
+</ilog.rules.studio.model.ruleflow:RuleFlow>

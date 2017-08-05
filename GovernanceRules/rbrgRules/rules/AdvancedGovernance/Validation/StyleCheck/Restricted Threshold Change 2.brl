@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>Restricted Threshold Change 2</name>
+  <uuid>39189647-0011-4735-bcc4-7dbc1b9b72b1</uuid>
+  <documentation><![CDATA[]]></documentation>
+  <locale>en_GB</locale>
+  <definition><![CDATA[definitions
+    set 'change threshold' to 1001 ;
+    set 'percentage changes' to get all the percentage delta changes between the values of the editedDT and persistedDT 
+    	for the DT column called "debt to income_min" ;
+    set 'variance' to a number in 'percentage changes' ;
+    set warning to "Change variance " + 'variance' + "% is beyond threshold of " + 
+    	'change threshold' + "% for the Debt to income: min column.";
+if
+	the string rulePackage is "eligibility"
+	and 'variance' above 'change threshold'
+then
+     set validationError as warning ;    	
+]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

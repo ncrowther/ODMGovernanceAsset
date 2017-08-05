@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleapp-archive xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schemas.ilog.com/JRules/1.2/RuleAppArchive">
+  <ruleapp>
+    <ruleapp-display-name>rbrgRuleApp</ruleapp-display-name>
+    <ruleapp-name>rbrgRuleApp</ruleapp-name>
+    <ruleapp-version>1.0</ruleapp-version>
+    <creation-date>1353008100336</creation-date>
+    <ruleset>
+      <ruleset-display-name>rbrgDecisionService</ruleset-display-name>
+      <ruleset-name>rbrgDecisionService</ruleset-name>
+      <ruleset-version>1.0</ruleset-version>
+      <creation-date>1353008237486</creation-date>
+      <ruleset-description>      </ruleset-description>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.trace.enabled</ruleset-property-name>
+        <ruleset-property-value>false</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>ruleset.bom.enabled</ruleset-property-name>
+        <ruleset-property-value>false</ruleset-property-value>
+      </ruleset-property>
+      <ruleset-property>
+        <ruleset-property-name>monitoring.enabled</ruleset-property-name>
+        <ruleset-property-value>false</ruleset-property-value>
+      </ruleset-property>
+    </ruleset>
+  </ruleapp>
+</ruleapp-archive>

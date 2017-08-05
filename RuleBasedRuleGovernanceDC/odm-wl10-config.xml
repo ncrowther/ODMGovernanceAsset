@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5724-Y00 5724-Y17 5655-V84                                     -->
+<!-- Copyright IBM Corp. 1987, 2010. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+<project name="wl10-config" basedir=".">
+
+    <!--property name="server.url" value="http://scrbodmdk000407:7001/teamserver" /-->
+	<!--property name="rtsAdmin.login" value="NCR015" /-->
+    <!--property name="rtsAdmin.password" value="Maersk123" /-->
+    	
+    <property name="server.url" value="http://localhost:7001/teamserver" />	
+	<property name="rtsAdmin.login" value="rtsAdmin" />
+    <property name="rtsAdmin.password" value="rtsAdmin1" />
+	<property name="wl.version" value="wl036" />
+	<property name="rtsConfig.login" value="rtsConfig" />
+    <property name="rtsConfig.password" value="rtsConfig1" />
+    <property name="db.dataSource" value="jdbc/ilogDataSource" />
+    <property name="teamserver.appli.name" value="jrules-teamserver-WL10.ear"/>
+    <property name="teamserver.ear.source" value="${teamserver.home}/applicationservers/Weblogic10/${teamserver.appli.name}" />
+   
+</project>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.rule:Function xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.rule="http://ilog.rules.studio/model/rule.ecore">
+  <name>getNumberOnlyFromString</name>
+  <uuid>1b1b06fd-d980-466f-bc2c-0a93895fafdd</uuid>
+  <returnType>double</returnType>
+  <definition><![CDATA[String regEx1 = "[0-9]*,?[0-9]+.?[0-9]*";
+String val = numberAsString;
+// split the string around a valid double
+String [] s = val.split(regEx1);
+// splits will be the non number bits of the string (if any exist)
+for (int i=0; i<s.length;i++) {
+	String split = s[i];
+	// replace the non-number split with empty string to essentially remove it 
+	val = val.replaceFirst(split, "");
+}
+// value still might have a comma
+String regEx2 = ",";
+val = val.replaceAll(regEx2, "");
+
+if (Logger.isFineLoggable()) {
+	Logger.logFine("Parsed "+numberAsString+" as =["+val+"]");
+}
+		
+double d = Double.parseDouble(val);
+return d;]]></definition>
+  <imports>import com.ibm.util.Logger;</imports>
+  <arguments name="numberAsString" type="java.lang.String"/>
+</ilog.rules.studio.model.rule:Function>

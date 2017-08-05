@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.rule:Function xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.rule="http://ilog.rules.studio/model/rule.ecore">
+  <name>getParam</name>
+  <uuid>5b05dafd-af31-47a2-8d86-58c7edb59b87</uuid>
+  <returnType>java.lang.Object</returnType>
+  <definition><![CDATA[// Check the var has been passed in the input hashmap
+Map vars = (Map)getParameterValue("params");
+
+Object value = (Object)vars.get(name);
+
+// Note if you want optimal performance it is safe to remove this if statement.  It is just an extra saftey check to verify parameters are declared as input in the DT
+// Check the parameter is declered as input
+//Set inputParamNames = (Set)getParameterValue("inputParamNames");
+//if (value==null || (!inputParamNames.contains(name)))  {
+//   throw new java.util.NoSuchElementException ("Undeclared input var " + name + ".  Add it to " + paramType + " parameters Decision Table");
+// } 	
+
+if (value == null) {
+	value = paramType.newInstance();
+}
+  
+if (Logger.isFineLoggable()) {
+	Logger.logFine("****Name: " + name + " Value=" + value + ": " + value.class);
+}
+  
+return value;]]></definition>
+  <imports>import java.util.Map;</imports>
+  <imports>import java.util.Set;</imports>
+  <imports>import java.util.List;</imports>
+  <imports>import java.util.ArrayList;</imports>
+  <imports>import java.util.HashMap;</imports>
+  <imports>import java.util.NoSuchElementException;</imports>
+  <imports>import com.ibm.util.Logger;</imports>
+  <arguments name="name" type="java.lang.String"/>
+  <arguments name="paramType" type="java.lang.Class"/>
+</ilog.rules.studio.model.rule:Function>

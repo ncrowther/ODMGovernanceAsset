@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ * IBM Confidential
+ * OCO Source Materials
+ * 5725-B69 5655-Y31 5655-Y17
+ * Copyright IBM Corp. 1987, 2013
+ * The source code for this program is not published or otherwise
+ * divested of its trade secrets, irrespective of what has
+ * been deposited with the U.S. Copyright Office.
+-->
+
+
+
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>decisioncenter</display-name>
+	<description>Managing business rules with Decision Center Business Console</description>
+	
+	<!--  ================================================================= -->
+	<!--  C O N T E X T - P A R A M                                         -->
+	<!--  ================================================================= -->
+	<context-param>
+		<description>Modify the timeout value that is associated with transactions (in seconds)</description>
+		<param-name>ilog.rules.teamserver.transaction.timeout</param-name>
+		<param-value>600</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/applicationContext.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ilog.webui.dhtml.controller_path</param-name>
+		<param-value>/servlet/ilog.rules.webui.Controller</param-value>
+	</context-param>
+	<context-param>
+		<param-name>ilog.webui.dhtml.resource_manager_path</param-name>
+		<param-value>/_res</param-value>
+	</context-param>
+	<context-param>
+		<param-name>org.jboss.jbossfaces.JSF_CONFIG_NAME</param-name>
+		<param-value>MyFaces-2.0</param-value>
+	</context-param>
+
+	<!--  ================================================================= -->
+	<!--  F I L T E R                                                       -->
+	<!--  ================================================================= -->
+	<filter>
+		<filter-name>HttpPUTRequestFilter</filter-name>
+		<filter-class>com.ibm.rules.decisioncenter.web.core.filters.HttpPUTRequestFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>sessionFilter</filter-name>
+		<filter-class>com.ibm.rules.decisioncenter.web.core.filters.SessionFilter</filter-class>
+		<init-param>
+			<param-name>exclusion-pattern</param-name>
+			<param-value>.*?(?:\.js|\.css|\.ico|\.gif|\.png|\.jpg|\.rpc|\.html)$</param-value>
+		</init-param>
+	</filter>
+	<filter>
+		<filter-name>securityCheckPointFilter</filter-name>
+		<filter-class>com.ibm.rules.decisioncenter.web.core.filters.SecurityCheckPointFilter</filter-class>
+		<init-param>
+			<param-name>com.ibm.rules.decisioncenter.url-form-check-exclusion-patterns</param-name>
+			<param-value></param-value>
+		</init-param>
+		<init-param>
+			<param-name>com.ibm.rules.decisioncenter.security-check-url-exclusion-patterns</param-name>
+			<param-value>/js/*,/views/*,/themes/*</param-value>
+		</init-param>
+	</filter>
+	<!-- Add your custom filter here if needed -->
+
+	<!--  ================================================================= -->
+	<!--  F I L T E R - M A P P I N G                                       -->
+	<!--  ================================================================= -->
+	<filter-mapping>
+		<filter-name>HttpPUTRequestFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>sessionFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>securityCheckPointFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- Add your custom filter-mapping here if needed -->
+
+	<!--  ================================================================= -->
+	<!--  L I S T E N E R                                                   -->
+	<!--  ================================================================= -->
+	<listener>
+		<description>Initialize Spring with config declared in the context-param 'contextConfigLocation'</description>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+    	<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  	</listener>
+
+	<!--  ================================================================= -->
+	<!--  S E R V L E T                                                     -->
+	<!--  ================================================================= -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>WEB-INF/spring/dispatcher-servlet.xml, classpath*:spring/*/applicationContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>BRLEditorServlet</servlet-name>
+		<servlet-class>com.ibm.rules.decisioncenter.web.core.servlets.BRLEditorServlet</servlet-class>
+	</servlet>
+    <servlet>
+        <servlet-name>DTCellEditorServlet</servlet-name>
+        <servlet-class>com.ibm.rules.decisioncenter.web.dt.DTCellEditorServlet</servlet-class>
+    </servlet>
+	<servlet>
+  		<servlet-name>Controller</servlet-name>
+    	<servlet-class>ilog.webui.dhtml.IlxWDefaultController</servlet-class>
+  	</servlet>
+  	<servlet>
+    	<servlet-name>IlxWResourceManager</servlet-name>
+    	<servlet-class>ilog.webui.dhtml.IlxWResourceManager</servlet-class>
+  	</servlet>
+  
+	
+	<!--  ================================================================= -->
+	<!--  S E R V L E T - M A P P I N G                                     -->
+	<!--  ================================================================= -->
+	<servlet-mapping>
+		<servlet-name>BRLEditorServlet</servlet-name>
+		<url-pattern>/s/BRLEditor</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BRLEditorServlet</servlet-name>
+		<url-pattern>/s/BRLEditor/*</url-pattern>
+	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DTCellEditorServlet</servlet-name>
+        <url-pattern>/s/DTCellEditor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DTCellEditorServlet</servlet-name>
+        <url-pattern>/s/DTCellEditor/*</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+    	<servlet-name>Controller</servlet-name>
+    	<url-pattern>/servlet/ilog.rules.webui.Controller</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+    	<servlet-name>IlxWResourceManager</servlet-name>
+    	<url-pattern>/_res/*</url-pattern>
+  	</servlet-mapping>
+
+	<!--  ================================================================= -->
+	<!--  E R R O R - P A G E                                               -->
+	<!--  ================================================================= -->
+
+	<error-page>
+		<error-code>400</error-code>
+		<location>/error400</location>
+	</error-page>
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error403</location>
+	</error-page>
+	<error-page>
+		<error-code>408</error-code>
+		<location>/error408</location>
+	</error-page>
+
+	
+	<!--  ================================================================= -->
+	<!--  R E S O U R C E - R E F                                           -->
+	<!--  ================================================================= -->
+
+	<!-- Add your custom resource-ref here if needed -->
+	<resource-ref>
+		<res-ref-name>eis/XUConnectionFactory</res-ref-name>
+		<res-type>javax.resource.cci.ConnectionFactory</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Unshareable</res-sharing-scope>
+	</resource-ref>
+
+	<!--  ================================================================= -->
+	<!--  S E C U R I T Y - C O N S T R A I N T                             -->
+	<!--  ================================================================= -->
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Entry points</web-resource-name>
+			<url-pattern>/t/*</url-pattern>
+			<url-pattern>/p/*</url-pattern>
+			<url-pattern>/s/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>rtsAdministrator</role-name>
+			<role-name>rtsConfigManager</role-name>
+			<role-name>rtsUser</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!--  ================================================================= -->
+	<!--  L O G I N - C O N F I G                                           -->
+	<!--  ================================================================= -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/login</form-login-page>
+			<form-error-page>/login?error=1</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<!--  ================================================================= -->
+	<!--  J S P - C O N F I G                                           -->
+	<!--  ================================================================= -->
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>ISO-8859-1</page-encoding>
+		</jsp-property-group>
+	</jsp-config>
+
+	<!--  ================================================================= -->
+	<!--  S E C U R I T Y - R O L E                                         -->
+	<!--  ================================================================= -->
+	<security-role>
+		<role-name>rtsInstaller</role-name>
+	</security-role>
+	<security-role>
+		<role-name>rtsAdministrator</role-name>
+	</security-role>
+	<security-role>
+		<role-name>rtsUser</role-name>
+	</security-role>
+	<security-role>
+		<role-name>rtsConfigManager</role-name>
+	</security-role>
+	<!-- Add your custom security roles here if needed -->
+
+				<security-role>
+					<role-name>administrator</role-name>
+				</security-role>
+				<security-role>
+					<role-name>author</role-name>
+				</security-role>
+				<security-role>
+					<role-name>reviewer</role-name>
+				</security-role>
+				<security-role>
+					<role-name>tester</role-name>
+				</security-role>
+				<security-role>
+					<role-name>deployer</role-name>
+				</security-role>
+				<security-role>
+					<role-name>loanValidationGroup</role-name>
+				</security-role>
+				<security-role>
+					<role-name>miniloanGroup</role-name>
+				</security-role>
+
+	<mime-mapping>
+		<extension>ico</extension>
+		<mime-type>image/x-icon</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>png</extension>
+		<mime-type>image/png</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>htc</extension>
+		<mime-type>text/x-component</mime-type>
+	</mime-mapping>
+	
+	<!--  ================================================================= -->
+	<!--  USER DEFINED EXTENSIONS                                           -->
+	<!--  ================================================================= -->
+	
+	<!-- Add your custom servlets here if needed -->
+	
+</web-app>

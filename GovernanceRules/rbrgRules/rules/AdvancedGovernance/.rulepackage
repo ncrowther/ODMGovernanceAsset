@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
+  <name>AdvancedGovernance</name>
+  <uuid>d414c01b-964b-41e1-acda-9dd3d3128ab7</uuid>
+</ilog.rules.studio.model.base:RulePackage>

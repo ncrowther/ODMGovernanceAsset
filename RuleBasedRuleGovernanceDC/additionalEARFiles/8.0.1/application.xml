@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd" version="5">
+  <description>ILOG Rule Team Server</description>
+  <display-name>ILOG Rule Team Server</display-name>
+  <module>
+    <web>
+      <web-uri>teamserver.war</web-uri>
+      <context-root>teamserver</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>decisioncenter.war</web-uri>
+      <context-root>decisioncenter</context-root>
+    </web>
+  </module>
+  <!--DC Functional Interface Roles -->
+  <security-role>
+    <role-name>rtsUser</role-name>
+  </security-role>
+  <security-role>
+    <role-name>rtsAdministrator</role-name>
+  </security-role>
+  <security-role>
+    <role-name>rtsConfigManager</role-name>
+  </security-role>
+  <security-role>
+    <role-name>rtsInstaller</role-name>
+  </security-role>
+  <!-- RBRG Project/Team Roles -->
+  <security-role>
+    <role-name>rbrgRules</role-name>
+  </security-role>
+  <security-role>
+    <role-name>MiniLoanRules</role-name>
+  </security-role>
+  <!-- RBRG Operational Roles -->
+  <security-role>
+    <role-name>authorL1</role-name>
+  </security-role>
+  <security-role>
+    <role-name>authorL2</role-name>
+  </security-role>  
+  <security-role>
+    <role-name>tester</role-name>
+  </security-role>  
+  <security-role>
+    <role-name>reviewer</role-name>
+  </security-role>  
+  <security-role>
+    <role-name>deployer</role-name>
+  </security-role>
+  <security-role>
+    <role-name>administrator</role-name>
+  </security-role>  
+  <security-role>
+    <role-name>ruleReadOnly</role-name>
+  </security-role>  
+</application>

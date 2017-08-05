@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://geronimo.apache.org/xml/ns/j2ee/web-2.0.1">
+	<environment>
+		<moduleId>
+			<groupId>com.ilog.rules</groupId>
+			<artifactId>teamserver-war</artifactId>
+		</moduleId>
+		<dependencies>
+			<dependency>
+				<groupId>console.dbpool</groupId>
+				<artifactId>jdbc_ilogDataSource</artifactId>
+			</dependency>
+			<!-- Add your dependencies here if needed -->
+			<dependency>
+                <groupId>console.dbpool</groupId>
+                <artifactId>jdbc_resdatasource</artifactId>
+            </dependency>
+			<dependency>
+				<groupId>com.ilog.rules</groupId>
+				<artifactId>xu</artifactId>
+			</dependency>
+		</dependencies>
+		<hidden-classes>
+			<filter>org.apache.ws.commons.schema</filter>
+		</hidden-classes>
+	</environment>
+
+	<context-root>/teamserver</context-root>
+
+	<security-realm-name>geronimo-admin</security-realm-name>
+	<security>
+		<role-mappings>
+			<!--DC Functional Interface Roles -->
+			<role role-name="rtsAdministrator">
+				<principal name="rtsAdministrator" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>
+			<role role-name="rtsInstaller">
+				<principal name="rtsInstaller" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>
+			<role role-name="rtsConfigManager">
+				<principal name="rtsConfigManager" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>
+			<role role-name="rtsUser">
+				<principal name="rtsUser" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>
+			<!-- Add your custom security roles here if needed -->
+			<!-- RBRG Project/Team Roles -->
+			<role role-name="MiniLoanRules">
+				<principal name="MiniLoanRules" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>			
+			<role role-name="rbrgRules">
+				<principal name="rbrgRules" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>
+			<!-- RBRG Operational Roles -->
+			<role role-name="authorL1">
+				<principal name="authorL1" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>				
+			<role role-name="authorL2">
+				<principal name="authorL2" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>	
+			<role role-name="tester">
+				<principal name="tester" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>	
+			<role role-name="reviewer">
+				<principal name="reviewer" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>	
+			<role role-name="deployer">
+				<principal name="deployer" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>	
+			<role role-name="administrator">
+				<principal name="administrator" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>	
+			<role role-name="ruleReadOnly">
+				<principal name="ruleReadOnly" class="org.apache.geronimo.security.realm.providers.GeronimoGroupPrincipal" />
+			</role>	
+		</role-mappings>
+	</security>
+	<!-- Add your custom resource-ref here if needed -->
+	<resource-ref>
+		<ref-name>jdbc/ilogDataSource</ref-name>
+		<resource-link>jdbc/ilogDataSource</resource-link>
+	</resource-ref>
+	
+	<resource-ref>
+		<ref-name>jdbc/resdatasource</ref-name>
+		<resource-link>jdbc/resdatasource</resource-link>
+	</resource-ref>	
+ 	 
+	<resource-ref> 
+		<ref-name>eis/XUConnectionFactory</ref-name> 
+		<resource-link>eis/XUConnectionFactory</resource-link> 
+	</resource-ref>
+	
+</web-app>

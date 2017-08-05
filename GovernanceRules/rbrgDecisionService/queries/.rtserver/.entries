@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><teamserver>
+<entry modificationStamp="1" name="deleteRule" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Query" uuid="c141d8ea-ba79-43d2-89d3-eab0194bf8af" version="1.0"/>
+<entry modificationStamp="1" name="copyRule" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Query" uuid="9d6b0a93-e31a-4c54-afdc-d149d5c089f3" version="1.0"/>
+</teamserver>

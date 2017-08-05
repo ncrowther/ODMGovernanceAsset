@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.query:Query xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.query="http://ilog.rules.studio/model/query.ecore">
+  <name>copyRule</name>
+  <uuid>9d6b0a93-e31a-4c54-afdc-d149d5c089f3</uuid>
+  <definition><![CDATA[Find all business rules such that the name of each business rule is "Roles" and it is not true that each business rule is in package "Shadow"  
+Do 
+	copy each business rule to package "Shadow"]]></definition>
+  <locale>en_US</locale>
+</ilog.rules.studio.model.query:Query>

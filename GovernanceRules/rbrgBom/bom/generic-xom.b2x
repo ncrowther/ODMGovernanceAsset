@@ -1,0 +1,370 @@
+<b2x:translation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.ilog.com/JRules/1.1/Translation ilog/rules/schemas/1_1/b2x.xsd"
+        xmlns:b2x="http://schemas.ilog.com/JRules/1.1/Translation">
+    <id>b92a2437-c7c4-4e90-9e6c-3218448512ac</id>
+    <class>
+        <businessName>com.ibm.genericvars.Parameters</businessName>
+        <executionName>java.lang.Object</executionName>
+        <import>java.util.Map</import>
+        <import>java.util.List</import>
+        <import>java.util.ArrayList</import>
+        <import>java.util.HashMap</import>
+        <import>java.util.Iterator</import>
+        <import>java.util.Calendar</import>
+        <import>java.math.BigDecimal</import>
+        <import>java.util.Vector</import>
+        <import>java.util.HashSet</import>
+        <import>java.util.Set</import>
+        <method>
+            <name>addBooleanParameter</name>
+            <parameter type="dynamic.dt.parameters.BooleanParameter"/>
+            <parameter type="java.lang.Boolean"/>
+            <parameter type="java.lang.Boolean"/>
+            <parameter type="java.lang.Boolean"/>
+            <body language="irl"><![CDATA[
+            context.invokeFunction("checkParam", new Object[] {name, defaultValue, defaultValue.class, input, output});
+            ]]></body>
+        </method>
+        <method>
+            <name>addChangeRequestIds</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="dynamic.dt.parameters.ListParameter"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+java.util.List list = (java.util.List)vars.get(changeRequestIds);
+list.add(changeRequestId);
+            ]]></body>
+        </method>
+        <method>
+            <name>addDtParameter</name>
+            <parameter type="dynamic.dt.parameters.DecisionTableParameter"/>
+            <parameter type="java.lang.Boolean"/>
+            <parameter type="java.lang.Boolean"/>
+            <body language="irl"><![CDATA[
+            java.util.Map dt = new java.util.HashMap();
+context.invokeFunction("checkParam", new Object[] {name, dt, java.util.Map.class, input, output});
+            ]]></body>
+        </method>
+        <method>
+            <name>addInteger</name>
+            <parameter type="dynamic.dt.parameters.IntegerParameter"/>
+            <parameter type="java.lang.Integer"/>
+            <parameter type="java.lang.Boolean"/>
+            <parameter type="java.lang.Boolean"/>
+            <body language="irl"><![CDATA[
+            context.invokeFunction("checkParam", new Object[] {name, defaultValue, defaultValue.class, input, output});
+            ]]></body>
+        </method>
+        <method>
+            <name>addListItem</name>
+            <parameter type="dynamic.dt.parameters.ListParameter"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+
+java.util.List list = (java.util.List)vars.get(varName);
+list.add(varValue);
+            ]]></body>
+        </method>
+        <method>
+            <name>addListParameter</name>
+            <parameter type="dynamic.dt.parameters.ListParameter"/>
+            <parameter type="java.lang.Boolean"/>
+            <parameter type="java.lang.Boolean"/>
+            <body language="irl"><![CDATA[
+            java.util.List list = new java.util.ArrayList();
+context.invokeFunction("checkParam", new Object[] {name, list, java.util.List.class, input, output});
+            ]]></body>
+        </method>
+        <method>
+            <name>addRoles</name>
+            <parameter type="java.util.List"/>
+            <body language="irl"><![CDATA[
+            java.util.List assignedRoles = (java.util.List)getParameterValue("roles");
+
+for (Iterator iter = roles.iterator(); iter.hasNext();) {
+  	
+    String role = (String)iter.next();  
+	assignedRoles.add(role);
+}
+            ]]></body>
+        </method>
+        <method>
+            <name>addStates</name>
+            <parameter type="dynamic.dt.parameters.ListParameter"/>
+            <parameter type="java.util.List"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+java.util.List statusValues = (java.util.List)vars.get(varName);
+
+for (Iterator iter = stateList.iterator(); iter.hasNext();) {
+  	
+    String state = (String)iter.next();  
+	statusValues.add(state);
+}
+
+// Remove Duplicate states
+Set uniqueValues = new HashSet();
+uniqueValues.addAll(statusValues);
+statusValues.clear();
+statusValues.addAll(uniqueValues);
+            ]]></body>
+        </method>
+        <method>
+            <name>addStringParameter</name>
+            <parameter type="dynamic.dt.parameters.StringParameter"/>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.lang.Boolean"/>
+            <parameter type="java.lang.Boolean"/>
+            <body language="irl"><![CDATA[
+            context.invokeFunction("checkParam", new Object[] {name, defaultValue, defaultValue.class, input, output});
+            ]]></body>
+        </method>
+        <method>
+            <name>addWarning</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="dynamic.dt.parameters.StringParameter"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+
+String warnings = (String)vars.get(warningParam);
+
+if (warnings == null || warnings.trim().equals("")) {
+   warnings = "WARNING: " + warning;	
+} else {
+   warnings = warnings + "\nWARNING: " + warning;
+} 
+
+vars.put(warningParam, warnings);
+            ]]></body>
+        </method>
+        <method>
+            <name>dtDiff</name>
+            <parameter type="dynamic.dt.parameters.StringParameter"/>
+            <parameter type="dynamic.dt.parameters.StringParameter"/>
+            <body language="irl"><![CDATA[
+            String edt = (String) context.invokeFunction("getParam", new Object[] {editedDT, String.class });
+String pdt = (String) context.invokeFunction("getParam", new Object[] {persistedDT, String.class });
+
+return !edt.equals(pdt);
+            ]]></body>
+        </method>
+        <method>
+            <name>getBoolean</name>
+            <parameter type="dynamic.dt.parameters.BooleanParameter"/>
+            <body language="irl"><![CDATA[
+            Object value = context.invokeFunction("getParam", new Object[] {paramName, Boolean.class});
+
+
+if (value == null) {
+	return false;
+} else {
+	return (Boolean)value;
+}
+            ]]></body>
+        </method>
+        <method>
+            <name>getDTPercentageDelta</name>
+            <parameter type="dynamic.dt.parameters.DecisionTableParameter"/>
+            <parameter type="dynamic.dt.parameters.DecisionTableParameter"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            Map edt = (Map) context.invokeFunction("getParam", new Object[] {editedDT, java.util.Map.class });
+Map pdt = (Map) context.invokeFunction("getParam", new Object[] {persistedDT, java.util.Map.class });
+List deltas = (List)(context.invokeFunction("validation.getDTDeltas", new Object[] {edt, pdt, colName, "p"}));
+
+return deltas.toArray();
+            ]]></body>
+        </method>
+        <method>
+            <name>getElementType</name>
+            <parameter type="dynamic.dt.StringDomains.TypeDomain"/>
+            <body language="irl"><![CDATA[
+            String elementType = (String)context.invokeFunction("getParam", new Object[] {"type", String.class});
+return elementType.endsWith(type);
+            ]]></body>
+        </method>
+        <method>
+            <name>getInteger</name>
+            <parameter type="dynamic.dt.parameters.IntegerParameter"/>
+            <body language="irl"><![CDATA[
+            return (Integer)context.invokeFunction("getParam", new Object[] {paramName, Integer.class});
+            ]]></body>
+        </method>
+        <method>
+            <name>getList</name>
+            <parameter type="dynamic.dt.parameters.ListParameter"/>
+            <body language="irl"><![CDATA[
+            return (java.util.List)context.invokeFunction("getParam", new Object[] {paramName, java.util.List.class});
+            ]]></body>
+        </method>
+        <method>
+            <name>getString</name>
+            <parameter type="dynamic.dt.parameters.StringParameter"/>
+            <body language="irl"><![CDATA[
+            return (String)context.invokeFunction("getParam", new Object[] {paramName, String.class});
+            ]]></body>
+        </method>
+        <method>
+            <name>isInRoles</name>
+            <parameter type="dynamic.dt.StringDomains.RoleDomain"/>
+            <parameter type="dynamic.dt.parameters.ListParameter"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+java.util.List roles = (java.util.List)vars.get(rolesParam);
+
+return roles.contains(requiredRole);
+            ]]></body>
+        </method>
+        <method>
+            <name>setBoolean</name>
+            <parameter type="dynamic.dt.parameters.BooleanParameter"/>
+            <parameter type="java.lang.Boolean"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+vars.put(paramName, paramValue);
+
+java.util.Set outputParamNames = (java.util.Set)getParameterValue("outputParamNames");
+outputParamNames.add(paramName);
+            ]]></body>
+        </method>
+        <method>
+            <name>setString</name>
+            <parameter type="dynamic.dt.parameters.StringParameter"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+vars.put(varName, varValue);
+
+java.util.Set outputParamNames = (java.util.Set)getParameterValue("outputParamNames");
+outputParamNames.add(varName);
+            ]]></body>
+        </method>
+        <method>
+            <name>setTag</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            Map vars = (Map)getParameterValue("params");
+java.util.Map tags = (java.util.Map)vars.get("tags");
+
+tags.put(tagName, tagValue);
+            ]]></body>
+        </method>
+    </class>
+    <class>
+        <businessName>com.ibm.util.DateUtil</businessName>
+        <executionName>java.lang.Object</executionName>
+        <import>java.util.Map</import>
+        <import>java.text.SimpleDateFormat</import>
+        <import>java.text.ParseException</import>
+        <import>java.util.Calendar</import>
+        <attribute>
+            <name>today</name>
+            <getter language="irl"><![CDATA[
+            Calendar c = Calendar.getInstance();
+return c.time;
+            ]]></getter>
+        </attribute>
+        <method>
+            <name>dateAsString</name>
+            <parameter type="java.util.Date"/>
+            <body language="irl"><![CDATA[
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+return sdf.format(date);
+            ]]></body>
+        </method>
+        <method>
+            <name>getDate</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            try {
+	SimpleDateFormat sdf = new SimpleDateFormat(format);
+	return sdf.parse(dateAsString);
+} 
+catch (java.text.ParseException pe) {}
+
+return Calendar.getInstance().time;
+            ]]></body>
+        </method>
+    </class>
+    <class>
+        <businessName>com.ibm.util.Logger</businessName>
+        <executionName>java.lang.Object</executionName>
+        <import>java.util.logging.Logger</import>
+        <import>java.util.logging.Level</import>
+        <method>
+            <name>isFineLoggable</name>
+            <body language="irl"><![CDATA[
+            Logger log = Logger.getLogger("rbrg.logging.RulesLogger");
+return log.isLoggable(Level.FINE);
+            ]]></body>
+        </method>
+        <method>
+            <name>isInfoLoggable</name>
+            <body language="irl"><![CDATA[
+            Logger log = Logger.getLogger("rbrg.logging.RulesLogger");
+return log.isLoggable(Level.INFO);
+            ]]></body>
+        </method>
+        <method>
+            <name>logFine</name>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            Logger log = Logger.getLogger("rbrg.logging.RulesLogger");
+log.log(Level.FINE, message);
+            ]]></body>
+        </method>
+        <method>
+            <name>logInfo</name>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            Logger log = Logger.getLogger("rbrg.logging.RulesLogger");
+log.log(Level.INFO, message);
+            ]]></body>
+        </method>
+    </class>
+    <class>
+        <businessName>com.ibm.util.NumberUtil</businessName>
+        <executionName>java.lang.Object</executionName>
+        <method>
+            <name>varianceAboveThreshold</name>
+            <parameter type="double"/>
+            <parameter type="double"/>
+            <body language="irl"><![CDATA[
+            return Math.abs(variance) > threshold;
+            ]]></body>
+        </method>
+    </class>
+    <class>
+        <businessName>com.ibm.util.RegexUtil</businessName>
+        <executionName>java.lang.Object</executionName>
+        <method>
+            <name>matches</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            java.util.regex.Pattern p = java.util.regex.Pattern.compile(regex);
+        java.util.regex.Matcher m = p.matcher(name);
+        return m.matches();
+            ]]></body>
+        </method>
+    </class>
+    <class>
+        <businessName>com.ibm.util.StringUtil</businessName>
+        <executionName>java.lang.Object</executionName>
+        <method>
+            <name>countString</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            String trim = str.trim();
+if (trim.isEmpty()) return 0;
+
+//System.out.println(trim.split(regex));
+return trim.split(regex).length - 1;
+            ]]></body>
+        </method>
+    </class>
+</b2x:translation>

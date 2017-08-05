@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><teamserver>
+<entry modificationStamp="2" name="clearWarnings" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="ActionRule" uuid="6ebb6167-8853-490c-97de-218547d5ce85" version="1.0"/>
+<entry modificationStamp="2" name="fieldValidationParams" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="RulePackage" uuid="20c59b44-7030-467e-826a-26be88b44a36" version="1.0"/>
+</teamserver>

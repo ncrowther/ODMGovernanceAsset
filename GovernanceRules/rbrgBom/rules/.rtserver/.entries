@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><teamserver>
+<entry modificationStamp="2" name="getParam" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Function" uuid="5b05dafd-af31-47a2-8d86-58c7edb59b87" version="1.0"/>
+<entry modificationStamp="2" name="addError" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Function" uuid="d8daaf1d-4bb0-400b-aaae-365efe4c08c3" version="1.0"/>
+<entry modificationStamp="2" name="frameworkVars" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="VariableSet" uuid="85eee71c-5dcb-440b-8d7f-97cf8a80f767" version="1.0"/>
+<entry modificationStamp="2" name="checkParam" parentUUID="" serverInfo="http://localhost:8080/teamserver" typeQualifiedName="Function" uuid="d27309b7-454f-49c1-9f7f-5cc8565c5deb" version="1.0"/>
+</teamserver>

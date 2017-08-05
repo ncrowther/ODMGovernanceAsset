@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.ruleflow:RuleFlow xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.ruleflow="http://ilog.rules.studio/model/ruleflow.ecore">
+  <name>sharedFlow</name>
+  <uuid>5746dfb6-e72a-4457-a716-b6c230b7167c</uuid>
+  <locale>en_GB</locale>
+  <categories>any</categories>
+  <rfModel>
+<Ruleflow xmlns="http://schemas.ilog.com/Rules/7.0/Ruleflow">
+  <Body>
+    <TaskList>
+      <StartTask Identifier="task_1"/>
+      <ActionTask Identifier="WriteOutputVars">
+        <Actions Language="irl"><![CDATA[?context.updateContext();
+
+// Get the output vars
+java.util.Map outputVars = new java.util.HashMap();
+java.util.Set keys = params.keySet();
+
+java.util.Iterator iter = keys.iterator();
+while (iter.hasNext()) {
+	String key = (String)iter.next();
+   
+	if (outputParamNames.contains(key)) {
+		Object value = params.get(key);
+		outputVars.put(key, value);
+	}
+}
+params = outputVars;]]></Actions>
+      </ActionTask>
+      <SubflowTask Identifier="task_0" Uuid="366be719-9180-42fc-8927-447c622cf613"/>
+      <StopTask Identifier="task_2"/>
+    </TaskList>
+    <NodeList>
+      <TaskNode Identifier="node_0" Task="task_1"/>
+      <TaskNode Identifier="node_1" Task="task_2"/>
+      <TaskNode Identifier="node_6" Task="WriteOutputVars"/>
+      <TaskNode Identifier="node_3" Task="task_0"/>
+    </NodeList>
+    <TransitionList>
+      <Transition Identifier="transition_5" Source="node_6" Target="node_1"/>
+      <Transition Identifier="transition_3" Source="node_3" Target="node_6"/>
+      <Transition Identifier="transition_0" Source="node_0" Target="node_3"/>
+    </TransitionList>
+  </Body>
+  <Resources>
+    <ResourceSet Locale="en_US">
+      <Data Name="node_3#height">40.0</Data>
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_8#x">92.37598</Data>
+      <Data Name="node_8#y">91.0</Data>
+      <Data Name="node_6#height">40.0</Data>
+      <Data Name="node_3#width">184.75195</Data>
+      <Data Name="node_3#y">181.0</Data>
+      <Data Name="node_3#name">node_3</Data>
+      <Data Name="node_1#name">node_1</Data>
+      <Data Name="node_3#x">93.37598</Data>
+      <Data Name="node_8#name">node_8</Data>
+      <Data Name="node_6#name">node_6</Data>
+      <Data Name="node_1#width">22.0</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+      <Data Name="node_6#y">271.0</Data>
+      <Data Name="node_6#x">92.37598</Data>
+      <Data Name="node_8#height">40.0</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_0#x">92.37598</Data>
+      <Data Name="node_1#x">92.37598</Data>
+      <Data Name="node_6#width">130.69336</Data>
+      <Data Name="node_1#y">352.0</Data>
+      <Data Name="node_1#height">22.0</Data>
+      <Data Name="node_8#width">128.70117</Data>
+    </ResourceSet>
+    <ResourceSet Locale="en_GB">
+      <Data Name="node_3#height">53.402344</Data>
+      <Data Name="node_6#y">201.10352</Data>
+      <Data Name="node_6#x">92.375946</Data>
+      <Data Name="node_0#height">21.0</Data>
+      <Data Name="node_6#label">Write Output Parameters</Data>
+      <Data Name="node_6#height">53.402344</Data>
+      <Data Name="node_3#y">97.70117</Data>
+      <Data Name="node_3#width">184.75195</Data>
+      <Data Name="node_3#name">node_3</Data>
+      <Data Name="node_1#name">node_1</Data>
+      <Data Name="node_3#x">92.37597</Data>
+      <Data Name="node_0#y">10.5</Data>
+      <Data Name="node_3#label">Advanced Governance Flow</Data>
+      <Data Name="node_0#x">92.37598</Data>
+      <Data Name="node_6#width">130.69336</Data>
+      <Data Name="node_6#name">node_3</Data>
+      <Data Name="node_1#x">92.37598</Data>
+      <Data Name="node_1#width">20.000004</Data>
+      <Data Name="node_1#y">287.8047</Data>
+      <Data Name="node_1#height">19.999987</Data>
+      <Data Name="node_0#width">21.0</Data>
+      <Data Name="node_0#name">node_0</Data>
+    </ResourceSet>
+  </Resources>
+  <Properties/>
+</Ruleflow></rfModel>
+</ilog.rules.studio.model.ruleflow:RuleFlow>
