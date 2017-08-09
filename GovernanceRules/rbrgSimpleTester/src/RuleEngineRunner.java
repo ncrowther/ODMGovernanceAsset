@@ -183,14 +183,7 @@ public class RuleEngineRunner {
 			
 			// replace \[.*\*  with ""
 			// replace / with \
-			
-			ArrayList values = new java.util.ArrayList();
-		
-			Object o = new Object();
-			
-			o.
-			
-			values.add("Paul");
+
 			vars.put("baselineKind","Branch"); 
 			vars.put("readableVersion","4"); 
 			vars.put("type","brm.ActivityCommentEvent"); 
