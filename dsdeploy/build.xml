@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84                                     -->
+<!-- Copyright IBM Corp. 1987, 2017. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+
+
+<project name="Automated decision service deployment" default="deploy.API.both" basedir=".">
+
+	<description>Automated decision service deployment</description>
+
+	<!-- Load in the properties  -->
+	<property name="build.base.dir" location="." />
+	<property file="${build.base.dir}/build.properties" />
+	<property file="${build.base.dir}/release.properties" />
+		
+	<property name="dc.home" location="${basedir}/../../.." />
+	<property name="odm.wlp.scripts.dir" value="${dc.home}/shared/samplesServer/wlp" />
+	<property name="teamserver.home" value="${dc.home}/teamserver" />
+	<property name="server.url" value="http://localhost:${server.port}/teamserver" />
+	<import file="${teamserver.home}/lib/classpath-teamserver.xml" />
+	<import file="${teamserver.home}/bin/build.xml" />
+
+	<property name="lib.dir" location="lib" />
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="build" />
+	<property name="classes.dir" location="${build.dir}/classes" />
+	<path id="build.path">
+		<path refid="teamserver.classpath" />
+		<pathelement location="${classes.dir}" />
+		<path refid="teamserver.classpath" />
+	</path>
+
+
+	<target name="check-release-ready">
+	    <available file="${build.base.dir}/release.properties" property="release.ready"/>
+	</target>
+	
+	<!-- D E P L O Y   U S I N G  J A V A  A P I -->
+
+	<target name="deploy.API.both" description="Deploy the Decision service using API" depends="check-release-ready, build" if="release.ready">
+		
+		<mkdir dir="./releases/${release.name}" />
+			
+		<java classname="decisionServiceDeployment.DeployService" fork="yes" failonerror="yes">
+			<classpath refid="build.path" />
+			<arg value="-rtsdatasource" />
+			<arg value="${db.dataSource}" />
+			<arg value="-rtsurl" />
+			<arg value="${server.base.url}/teamserver" />
+			<arg value="-rtsuser" />
+			<arg value="${rtsAdmin.login}" />
+			<arg value="-rtspwd" />
+			<arg value="${rtsAdmin.password}" />
+			<arg value="-projectName" />
+			<arg value="${project.name}" />
+			<arg value="-branch" />
+			<arg value="${release.name}" />
+			<arg value="-deploymentName" />
+			<arg value="${deployment.name}" />
+			<arg value="-redeploy" />
+			<arg value="true" />
+			<!--arg value="-serverName" /-->
+			<!--arg value="Production" /-->
+			<arg value="-outputDirectory" />
+			<arg value="./releases/${release.name}" />
+		</java>
+		
+		<!--move file="${build.base.dir}/release.properties" tofile="./releases/${release.name}/release.properties" /-->
+			
+		<echo>Deployment done.</echo>
+		
+	</target>
+
+	<!-- C L E A N -->
+	<target name="clean.output">
+		<delete dir="${teamserver.home}/samples/dsdeploy/test" failonerror="false" />
+	</target>
+
+	<target name="clean" description="Clean the built files" depends="clean.output">
+		<delete dir="${build.dir}" failonerror="false" />
+	</target>
+
+	<!-- B U I L D -->
+	<target name="build" depends="clean" description="Compile the source">
+		<mkdir dir="${classes.dir}" />
+		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}" nowarn="true" source="1.7" target="1.7" classpathref="build.path" debug="true" fork="true" />
+	</target>
+
+</project>
