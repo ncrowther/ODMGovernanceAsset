@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.dt:DecisionTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.dt="http://ilog.rules.studio/model/dt.ecore">
+  <eAnnotations source="ilog.rules.custom_properties">
+    <details key="contributionType" value="NA"/>
+  </eAnnotations>
+  <name>StringParameters</name>
+  <uuid>6dd702c9-c9fa-4e9e-993f-f1737f44a5ea</uuid>
+  <locale>en_GB</locale>
+  <definition>
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
+  <Body>
+    <Properties>
+      <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="Check.Overlap" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="UI.AutoResizeTable" Type="xs:boolean"><![CDATA[false]]></Property>
+      <Property Name="UI.RenderBoolean" Type="xs:boolean"><![CDATA[true]]></Property>
+      <Property Name="UI.ShowRuleView" Type="xs:boolean"><![CDATA[true]]></Property>
+    </Properties>
+    <Structure>
+      <ConditionDefinitions>
+        <ConditionDefinition Id="C2">
+          <ExpressionDefinition>
+            <Text><![CDATA[true is <a boolean>]]></Text>
+          </ExpressionDefinition>
+        </ConditionDefinition>
+      </ConditionDefinitions>
+      <ActionDefinitions>
+        <ActionDefinition Id="A1">
+          <ExpressionDefinition>
+            <Text><![CDATA[add a string parameter with name= <a string attributes domain> , default= <a string> , input= <a boolean> and output= <a boolean>]]></Text>
+          </ExpressionDefinition>
+        </ActionDefinition>
+      </ActionDefinitions>
+    </Structure>
+    <Contents>
+      <Partition DefId="C2">
+        <Condition>
+          <Expression>
+            <Param><![CDATA[true]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[rulePackage]]></Param>
+                <Param><![CDATA[""]]></Param>
+                <Param><![CDATA[true]]></Param>
+                <Param><![CDATA[false]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+      </Partition>
+    </Contents>
+  </Body>
+  <Resources DefaultLocale="en_GB">
+    <ResourceSet Locale="en_GB">
+      <Data Name="Definitions(A1)#HeaderText"><![CDATA[String Parameters]]></Data>
+      <Data Name="Definitions(A1)#Width"><![CDATA[821]]></Data>
+      <Data Name="Definitions(A1)[0]#HeaderText"><![CDATA[Name]]></Data>
+      <Data Name="Definitions(A1)[1]#HeaderText"><![CDATA[Default]]></Data>
+      <Data Name="Definitions(A1)[2]#HeaderText"><![CDATA[Input]]></Data>
+      <Data Name="Definitions(A1)[3]#HeaderText"><![CDATA[Output]]></Data>
+      <Data Name="Definitions(C2)#HeaderText"><![CDATA[Enable]]></Data>
+      <Data Name="Definitions(C2)#Width"><![CDATA[157]]></Data>
+    </ResourceSet>
+  </Resources>
+</DT></definition>
+</ilog.rules.studio.model.dt:DecisionTable>
