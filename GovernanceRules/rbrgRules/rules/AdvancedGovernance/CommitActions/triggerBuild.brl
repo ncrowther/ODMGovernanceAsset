@@ -5,10 +5,15 @@
   <locale>en_US</locale>
   <definition><![CDATA[if
     the string baseline contains "Release"
-    and the string oldProperty  is ReadyForApproval
-    and the string newProperty  is Complete
+    and the string newProperty  is "ApprovedChanges"
 then
     print "***set triggerBuild as true";
-    set response as "BUILD";
+    set baseline  as the string baseline;
+    set buildPath as "D:/ic/GovernanceAsset/github/dsdeploy";
+    set projectName as the string sourceRuleProject;
+    set deploymentName as "Nigels Production";
+    
+    set triggerBuild as true;
+    
     ]]></definition>
 </ilog.rules.studio.model.brl:ActionRule>
