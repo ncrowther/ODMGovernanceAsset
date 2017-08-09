@@ -1,5 +1,5 @@
 /*
- * Licensed Materials - Property of IBM
+ * Licensed Materials - Property of IBM Ltd.
  * 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84
  * Copyright IBM Corp. 1987, 2012. All Rights Reserved.
  *

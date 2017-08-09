@@ -36,6 +36,7 @@ com.ibm.genericvars.Parameters.getDTValuesForColumn(dynamic.dt.parameters.Decisi
 com.ibm.genericvars.Parameters.getElementType(dynamic.dt.StringDomains.TypeDomain)#phrase.navigation = the rule artefact type is {0, <type>}
 com.ibm.genericvars.Parameters.getInteger(dynamic.dt.parameters.IntegerParameter)#phrase.navigation = the integer  {0}
 com.ibm.genericvars.Parameters.getList(dynamic.dt.parameters.ListParameter)#phrase.navigation = the list {0}
+com.ibm.genericvars.Parameters.getNumberOfNames(java.util.List)#phrase.navigation = the count of {0}
 com.ibm.genericvars.Parameters.getString(dynamic.dt.parameters.StringParameter)#phrase.navigation = the string {0}
 com.ibm.genericvars.Parameters.isInRoles(dynamic.dt.StringDomains.RoleDomain,dynamic.dt.parameters.ListParameter)#phrase.navigation = is role {0} in  {1}
 com.ibm.genericvars.Parameters.isTableTooBig(dynamic.dt.parameters.DecisionTableParameter,java.lang.String,java.lang.Integer)#phrase.navigation = table {0} on column {1} is longer than {2}

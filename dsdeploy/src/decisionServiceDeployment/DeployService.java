@@ -37,8 +37,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 
-/**
- */
+/** */
 public class DeployService {
 
 	/* Connection details for your Decision Center Instance */

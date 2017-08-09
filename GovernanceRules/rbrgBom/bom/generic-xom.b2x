@@ -281,6 +281,13 @@ return (java.util.List)context.invokeFunction("getParam", new Object[] {paramNam
             ]]></body>
         </method>
         <method>
+            <name>getNumberOfNames</name>
+            <parameter type="java.util.List"/>
+            <body language="irl"><![CDATA[
+            return nameList.size();
+            ]]></body>
+        </method>
+        <method>
             <name>getString</name>
             <parameter type="dynamic.dt.parameters.StringParameter"/>
             <body language="irl"><![CDATA[

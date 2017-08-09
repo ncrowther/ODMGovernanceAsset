@@ -28,6 +28,7 @@ public class Parameters
     public static final boolean getElementType(dynamic.dt.StringDomains.TypeDomain type);
     public static final int getInteger(dynamic.dt.parameters.IntegerParameter paramName);
     public static final java.util.List getList(dynamic.dt.parameters.ListParameter paramName);
+    public static final int getNumberOfNames(java.util.List nameList);
     public static final string getString(dynamic.dt.parameters.StringParameter paramName);
     public static final boolean isInRoles(dynamic.dt.StringDomains.RoleDomain requiredRole, dynamic.dt.parameters.ListParameter rolesParam);
     public static final boolean isTableTooBig(dynamic.dt.parameters.DecisionTableParameter editedDt, string colName, java.lang.Integer maxlen);
