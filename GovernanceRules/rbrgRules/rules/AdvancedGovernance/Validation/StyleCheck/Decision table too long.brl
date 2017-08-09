@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>Decision table too long</name>
+  <uuid>bd9b64f2-4e88-4a13-b4f4-dfa0dea1a983</uuid>
+  <documentation><![CDATA[]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[definitions
+    set threshold to 20 ;
+if
+    the string rulePackage is "D01DEADQ"
+    and table editedDT on column "End Point_Device" is longer than 20
+then
+    set validationError as "Decision table length is beyond threshold of " + 'threshold' ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

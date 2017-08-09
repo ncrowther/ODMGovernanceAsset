@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>releaseName</name>
+  <uuid>97203966-686d-4413-b1d8-e2a50cc13a68</uuid>
+  <documentation><![CDATA[definitions
+    set 'the release format' to "[A-Z]* Release" ;
+if
+    the string type is "brm.ProjectInfo"
+    and the boolean decisionService is true
+    and it is not true that the string baseline starts with "%"
+    and it is not true that the string baseline matches 'the release format'
+then
+    set validationError as "Please set Release name to format: " + 'the release format' ;]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[definitions
+    set 'the release format' to "[A-Za-z]* Release" ;
+if
+   the integer migrationFlag above 0
+    and the string status is "Complete"
+    and it is not true that the string baseline starts with "%"
+    and it is not true that the string baseline matches 'the release format'
+then
+    set validationError as "Please set Release name to format: " + 'the release format' ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

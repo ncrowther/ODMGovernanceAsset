@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!-- Licensed Materials - Property of IBM                           -->
+<!-- 5725-B69 5655-Y17 5724-Y00 5724-Y17 5655-V84                                     -->
+<!-- Copyright IBM Corp. 1987, 2017. All Rights Reserved            -->
+<!-- US Government Users Restricted Rights - Use, duplication or    -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with        -->
+<!-- IBM Corp.                                                      -->
+<item>
+  <name>Automated decision service deployment</name> 
+  <description/> 
+  <module>rts</module>
+  <onimport>
+  	<switchtojava/>
+  </onimport>  
+  <virtualpath>%rts/%samples/%brmanagement/%name</virtualpath>
+  <projects>
+  	<local name="."/>
+  </projects>
+</item>
