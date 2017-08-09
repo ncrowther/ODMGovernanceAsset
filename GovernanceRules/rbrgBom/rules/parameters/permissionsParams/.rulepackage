@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ilog.rules.studio.model.base:RulePackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.base="http://ilog.rules.studio/model/base.ecore">
-  <name>permissionsParams</name>
-  <uuid>c1450d4f-2bb0-4362-bd5c-ae7ef20d2ecb</uuid>
-</ilog.rules.studio.model.base:RulePackage>

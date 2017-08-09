@@ -1,4 +1,0 @@
-administrator.update.*.*=yes
-administrator.create.*=yes
-administrator.view.*=yes
-administrator.delete.*=yes
