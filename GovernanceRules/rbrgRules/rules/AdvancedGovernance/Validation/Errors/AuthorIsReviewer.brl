@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>AuthorIsReviewer</name>
+  <uuid>82075b1b-9574-4678-a8e4-980dbb9bb0f7</uuid>
+  <documentation><![CDATA[]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[definitions
+    set newName to the string newProperty ;
+if
+    same person in the list approvers and the list authors
+    or newName is in the list approvers
+    or newName is in the list authors
+then
+    set validationError as "Author cannot be an approver " ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

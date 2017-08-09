@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>activityName</name>
+  <uuid>cd85e850-cc26-472f-be96-91df8de52edd</uuid>
+  <documentation><![CDATA[definitions
+    set 'the activity format' to "[A-Za-z]* Activity" ;
+    set 'the release format' to "[A-Za-z]* Release" ;
+if
+   the integer migrationFlag above 0
+    and the string status is "InProgress"
+    and the string name matches 'the release format'
+    and it is not true that the string baseline starts with "%"
+    and it is not true that the string baseline matches 'the activity format'
+then
+    set validationError as "Please set Activity name to format: " + 'the activity format' ;]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

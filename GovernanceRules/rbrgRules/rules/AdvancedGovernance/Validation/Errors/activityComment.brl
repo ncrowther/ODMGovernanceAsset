@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>activityComment</name>
+  <uuid>6aa9d0d3-a1e4-4d8a-9fe7-b5438157bb79</uuid>
+  <documentation><![CDATA[
+if
+    the string type is "brm.ActivityCommentEvent"
+    and the string versionComment is "null"
+then
+    set validationError as "Please set a version comment: " ;]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>

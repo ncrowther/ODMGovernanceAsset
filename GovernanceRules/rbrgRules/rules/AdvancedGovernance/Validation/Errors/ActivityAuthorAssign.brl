@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>ActivityAuthorAssign</name>
+  <uuid>5c272cb2-0d8a-4ef2-9dab-0912521ae950</uuid>
+  <documentation><![CDATA[]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[if
+    the string updateType is "ActivityAuthorAssign"
+then
+    set validationError as "Author reassignment not permitted" ;]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>
