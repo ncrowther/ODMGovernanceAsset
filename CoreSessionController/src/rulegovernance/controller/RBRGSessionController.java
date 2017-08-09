@@ -25,6 +25,12 @@ import ilog.rules.teamserver.model.IlrSearchCriteria;
 import ilog.rules.teamserver.model.impl.IlrElementHandleImpl;
 import ilog.rules.teamserver.model.permissions.IlrPermissionConstants;
 import ilog.rules.teamserver.model.permissions.IlrPermissionException;
+
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -88,73 +94,9 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 	public void checkUpdate(IlrElementHandle handle, IlrElementDetails details,
 			EStructuralFeature feature) throws IlrPermissionException,
 			IlrObjectNotFoundException {
+		
 		// Let the default controller do its job
 		super.checkUpdate(handle, details, feature);
-
-		/*
-		// Ignore governance if change initiated through code or admin role
-		if (override || isRtsAdministrator(session)) {
-
-			if (log.isLoggable(Level.INFO)) {
-				log.log(Level.INFO, "checkUpdate ignored: Override: "
-						+ override + " isAdmin: " + isRtsAdministrator(session));
-			}
-
-			return;
-		}
-
-		// Create business rule controller
-		RuleExecutionController controller = new RuleExecutionController();
-
-		// Retrieve the details of the element before modification
-		IlrElementDetails elementDetails = session
-				.getElementDetailsForThisHandle(details);
-		if ((elementDetails != null) && (feature != null)) {
-			// Retrieve the status value
-			String status = getStatusPropertyValue(elementDetails);
-
-			// Retrieve the user's role
-			//List<String> roles = controller.getUserRoles();
-
-			// for (Iterator<String> roleIter = roles.iterator(); roleIter
-			// .hasNext();) {
-			// String role = roleIter.next();
-
-			// test if user in this role
-			// if (session.isUserInRole(role)) {
-
-			// Initialize the ruleset parameters.
-			java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
-
-			// Overridable
-			addCustomCheckUpdateVars(vars, handle, details, feature);
-
-			vars.put(LOGIN_USER, session.getUserName());
-			vars.put(FEATURE, feature.getName());
-			//vars.put(ROLE, role);
-			vars.put(TYPE, handle.getType());
-			vars.put(STATUS, status);
-			vars.put(OPERATION, UPDATE);
-
-			boolean permissionGranted = checkPermission(vars);
-
-			checkQueryPermission(handle, feature, elementDetails);
-
-			if (permissionGranted) {
-				return;
-			}
-			// Update is not allowed
-			throw new IlrPermissionException("The element "
-					+ elementDetails.getName()
-					+ " is not in a state where 'update' action is authorized.");
-			
-			
-
-		}
-		
-		*/
-		// }
-		// }
 	}
 
 	/*
@@ -169,98 +111,9 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 			throws IlrPermissionException, IlrObjectNotFoundException {
 		// Let the default controller do its job
 		super.checkDelete(details);
-		
-		/*
-
-		// Ignore governance if change initiated through code or admin role
-		if (override || isRtsAdministrator(session)) {
-
-			if (log.isLoggable(Level.INFO)) {
-				log.log(Level.INFO, "checkDelete ignored: Override: "
-						+ override + " isAdmin: " + isRtsAdministrator(session));
-			}
-
-			return;
-		}
-
-		// Retrieve the details of the element before modification
-		IlrElementDetails elementDetails = session
-				.getElementDetailsForThisHandle(details);
-		if (elementDetails != null) {
-
-			// Initialize the ruleset parameters.
-			java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
-
-			vars.put(OPERATION, DELETE);
-
-			// Retrieve the status value
-			String statusValue = getPropertyValue(elementDetails, STATUS);
-			vars.put(STATUS, statusValue);
-
-			// Overridable
-			addCustomCheckDeleteVars(vars, details);
-
-			// Add all metadata to input vars
-			Map<String, Object> v = getMetadata(elementDetails);
-			vars.putAll(v);
-
-			boolean permissionGranted = checkPermission(vars);
-
-			if (permissionGranted) {
-				return;
-			}
-		}
-
-		// Delete is not allowed
-		throw new IlrPermissionException("The element "
-				+ elementDetails.getName()
-				+ " is not in a state where 'delete' action is authorized.");
-				
-				*/
 	}
 
-	/*
-	@Override
-	public void checkCreate(EClass eclass) throws IlrPermissionException,
-			IlrObjectNotFoundException {
-		// Let the default controller do its job
-
-		super.checkCreate(eclass);
-
-		// Ignore governance if change initiated through code or admin role
-		if (override || isRtsAdministrator(session)) {
-
-			if (log.isLoggable(Level.INFO)) {
-				log.log(Level.INFO, "checkCreate ignored: Override: "
-						+ override + " isAdmin: " + isRtsAdministrator(session));
-			}
-
-			return;
-		}
-
-		// Initialize the ruleset parameters.
-		java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
-
-		// Overridable
-		addCustomCheckCreateVars(vars);
-
-		// type won't be prefixed with "brm."
-		vars.put(TYPE, eclass.getName());
-		vars.put(OPERATION, CREATE);
-
-		boolean permissionGranted = checkPermission(vars);
-
-		if (permissionGranted) {
-			return;
-		}
-
-		// Create is not allowed
-		throw new IlrPermissionException("The element " + eclass.getName()
-				+ " is not in a state where 'create' action is authorized.");
-
-	}
-	*/
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -275,7 +128,7 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 			throws IlrApplicationException {
 		// Always call the super method
 		super.onCommitElement(cobject);
-/*
+
 		// Ignore governance if change initiated through code or admin role
 		if (override || isRtsAdministrator(session)) {
 
@@ -287,7 +140,6 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 			return;
 		}
 		
-		*/
 
 		IlrElementHandle eHandle = cobject.getRootElementHandle();
 		if (eHandle != null) {
@@ -308,7 +160,8 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 			IlrElementHandle newHandle) throws IlrApplicationException {
 		// Always call the super method
 		super.elementCommitted(cobject, newHandle);
-/*
+	
+
 		// Ignore governance if change initiated through code or admin role
 		if (override || isRtsAdministrator(session)) {
 
@@ -319,36 +172,33 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 
 			return;
 		}
-		
-		*/
+
 
 		Object object = session.getElementDetails(newHandle);
-		if (!(object instanceof IlrElementDetails)) {
-			return;
+
+		String newStatus = "";
+		if (object instanceof IlrElementDetails) {
+
+			IlrElementDetails element = cobject.getRootDetails();
+			newStatus = getPropertyValue(element, STATUS);
+
+			java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
+
+			// Overridable
+			addCustomElementCommittedVars(vars, cobject, newHandle);
+
+			//vars.put(OLD_STATUS, getLastStatus(cobject));
+			vars.put(STATUS, newStatus);
+
+			java.util.Map<String, Object> response = invokeElementCommittedRules(
+					vars, element);
+
+			checkIfExecuteQueryRequested(response);
+
+			checkIfNotificationRequested(response);
+
 		}
 
-		IlrElementDetails element = cobject.getRootDetails();
-
-		String newStatus = getPropertyValue(element, STATUS);
-
-		if (newStatus == null) {
-			return;
-		}
-
-		java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
-
-		// Overridable
-		addCustomElementCommittedVars(vars, cobject, newHandle);
-
-		vars.put(OLD_STATUS, getLastStatus(cobject));
-		vars.put(STATUS, newStatus);
-
-		java.util.Map<String, Object> response = invokeElementCommittedRules(
-				vars, element);
-
-		checkIfExecuteQueryRequested(response);
-
-		checkIfNotificationRequested(response);
 	}
 
 	/*
@@ -372,17 +222,6 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 		*/
 	}
 
-	public static Set<String> getStatuses(RuleExecutionController controller,
-			java.util.Map<String, Object> vars) {
-		Set<String> returnStatuses = new HashSet<String>();
-
-		List<String> list = controller.getStatusValues(vars);
-
-		// remove any duplicate status values by adding the list to a set
-		returnStatuses.addAll(list);
-
-		return returnStatuses;
-	}
 
 	/**************
 	 * PROTECTED METHODS ALLOW CUSTOMISATIONS ON RULE GOVERNANCE ASSET IN
@@ -438,12 +277,6 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 			java.util.Map<String, Object> vars, IlrElementDetails details)
 			throws IlrObjectNotFoundException;
 
-	/**
-	 * Implement notifications here. For example email notifications. It is
-	 * invoked at the end of the element being committed
-	 */
-	protected abstract void checkIfNotificationRequested(
-			java.util.Map<String, Object> response);
 
 	/**
 	 * Iterate through all the metadata for the element and send to the rule
@@ -550,27 +383,6 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 
 	/************** PRIVATE METHODS *****************/
 
-	/**
-	 * Tests whether the current element is the status property and the life
-	 * cycle management is required.
-	 * 
-	 * @return True when not a candidate, and false otherwise.
-	 */
-	private boolean isStatusPropertyCandidate(IlrElementHandle element,
-			org.eclipse.emf.ecore.EStructuralFeature feature)
-			throws IlrObjectNotFoundException {
-
-		if (element == null) {
-			return false;
-		}
-
-		// Is it the status property?
-		if (!STATUS.equalsIgnoreCase(feature.getName())) {
-			return false;
-		}
-
-		return true;
-	}
 
 	private String getLastStatus(IlrCommitableObject cobject) {
 
@@ -603,16 +415,20 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 	private java.util.Map<String, Object> invokeElementCommittedRules(
 			java.util.Map<String, Object> vars, IlrElementDetails element) {
 
+		java.util.Map<String, Object> response = new HashMap<String, Object>();
+
 		// Add all metadata to input vars
 		Map<String, Object> v = getMetadata(element);
-		vars.putAll(v);
 
-		// Call business rules to determine whether the role can update
-		// a feature (attribute) on a given status.
-		RuleExecutionController controller = new RuleExecutionController();
+		if (v != null) {
+			vars.putAll(v);
 
-		java.util.Map<String, Object> response = controller
-				.elementCommitted(vars);
+			// Call business rules to determine whether the role can update
+			// a feature (attribute) on a given status.
+			RuleExecutionController controller = new RuleExecutionController();
+
+			response = controller.elementCommitted(vars);
+		}
 
 		return response;
 	}
@@ -646,90 +462,6 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 						+ elementDetails.getName());
 			}
 		}
-	}
-
-	// Generic helper method for checking Create Update and Delete access
-	private boolean checkPermission(java.util.Map<String, Object> vars)
-			throws IlrPermissionException {
-
-		// Create business rule controller
-		RuleExecutionController controller = new RuleExecutionController();
-
-		// Retrieve the user's role and check permission on each one
-		List<String> roles = controller.getUserRoles();
-
-		for (Iterator<String> roleIter = roles.iterator(); roleIter.hasNext();) {
-			String role = roleIter.next();
-
-			if (session.isUserInRole(role)) {
-
-				vars.put(ROLE, role);
-
-				boolean permissionGranted = controller.hasPermission(vars);
-
-				if (permissionGranted) {
-					return true;
-				}
-			}
-		}
-
-		return false;
-	}
-
-	private List<?> getStatusValues(IlrElementHandle element,
-			org.eclipse.emf.ecore.EStructuralFeature feature)
-			throws IlrObjectNotFoundException {
-		// Initialize the ruleset parameters.
-		java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
-
-		IlrElementDetails details = session
-				.getElementDetailsForThisHandle(element);
-
-		// Overridable
-		addCustomGetStatusVars(vars, details);
-
-		// Add all metadata to input vars
-		Map<String, Object> v = getMetadata(details);
-		vars.putAll(v);
-
-		// Set status to INITIAL_STATE if new element
-		String currentStatus;
-		if (element.isNew()) {
-			currentStatus = INITIAL_STATE;
-		} else {
-			currentStatus = (String) details.getRawValue(feature);
-		}
-
-		// Call business rules to determine the states
-		RuleExecutionController controller = new RuleExecutionController();
-		// Retrieve the user's role
-		List<String> roles = controller.getUserRoles();
-
-		// use a set to hold the status values so duplicates are removed
-		Set<String> allStatusValues = new HashSet<String>();
-
-		// for each role get possible states transition values
-		for (Iterator<String> roleIter = roles.iterator(); roleIter.hasNext();) {
-			String role = roleIter.next();
-
-			log.log(Level.INFO,
-					"** Is user in role : " + role + ": "
-							+ session.isUserInRole(role));
-
-			// test if user in this role or administrator
-			if (session.isUserInRole(role) || isRtsAdministrator(session)) {
-
-				vars.put(ROLE, role);
-				vars.put(STATUS, currentStatus);
-
-				allStatusValues.addAll(getStatuses(controller, vars));
-			}
-		}
-
-		// Return the collection of all possible statuses as a list
-		List<String> returnList = new ArrayList<String>();
-		returnList.addAll(allStatusValues);
-		return returnList;
 	}
 
 	private void invokeOnCommitRules(IlrCommitableObject cobject,
@@ -937,6 +669,69 @@ public abstract class RBRGSessionController extends IlrDefaultSessionController 
 
 				}
 			}
+		}
+	}
+	
+
+	protected void checkIfNotificationRequested(java.util.Map<String, Object> response) {
+		
+		if (log.isLoggable(Level.INFO)) {
+			log.log(Level.INFO, "checkIfNotificationRequested RBRG ");
+		}
+		
+		boolean triggerBuild = false;
+		Object triggerBuildObj = response.get("triggerBuild");
+
+		if (triggerBuildObj instanceof Boolean) {
+			triggerBuild = (Boolean) triggerBuildObj;
+		}
+		
+		
+		if (triggerBuild) {
+			
+			String release = "UNKNOWN";
+			Object releaseObj = response.get("baseline");
+
+			if (releaseObj instanceof String) {
+				release = (String) releaseObj;
+			}
+			
+			String buildPath = ".";
+			Object buildPathObj = response.get("buildPath");
+
+			if (buildPathObj instanceof String) {
+				buildPath = (String) buildPathObj;
+			}
+
+			if (log.isLoggable(Level.INFO)) {
+				log.log(Level.INFO, "Governance Rules: Trigger Build of  "
+						+ release + " in build path " + buildPath);
+			}
+			
+			Writer writer = null;
+
+			String releaseFilename = release.replace(' ', '_') + ".txt";
+			try {			
+			    writer = new BufferedWriter(new OutputStreamWriter(
+			          new FileOutputStream(buildPath + "/" + releaseFilename), "utf-8"));
+			    writer.write(release);
+			} catch (IOException ex) {
+				log.log(Level.INFO, "Governance Rules: Failed to write build file  "
+						+ releaseFilename);
+			} finally {
+			   try {writer.close();} catch (Exception ex) {/*ignore*/}
+			}
+
+			/*
+			notification.setRecipient((String) response
+					.get(NOTIFICATION_RECIPIENT));
+			notification
+					.setSubject((String) response.get(NOTIFICATION_SUBJECT));
+			notification.setMessageBody((String) response
+					.get(NOTIFICATION_BODY));
+
+			notificationListener.notify(session, notification);
+			*/
 		}
 	}
 

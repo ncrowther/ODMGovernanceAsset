@@ -41,8 +41,8 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
-                <Param><![CDATA[requestType]]></Param>
-                <Param><![CDATA[""]]></Param>
+                <Param><![CDATA[baseline]]></Param>
+                <Param><![CDATA["null"]]></Param>
                 <Param><![CDATA[true]]></Param>
                 <Param><![CDATA[false]]></Param>
               </Expression>
@@ -71,187 +71,22 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
+                <Param><![CDATA[parent]]></Param>
+                <Param><![CDATA[""]]></Param>
+                <Param><![CDATA[true]]></Param>
+                <Param><![CDATA[false]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[true]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
                 <Param><![CDATA[status]]></Param>
-                <Param><![CDATA["null"]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[feature]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[loginUser]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[lastChangedBy]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[createdBy]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[expirationDate]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[currentChangeRequestId]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[baseline]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[oldStatus]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[historicalChangeRequestId]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[documentation]]></Param>
-                <Param><![CDATA["TBS"]]></Param>
-                <Param><![CDATA[true]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[statuscomment]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[false]]></Param>
-                <Param><![CDATA[false]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[actionRuleBody]]></Param>
                 <Param><![CDATA[""]]></Param>
                 <Param><![CDATA[true]]></Param>
                 <Param><![CDATA[false]]></Param>
@@ -281,7 +116,7 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
-                <Param><![CDATA[oldStatus]]></Param>
+                <Param><![CDATA[versionComment]]></Param>
                 <Param><![CDATA[""]]></Param>
                 <Param><![CDATA[true]]></Param>
                 <Param><![CDATA[false]]></Param>
@@ -296,22 +131,7 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
-                <Param><![CDATA[validationError]]></Param>
-                <Param><![CDATA[""]]></Param>
-                <Param><![CDATA[false]]></Param>
-                <Param><![CDATA[true]]></Param>
-              </Expression>
-            </Action>
-          </ActionSet>
-        </Condition>
-        <Condition>
-          <Expression>
-            <Param><![CDATA[true]]></Param>
-          </Expression>
-          <ActionSet>
-            <Action DefId="A1">
-              <Expression>
-                <Param><![CDATA[rulePackage]]></Param>
+                <Param><![CDATA[newProperty]]></Param>
                 <Param><![CDATA[""]]></Param>
                 <Param><![CDATA[true]]></Param>
                 <Param><![CDATA[false]]></Param>
@@ -326,7 +146,7 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
-                <Param><![CDATA[role]]></Param>
+                <Param><![CDATA[updateType]]></Param>
                 <Param><![CDATA[""]]></Param>
                 <Param><![CDATA[true]]></Param>
                 <Param><![CDATA[false]]></Param>

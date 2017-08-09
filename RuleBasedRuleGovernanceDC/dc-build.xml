@@ -70,7 +70,6 @@
 
 	<property name="output.dir" location="${build.dir}" />
 	<property name="resjar" location="${executionserver.lib.dir}/jrules-res-session-java.jar" />
-
     	
 	<property name="app.descriptors.dir" location="${rbrg.gov.base.dir}/additionalEARFiles/${odm.version}" />
 	<property name="web.descriptors.dir" location="${rbrg.gov.base.dir}/additionalEARWARFiles/${odm.version}" />
@@ -78,110 +77,7 @@
 	<property name="status.property" value="${rbrg.status.property.name}" />
 	<property name="install.rulesetGenerationAbortLevel" value="error" />	
 
-	<property name="brmxlocation" location="${rbrg.gov.base.dir}/${rbrg.projects.location}/${brmx.location}" />
-	<property name="brdxlocation" location="${rbrg.gov.base.dir}/${rbrg.projects.location}/${brdx.location}" />
 
-	<!-- Synchronize proprties -->
-	<property name="sync.action" value="publish" />
-	<property name="sync.override" value="false" />
-	<property name="sync.selector" value="" />
-
-	<!-- ********************************************************************************************* -->
-	<!-- WAS configuration proprties / targets -->
-	<property name="wsadmin.config.root.dir" location="${rbrg.gov.base.dir}/wasconfig/${odm.version}" />
-	<property name="jython.dir" value="${wsadmin.config.root.dir}/jython" />
-		
-	<macrodef name="rbrgInvokeWsAnt">
-		<attribute name="target" />
-		<element name="args-def" optional="true" />
-		<sequential>
-			<condition property="script.extension" value="bat" else="sh">
-				<os family="windows" />
-			</condition>
-
-			<echo message="Running exec with odm.home=${odm.home} and odm.version=${odm.version}"/>
-			
-			<exec executable="${was.home}/bin/ws_ant.${script.extension}">
-				<arg value="-f" />
-				<arg value="${rbrg.gov.base.dir}/dc-build.xml" />
-				<arg value="@{target}" />
-				<arg value="-Dscript.extension=${script.extension}" />
-				<arg value="-Dwas.home=${was.home}" />
-				<arg value="-Dds.home=${ds.home}" />
-				<arg value="-Ddc.home=${ds.home}" />
-				<arg value="-Dodm.home=${odm.home}" />
-				<arg value="-Dodm.version=${odm.version}" />
-				<args-def />
-			</exec>
-		</sequential>
-	</macrodef>
-
-	<macrodef name="rbrgInvokeWsAdminWithAttibutes">
-		<attribute name="script.name" />
-		<element name="attributes-def" />
-		<sequential>
-			<property name="jvmMaxMemory" value="1024M" />
-			<taskdef name="wsAdmin" classname="com.ibm.websphere.ant.tasks.WsAdmin">
-			</taskdef>
-			
-			<wsAdmin
-						wasHome="${was.home}"
-						properties="./wsadmin.properties"
-						profile="./${profile.file}"
-						profileName="${profile.name}"
-		 				script="@{script.name}"
-		 				lang="jython"
-		 				user="${credential.user.name}"
-		 				password="${credential.user.password}"
-		 				jvmMaxMemory="${jvmMaxMemory}"
-		 				failonerror="true">
-						<!-- Only used on solaris, IBM jvm is ignoring those options -->
-						<jvmarg line="-XX:PermSize=128m -XX:MaxPermSize=512m"/>
-						<attributes-def/>
-					</wsAdmin>
-			
-		
-		</sequential>
-	</macrodef>
-
-	<macrodef name="rbrgInvokeJython">
-		<element name="extra-attributes" />
-		<sequential>
-			<property name="ds.home.validated" value="${ds.home}" />
-			<property name="dc.home.validated" value="${dc.home}" />
-			<rbrgInvokeWsAdminWithAttibutes script.name="${jython.dir}/ConfigRBRGSecurity.py">
-				<attributes-def>
-					<arg value="${cell.name}" />
-					<arg value="${node.name}" />
-					<arg value="${server.name}" />
-					<arg value="${ds.home.validated}" />
-					<arg value="${dc.home.validated}" />
-					<arg value="${was.home}" />
-					<extra-attributes />
-				</attributes-def>
-			</rbrgInvokeWsAdminWithAttibutes>
-		</sequential>
-	</macrodef>
-
-	<target name="was-config">
-		<rbrgInvokeJython>
-			<extra-attributes>
-				<arg value="${credential.user.name}" />
-				<arg value="${credential.user.password}" />
-			</extra-attributes>
-		</rbrgInvokeJython>
-	</target>
-
-	<target name="rbrg-was-config" depends="dc-build-init" description="Configure the WAS users and groups">
-		<echo message="WODM Home=${odm.home.dir}"/>
-		
-		<echo>Creating temporary property file to be used by wsAdmin</echo>
-		<echo file="${wsadmin.config.root.dir}/wsadmin.properties" append="false">
-		</echo>
-
-		<rbrgInvokeWsAnt target="was-config" />
-
-	</target>
 	<!-- ********************************************************************************************* -->
 
 	<path id="build.path">
@@ -210,7 +106,7 @@
 	<!-- I N I T -->
 	<target name="dc-build-init">
 		<echo message="Running the [Rule Based Rule Governance Build] dc-build-init with rbrg.gov.base.dir=${rbrg.gov.base.dir}" />
-		<echo message="WODM home is ${odm.home.dir} and WODM version is ${odm.version}" />
+		<echo message="ODM home is ${odm.home.dir} and WODM version is ${odm.version}" />
 	</target>
 
 	<!-- C L E A N -->
@@ -225,7 +121,6 @@
 		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="build.path" debug="true" fork="true" deprecation="off" />
 		<mkdir dir="${build.dir}/lib" />
 		<jar jarfile="${jar}">
-			<fileset dir="${classes.dir}" includes="**/customgui/*" />	
 			<fileset dir="${classes.dir}" includes="**/rulegovernance/*" />
 			<fileset dir="${classes.dir}" includes="**/rulegovernance/model/*" />
 			<fileset dir="${classes.dir}" includes="**/rulegovernance/model/utils/*" />
@@ -233,82 +128,54 @@
 			<fileset dir="${classes.dir}" includes="**/rulegovernance/workflow/*" />
 			<fileset dir="${classes.dir}" includes="**/rulegovernance/workflow/manager/*" />
 			<fileset dir="${classes.dir}" includes="**/rulegovernance/workflow/manager/notification/*" />
-			<fileset dir="${data.dir}" includes="**/*.properties" />
 		</jar>
 	</target>
 
-	<!-- G E N E R A T E - D R O P - S C H E M A -->
-	<target name="gen-drop-tables" depends="dc-build-init" description="Generate the drop schema SQL script">
-		<gen-drop-schema 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" 
-			extensionModel="${data.dir}/model/extensionModel.brmx" 
-			outputFile="${output.dir}/droptables.sql" />
-	</target>
+	  <!-- S E T - E X T E N S I O N S -->
+	  <target name="set-extensions" description="Define the extension model" >
+	    <set-extensions
+	      username="${rtsAdmin.login}"
+	      password="${rtsAdmin.password}"
+	      serverURL="${server.url}"
+	      datasourceName="${db.dataSource}"
+	      extensionModel="${data.dir}/model/extensionModel.brmx"
+	      extensionData="${data.dir}/model/extensionData.brdx"
+	      roles="rtsUser rtsAdministrator rtsConfigManager rtsInstaller"
+	       />
+	  </target>
 
-	<!-- E X E C U T E - D R O P - S C H E M A -->
-	<target name="execute-drop-tables" depends="dc-build-init" description="Execute the drop schema SQL script">
-		<execute-schema 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" 
-			file="${output.dir}/droptables.sql" />
-	</target>
-
-	<!-- S E T - E X T E N S I O N S -->
-	<target name="set-extensions" depends="dc-build-init" description="Define the extension model">
-		<set-extensions 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" 
-			extensionModel="${data.dir}/model/extensionModel.brmx" 
-			extensionData="${data.dir}/model/extensionData.brdx" 
-			roles="rtsUser rtsAdministrator rtsConfigManager rtsInstaller" />
-	</target>
-
-	<!-- U P L O A D - M E S S A G E S -->
-	<target name="upload-messages" depends="dc-build-init" description="Upload the custom messages">
-		<upload-messages 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" 
-			locale="${extension.messages.locale.name}" 
-			messageFile="${data.dir}/${extension.messages.local.properties}" />
-	</target>
-
-	<!-- U P L O A D - R O L E S -->
-	<target name="upload-additional-roles" depends="dc-build-init" description="Upload the custom roles">
-		<echo>Repackaging of the teamserver application...</echo>
-		<upload-roles 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" 
-			roles="${rbrg.roles}" />
-	</target>
-
-	<!-- R E P A C K A G E - E A R  -->
+	  <!-- S E T - D E F U A L T  E X T E N S I O N S -->
+	  <target name="set-default-extensions" description="Define the extension model" >
+	    <set-extensions
+	      username="${rtsAdmin.login}"
+	      password="${rtsAdmin.password}"
+	      serverURL="${server.url}"
+	      datasourceName="${db.dataSource}"
+	      extensionModel="${data.dir}/model/defaultExtension.brmx"
+	      extensionData="${data.dir}/model/defaultExtension.brdx"
+	      roles="rtsUser rtsAdministrator rtsConfigManager rtsInstaller"
+	       />
+	  </target>
+	
+	
+	<!-- R E P A C K A G E - ENTERPRISE -->
 	<target name="repackEC" depends="dc-build-init,build">
-		<echo>Repackaging of the teamserver application for ${odm.version}...</echo>
+		<echo>Repackaging of the enterprise console for ${odm.version}...</echo>
 		<repackage-ear 
 			descriptorsDir="${app.descriptors.dir}/${application.server.name}" 
 			sourceEar="${teamserver.ear.source}" 
 			targetEar="${build.dir}/${teamserver.appli.name}" 
-			additionalJars="${jar},${rgajar},${resjar},${htmlParser},${htmlLexer}" 
+			additionalJars="${jar},${rgajar}" 
 			console="enterprise" 
 			webResourcesDir="${web.descriptors.dir}/enterprise" />
 	</target>
-	
+			
+	<!-- R E P A C K A G E - BUSINESS CONSOLE  -->	
 	<target name="repackBC" depends="repackEC">
-		<echo>Repackaging of the teamserver application for ${odm.version}...</echo>
+	<echo>Repackaging of the business console for ${odm.version}...</echo>
 		<repackage-ear 
 			descriptorsDir="${app.descriptors.dir}/${application.server.name}" 
-			sourceEar="${build.dir}/${teamserver.appli.name}" 
+			sourceEar="${build.dir}/${teamserver.appli.name}"
 			targetEar="${build.dir}/${teamserver.appli.name}" 
 			additionalJars="${jar},${rgajar},${resjar},${htmlParser},${htmlLexer}" 
 			console="business" 
@@ -324,24 +191,6 @@
 			password="${rtsAdmin.password}" 
 			serverURL="${server.url}" 
 			datasourceName="${db.dataSource}" />
-	</target>
-
-	<!-- S Y N C H R O N Z E -->
-	<target name="synchronise" depends="dc-build-init" description="Synchronise rule project to Decision Center">
-		<property name="sync.data" value="" />
-		<property name="install.project.name" value="" />
-		<echo message="Synchronising to the workspace ${sync.data}" />
-		<echo message="Synchronising rule project called ${install.project.name}" />
-		<synchronize 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" 
-			data="${sync.data}" 
-			projectName="${install.project.name}" 
-			action="${sync.action}" 
-			override="${sync.override}" 
-			selector="${sync.selector}" />
 	</target>
 
 	<!-- S E T - C O N F I G - P A R A M -->
@@ -360,62 +209,20 @@
 			username="${rtsAdmin.login}" 
 			password="${rtsAdmin.password}" 
 			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" />
-
-		<set-config-param 
-			key="teamserver.rulesetGenerationAbortLevel" 
-			value="${install.rulesetGenerationAbortLevel}" 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" />
+			datasourceName="${db.dataSource}" />	
 		
-		<set-config-param 
-			key="teamserver.governance.mode" 
-			value="ruleproject" 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" />		
-		
-		<set-config-param 
-			key="teamserver.locale" 
-			value="${extension.messages.locale.name}" 
-			username="${rtsAdmin.login}" 
-			password="${rtsAdmin.password}" 
-			serverURL="${server.url}" 
-			datasourceName="${db.dataSource}" />
 	</target>
 
-	<!-- ********************************************************************************************* -->
-	<!-- C O N F I G U R E - O N L Y - W I T H O U T - D B - D E L E T E -->
-	<!--target name="configure" 
-		depends="set-extensions,upload-messages,upload-additional-roles,remove-config-param,set-config-params" 
-		description="Configure DC only (without DB drop)">
-	</target-->
-	
+	<!-- C O N F I G U R E  -->
 	<target name="configure" 
 		depends="remove-config-param,set-config-params" 
 		description="Configure DC only (without DB drop)">
-	</target>
-
-	<!-- C O N F I G U R E - O N L Y -->
-	<target name="configure-with-delete" 
-		depends="gen-drop-tables,execute-drop-tables,set-extensions,upload-messages,upload-additional-roles,remove-config-param,set-config-params" 
-		description="Configure DC only">
 	</target>
 
 	<!-- D E P L O Y -->
 	<target name="deploy" 
 		depends="dc-build-init,clean,build,repackBC,configure" 
 		description="Build, configure and deploy the custom EAR to the Sample Server">
-		<module.deploy name="rts" path="${build.dir}/${teamserver.appli.name}" />
-	</target>
-
-	<!-- D E P L O Y -->
-	<target name="deploy-withnewdcdb" 
-		depends="dc-build-init,clean,build,repackBC,configure-with-delete" 
-		description="Build, configure (with new database) and deploy the custom EAR to the Sample Server">
 		<module.deploy name="rts" path="${build.dir}/${teamserver.appli.name}" />
 	</target>
 
@@ -429,64 +236,6 @@
 		<module.deploy name="rts" path="${teamserver.ear.source}" />
 	</target>
 
-	<!-- Install rule based rule governance in Decision Center -->
-	<target name="run.install" depends="dc-build-init,clean,build">
-		<property name="install.project.name" value="${install.project.name}" />
-		<echo message="Installing RBRG on rule project called ${install.project.name}" />
-		<java classname="rulegovernance.installer.Installer" fork="yes" failonerror="yes">
-			<classpath refid="build.path" />
-			<arg value="${rtsAdmin.login}" />
-			<arg value="${rtsAdmin.password}" />
-			<arg value="${server.url}" />
-			<arg value="${db.dataSource}" />
-			<arg value="${install.project.name}" />
-			<arg value="${install.command}" />
-			<arg value="${rbrg.gov.base.dir}" />
-			<arg value="${status.values}" />
-			<arg value="${status.property}" />
-		</java>
-	</target>
-
-	<!-- Install rule based rule governance in Decision Center -->
-	<target name="run.install.nobuild" depends="dc-build-init">
-		<echo message="Installing RBRG on rule project called ${install.project.name}" />
-		<java classname="rulegovernance.installer.Installer" fork="yes" failonerror="yes">
-			<classpath refid="build.path" />
-			<arg value="${rtsAdmin.login}" />
-			<arg value="${rtsAdmin.password}" />
-			<arg value="${server.url}" />
-			<arg value="${db.dataSource}" />
-			<arg value="${install.project.name}" />
-			<arg value="${install.command}" />
-			<arg value="${rbrg.gov.base.dir}" />
-			<arg value="${status.values}" />
-			<arg value="${status.property}" />
-		</java>
-	</target>
-	
-	<!-- Install rule based rule governance in Decision Center for hidden RBRG rule projects -->
-	<target name="run.hide.nobuild" depends="dc-build-init">
-		<property name="hide.project.name" value=""/>
-		<echo message="Hiding the RBRG rule project called ${hide.project.name}" />
-		<java classname="rulegovernance.installer.Installer" fork="yes" failonerror="yes">
-			<classpath refid="build.path" />
-			<arg value="${rtsAdmin.login}" />
-			<arg value="${rtsAdmin.password}" />
-			<arg value="${server.url}" />
-			<arg value="${db.dataSource}" />
-			<arg value="${hide.project.name}" />
-			<arg value="${hide.command}" />
-		</java>
-	</target>
-
-	<!-- ********************************************************************************************* -->
-
-	<target name="upload-users">
-
-
-	<upload-users datasourceName="${datasourceName}" serverURL="${server.url}" password="${rtsAdmin.password}" username="${rtsAdmin.login}" userFilePath="D:\ConsultancyProjects\Maersk\projects\users.xml"/>
-
-	</target>
 
 </project>
 

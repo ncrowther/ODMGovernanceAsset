@@ -9,6 +9,7 @@
         <import>java.util.List</import>
         <import>java.util.ArrayList</import>
         <import>java.util.HashMap</import>
+        <import>java.util.Map</import>
         <import>java.util.Iterator</import>
         <import>java.util.Calendar</import>
         <import>java.math.BigDecimal</import>
@@ -41,8 +42,8 @@ list.add(changeRequestId);
             <parameter type="java.lang.Boolean"/>
             <parameter type="java.lang.Boolean"/>
             <body language="irl"><![CDATA[
-            java.util.Map dt = new java.util.HashMap();
-context.invokeFunction("checkParam", new Object[] {name, dt, java.util.Map.class, input, output});
+            java.util.Map<Object, Object> dt = new java.util.HashMap<Object, Object>();
+context.invokeFunction("checkParam", new Object[] {name, dt, dt.getClass(), input, output});
             ]]></body>
         </method>
         <method>
@@ -72,8 +73,8 @@ list.add(varValue);
             <parameter type="java.lang.Boolean"/>
             <parameter type="java.lang.Boolean"/>
             <body language="irl"><![CDATA[
-            java.util.List list = new java.util.ArrayList();
-context.invokeFunction("checkParam", new Object[] {name, list, java.util.List.class, input, output});
+            java.util.List<Object> list = new java.util.ArrayList<Object>();
+context.invokeFunction("checkParam", new Object[] {name, list, list.getClass(), input, output});
             ]]></body>
         </method>
         <method>
@@ -139,6 +140,58 @@ vars.put(warningParam, warnings);
             ]]></body>
         </method>
         <method>
+            <name>authorCannotBeReviewer</name>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.util.List"/>
+            <body language="irl"><![CDATA[
+            for (Iterator nameIter = nameList.iterator(); nameIter.hasNext();) {
+
+	String name = (String)nameIter.next();
+	int colonPos = name.indexOf(":");
+	name = name.substring(0,colonPos);
+			
+	System.out.println("**Name: " + name);
+
+	if (name.equals(newName)) {
+			System.out.println("**SAME!!: " + name);
+			return true;
+		}
+}
+	
+return false;
+            ]]></body>
+        </method>
+        <method>
+            <name>authorCannotBeReviewer</name>
+            <parameter type="java.util.List"/>
+            <parameter type="java.util.List"/>
+            <body language="irl"><![CDATA[
+            for (Iterator autIter = authors.iterator(); autIter.hasNext();) {
+
+	String author = (String)autIter.next();
+	int colonPos = author.indexOf(":");
+	author = author.substring(0,colonPos);
+		
+	for (Iterator appIter = approvers.iterator(); appIter.hasNext();) {	
+		
+		String approver = (String)appIter.next();
+		colonPos = approver.indexOf(":");
+		approver = approver.substring(0,colonPos);
+		
+		System.out.println("**Author: " + author);
+		System.out.println("**Approver: " + approver);
+		
+		if (author.equals(approver)) {
+			System.out.println("**SAME!!: " + approver);
+			return true;
+		}
+	}
+}
+
+return false;
+            ]]></body>
+        </method>
+        <method>
             <name>dtDiff</name>
             <parameter type="dynamic.dt.parameters.StringParameter"/>
             <parameter type="dynamic.dt.parameters.StringParameter"/>
@@ -153,13 +206,20 @@ return !edt.equals(pdt);
             <name>getBoolean</name>
             <parameter type="dynamic.dt.parameters.BooleanParameter"/>
             <body language="irl"><![CDATA[
-            Object value = context.invokeFunction("getParam", new Object[] {paramName, Boolean.class});
-
+            String value = (String)context.invokeFunction("getParam", new Object[] {paramName, String.class});
 
 if (value == null) {
 	return false;
 } else {
-	return (Boolean)value;
+	
+	System.out.println("***BOOL: " + value);
+
+	if (value.equalsIgnoreCase("true")) {
+		return Boolean.TRUE;
+	} else {
+		return Boolean.FALSE;
+	}
+	//return Boolean.valueOf(value);
 }
             ]]></body>
         </method>
@@ -174,6 +234,27 @@ Map pdt = (Map) context.invokeFunction("getParam", new Object[] {persistedDT, ja
 List deltas = (List)(context.invokeFunction("validation.getDTDeltas", new Object[] {edt, pdt, colName, "p"}));
 
 return deltas.toArray();
+            ]]></body>
+        </method>
+        <method>
+            <name>getDTValuesForColumn</name>
+            <parameter type="dynamic.dt.parameters.DecisionTableParameter"/>
+            <parameter type="java.lang.String"/>
+            <body language="irl"><![CDATA[
+            //Map dt = (Map) context.invokeFunction("getParam", new Object[] {edt, java.util.HashMap.class });
+
+Map vars = (Map)getParameterValue("params");
+Object dt = (Object)vars.get(edt);
+
+if (dt == null) {
+	dt = new java.util.HashMap();
+}
+
+String uniqueValues = (String)(context.invokeFunction("validation.getUniqueDTValuesForColumn", new Object[] {dt, columnName}));
+
+System.out.println("uniqueValues:" + uniqueValues);
+
+return uniqueValues;
             ]]></body>
         </method>
         <method>
@@ -195,7 +276,8 @@ return elementType.endsWith(type);
             <name>getList</name>
             <parameter type="dynamic.dt.parameters.ListParameter"/>
             <body language="irl"><![CDATA[
-            return (java.util.List)context.invokeFunction("getParam", new Object[] {paramName, java.util.List.class});
+            java.util.List list = new java.util.ArrayList();
+return (java.util.List)context.invokeFunction("getParam", new Object[] {paramName, list.getClass()});
             ]]></body>
         </method>
         <method>
@@ -214,6 +296,25 @@ return elementType.endsWith(type);
 java.util.List roles = (java.util.List)vars.get(rolesParam);
 
 return roles.contains(requiredRole);
+            ]]></body>
+        </method>
+        <method>
+            <name>isTableTooBig</name>
+            <parameter type="dynamic.dt.parameters.DecisionTableParameter"/>
+            <parameter type="java.lang.String"/>
+            <parameter type="java.lang.Integer"/>
+            <body language="irl"><![CDATA[
+            System.out.println("***editedDT: "+ editedDt);
+
+Map edt = (Map) context.invokeFunction("getParam", new Object[] {editedDt, java.util.Map.class });
+
+System.out.println("***edt: "+ edt);
+
+Boolean ok = (Boolean)(context.invokeFunction("validation.dtValuesExceedLength", new Object[] {edt, colName, maxlen}));
+
+System.out.println("***OK: "+ ok);
+
+return ok;
             ]]></body>
         </method>
         <method>
@@ -246,9 +347,13 @@ outputParamNames.add(varName);
             <parameter type="java.lang.String"/>
             <body language="irl"><![CDATA[
             Map vars = (Map)getParameterValue("params");
-java.util.Map tags = (java.util.Map)vars.get("tags");
+java.util.Map tags = new java.util.HashMap(); //(java.util.Map)vars.get("tags");
 
 tags.put(tagName, tagValue);
+
+vars.put("tags", tags);
+
+System.out.println("****TAGS: " + tags);
             ]]></body>
         </method>
     </class>

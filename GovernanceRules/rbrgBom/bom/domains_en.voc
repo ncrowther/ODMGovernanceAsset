@@ -73,6 +73,7 @@ dynamic.dt.parameters.BooleanParameter#concept.label = dynamic.dt.parameters.Boo
 dynamic.dt.parameters.BooleanParameter.Deployed#instance.label = Deployed
 dynamic.dt.parameters.BooleanParameter.active#instance.label = active
 dynamic.dt.parameters.BooleanParameter.permissionGranted#instance.label = permissionGranted
+dynamic.dt.parameters.BooleanParameter.triggerBuild#instance.label = triggerBuild
 
 # dynamic.dt.parameters.DecisionTableParameter
 dynamic.dt.parameters.DecisionTableParameter#concept.label = DT attributes domain
@@ -83,9 +84,12 @@ dynamic.dt.parameters.DecisionTableParameter.tags#instance.label = tags
 # dynamic.dt.parameters.IntegerParameter
 dynamic.dt.parameters.IntegerParameter#concept.label = integer attributes domain
 dynamic.dt.parameters.IntegerParameter.logicalOperatorCount#instance.label = logicalOperatorCount
+dynamic.dt.parameters.IntegerParameter.migrationFlag#instance.label = migrationFlag
 
 # dynamic.dt.parameters.ListParameter
 dynamic.dt.parameters.ListParameter#concept.label = list attributes domain
+dynamic.dt.parameters.ListParameter.approvers#instance.label = approvers
+dynamic.dt.parameters.ListParameter.authors#instance.label = authors
 dynamic.dt.parameters.ListParameter.roles#instance.label = roles
 dynamic.dt.parameters.ListParameter.statusValues#instance.label = statusValues
 
@@ -95,10 +99,12 @@ dynamic.dt.parameters.StringParameter.Release#instance.label = Release
 dynamic.dt.parameters.StringParameter.action#instance.label = action
 dynamic.dt.parameters.StringParameter.actionRuleBody#instance.label = actionRuleBody
 dynamic.dt.parameters.StringParameter.baseline#instance.label = baseline
+dynamic.dt.parameters.StringParameter.buildPath#instance.label = buildPath
 dynamic.dt.parameters.StringParameter.createdBy#instance.label = createdBy
 dynamic.dt.parameters.StringParameter.createdByOnOriginal#instance.label = createdByOnOriginal
 dynamic.dt.parameters.StringParameter.currentChangeRequestId#instance.label = currentChangeRequestId
 dynamic.dt.parameters.StringParameter.definition#instance.label = definition
+dynamic.dt.parameters.StringParameter.deploymentName#instance.label = deploymentName
 dynamic.dt.parameters.StringParameter.documentation#instance.label = documentation
 dynamic.dt.parameters.StringParameter.effectiveDate#instance.label = effectiveDate
 dynamic.dt.parameters.StringParameter.expirationDate#instance.label = expirationDate
@@ -112,13 +118,19 @@ dynamic.dt.parameters.StringParameter.newProperty#instance.label = newProperty
 dynamic.dt.parameters.StringParameter.oldProperty#instance.label = oldProperty
 dynamic.dt.parameters.StringParameter.oldStatus#instance.label = oldStatus
 dynamic.dt.parameters.StringParameter.operation#instance.label = operation
+dynamic.dt.parameters.StringParameter.parent#instance.label = parent
 dynamic.dt.parameters.StringParameter.project#instance.label = project
+dynamic.dt.parameters.StringParameter.projectName#instance.label = projectName
 dynamic.dt.parameters.StringParameter.requestType#instance.label = requestType
 dynamic.dt.parameters.StringParameter.response#instance.label = response
 dynamic.dt.parameters.StringParameter.role#instance.label = role
 dynamic.dt.parameters.StringParameter.rulePackage#instance.label = rulePackage
+dynamic.dt.parameters.StringParameter.sourceBranch#instance.label = sourceBranch
+dynamic.dt.parameters.StringParameter.sourceRuleProject#instance.label = sourceRuleProject
 dynamic.dt.parameters.StringParameter.status#instance.label = status
 dynamic.dt.parameters.StringParameter.statuscomment#instance.label = statuscomment
 dynamic.dt.parameters.StringParameter.text#instance.label = text
 dynamic.dt.parameters.StringParameter.type#instance.label = type
+dynamic.dt.parameters.StringParameter.updateType#instance.label = updateType
 dynamic.dt.parameters.StringParameter.validationError#instance.label = validationError
+dynamic.dt.parameters.StringParameter.versionComment#instance.label = versionComment

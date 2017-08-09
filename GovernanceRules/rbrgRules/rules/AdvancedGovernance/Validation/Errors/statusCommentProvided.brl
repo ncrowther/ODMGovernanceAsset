@@ -2,10 +2,10 @@
 <ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
   <name>statusCommentProvided</name>
   <uuid>df1c5123-7abb-4d71-af81-7257e931d299</uuid>
-  <documentation><![CDATA[]]></documentation>
-  <locale>en_GB</locale>
-  <definition><![CDATA[if
+  <documentation><![CDATA[if
     the string text is "null"
 then
-    set validationError as "Please add status comment" ;]]></definition>
+    set validationError as "Please add status comment" ;]]></documentation>
+  <locale>en_GB</locale>
+  <definition><![CDATA[]]></definition>
 </ilog.rules.studio.model.brl:ActionRule>

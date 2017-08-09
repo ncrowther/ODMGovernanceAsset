@@ -18,15 +18,19 @@ public class Parameters
         java.util.List stateList domain 0,* class dynamic.dt.StringDomains.LifecycleStatesDomain);
     public static final void addStringParameter(dynamic.dt.parameters.StringParameter name, string defaultValue, java.lang.Boolean input, java.lang.Boolean output);
     public static final void addWarning(string warning, dynamic.dt.parameters.StringParameter warningParam);
+    public static final boolean authorCannotBeReviewer(java.util.List approvers, java.util.List authors);
+    public static final boolean authorCannotBeReviewer(string newName, java.util.List nameList);
     public static final boolean dtDiff(dynamic.dt.parameters.StringParameter editedDT, dynamic.dt.parameters.StringParameter persistedDT)
                 property update "true";
     public static final java.lang.Boolean getBoolean(dynamic.dt.parameters.BooleanParameter paramName);
     public static final java.lang.Object[] getDTPercentageDelta(dynamic.dt.parameters.DecisionTableParameter editedDT, dynamic.dt.parameters.DecisionTableParameter persistedDT, string colName);
+    public static final string getDTValuesForColumn(dynamic.dt.parameters.DecisionTableParameter edt, string columnName);
     public static final boolean getElementType(dynamic.dt.StringDomains.TypeDomain type);
     public static final int getInteger(dynamic.dt.parameters.IntegerParameter paramName);
     public static final java.util.List getList(dynamic.dt.parameters.ListParameter paramName);
     public static final string getString(dynamic.dt.parameters.StringParameter paramName);
     public static final boolean isInRoles(dynamic.dt.StringDomains.RoleDomain requiredRole, dynamic.dt.parameters.ListParameter rolesParam);
+    public static final boolean isTableTooBig(dynamic.dt.parameters.DecisionTableParameter editedDt, string colName, java.lang.Integer maxlen);
     public static final void setBoolean(dynamic.dt.parameters.BooleanParameter paramName, java.lang.Boolean paramValue);
     public static final void setString(dynamic.dt.parameters.StringParameter varName, string varValue);
     public static final void setTag(string tagName, string tagValue);

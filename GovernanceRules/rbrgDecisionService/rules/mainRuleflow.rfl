@@ -22,23 +22,16 @@ String command = (String)params.get("requestType");
 
 System.out.println("Command: " + command);
 
-if (command != null && (command.equals(dynamic.dt.StringDomains.Commands.PERMISSION) )) {
-
-    Object value = params.get(dynamic.dt.parameters.StringParameter.feature);
-     System.out.println("*vars.put(\"feature\",\"" + value + "\"); ");
-     
-     while (iter.hasNext()) {
-     String key = (String)iter.next();
-     value = params.get(key);
-     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); ");
-     }
-}
-
 if (command != null && (command.equals(dynamic.dt.StringDomains.Commands.ONCOMMIT ))) {
 while (iter.hasNext()) {
      String key = (String)iter.next();
      Object value = params.get(key);
-     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); ");
+     
+     String classType = "";
+     if (value != null)
+         classType = value.class.toString();
+     
+     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); " + "[" + classType + "]");
      }
 }
 
@@ -46,7 +39,12 @@ if (command != null && (command.equals(dynamic.dt.StringDomains.Commands.ELEMENT
 while (iter.hasNext()) {
      String key = (String)iter.next();
      Object value = params.get(key);
-     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); ");
+     
+     String classType = "";
+     if (value != null)
+         classType = value.class.toString();
+         
+     System.out.println("*vars.put(\"" + key + "\",\"" + value + "\"); " + "[" + classType + "]");
      }
 }
 ]]></Actions>
@@ -105,14 +103,14 @@ System.out.println("Response="+response);]]></Actions>
     </ResourceSet>
     <ResourceSet Locale="en_GB">
       <Data Name="node_3#height">53.402344</Data>
-      <Data Name="node_0#height">21.0</Data>
       <Data Name="node_2#height">53.402344</Data>
+      <Data Name="node_0#height">21.0</Data>
       <Data Name="node_4#x">63.69336</Data>
-      <Data Name="node_4#name">node_4</Data>
       <Data Name="node_4#y">304.50586</Data>
-      <Data Name="node_3#y">97.70117</Data>
-      <Data Name="node_3#width">122.70703</Data>
+      <Data Name="node_4#name">node_4</Data>
       <Data Name="node_2#label">Run Rules</Data>
+      <Data Name="node_3#width">122.70703</Data>
+      <Data Name="node_3#y">97.70117</Data>
       <Data Name="node_3#name">node_3</Data>
       <Data Name="node_1#name">node_1</Data>
       <Data Name="node_4#label">Create Response</Data>

@@ -147,10 +147,11 @@ public class BooleanParameter
         property domainProviderResource "Domains.xlsx"
         property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
 {
-    domain {static active, static Deployed, static permissionGranted}
+    domain {static active, static Deployed, static permissionGranted, static triggerBuild}
     public static final readonly dynamic.dt.parameters.BooleanParameter Deployed;
     public static final readonly dynamic.dt.parameters.BooleanParameter active;
     public static final readonly dynamic.dt.parameters.BooleanParameter permissionGranted;
+    public static final readonly dynamic.dt.parameters.BooleanParameter triggerBuild;
 }
 
 public class DecisionTableParameter
@@ -177,8 +178,9 @@ public class IntegerParameter
         property domainProviderResource "Domains.xlsx"
         property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
 {
-    domain {static logicalOperatorCount}
+    domain {static logicalOperatorCount, static migrationFlag}
     public static final readonly dynamic.dt.parameters.IntegerParameter logicalOperatorCount;
+    public static final readonly dynamic.dt.parameters.IntegerParameter migrationFlag;
 }
 
 public class ListParameter
@@ -190,7 +192,9 @@ public class ListParameter
         property domainProviderResource "Domains.xlsx"
         property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
 {
-    domain {static statusValues, static roles}
+    domain {static statusValues, static roles, static authors, static approvers}
+    public static final readonly dynamic.dt.parameters.ListParameter approvers;
+    public static final readonly dynamic.dt.parameters.ListParameter authors;
     public static final readonly dynamic.dt.parameters.ListParameter roles;
     public static final readonly dynamic.dt.parameters.ListParameter statusValues;
 }
@@ -237,16 +241,27 @@ public class StringParameter
         static text,
         static Release,
         static oldProperty,
-        static newProperty
+        static newProperty,
+        static buildPath,
+        static projectName,
+        static deploymentName,
+        static sourceRuleProject,
+        static sourceBranch,
+        static parent,
+        static versionComment,
+        static newProperty,
+        static updateType
     }
     public static final readonly dynamic.dt.parameters.StringParameter Release;
     public static final readonly dynamic.dt.parameters.StringParameter action;
     public static final readonly dynamic.dt.parameters.StringParameter actionRuleBody;
     public static final readonly dynamic.dt.parameters.StringParameter baseline;
+    public static final readonly dynamic.dt.parameters.StringParameter buildPath;
     public static final readonly dynamic.dt.parameters.StringParameter createdBy;
     public static final readonly dynamic.dt.parameters.StringParameter createdByOnOriginal;
     public static final readonly dynamic.dt.parameters.StringParameter currentChangeRequestId;
     public static final readonly dynamic.dt.parameters.StringParameter definition;
+    public static final readonly dynamic.dt.parameters.StringParameter deploymentName;
     public static final readonly dynamic.dt.parameters.StringParameter documentation;
     public static final readonly dynamic.dt.parameters.StringParameter effectiveDate;
     public static final readonly dynamic.dt.parameters.StringParameter expirationDate;
@@ -260,15 +275,21 @@ public class StringParameter
     public static final readonly dynamic.dt.parameters.StringParameter oldProperty;
     public static final readonly dynamic.dt.parameters.StringParameter oldStatus;
     public static final readonly dynamic.dt.parameters.StringParameter operation;
+    public static final readonly dynamic.dt.parameters.StringParameter parent;
     public static final readonly dynamic.dt.parameters.StringParameter project;
+    public static final readonly dynamic.dt.parameters.StringParameter projectName;
     public static final readonly dynamic.dt.parameters.StringParameter requestType;
     public static final readonly dynamic.dt.parameters.StringParameter response;
     public static final readonly dynamic.dt.parameters.StringParameter role;
     public static final readonly dynamic.dt.parameters.StringParameter rulePackage;
+    public static final readonly dynamic.dt.parameters.StringParameter sourceBranch;
+    public static final readonly dynamic.dt.parameters.StringParameter sourceRuleProject;
     public static final readonly dynamic.dt.parameters.StringParameter status;
     public static final readonly dynamic.dt.parameters.StringParameter statuscomment;
     public static final readonly dynamic.dt.parameters.StringParameter text;
     public static final readonly dynamic.dt.parameters.StringParameter type;
+    public static final readonly dynamic.dt.parameters.StringParameter updateType;
     public static final readonly dynamic.dt.parameters.StringParameter validationError;
+    public static final readonly dynamic.dt.parameters.StringParameter versionComment;
 }
 

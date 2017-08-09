@@ -7,7 +7,7 @@
   <uuid>55972efe-0a99-4a77-b259-df6c524c5c8f</uuid>
   <locale>en_GB</locale>
   <definition>
-<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
   <Body>
     <Properties>
       <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
@@ -41,9 +41,23 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
-                <Param><![CDATA[statusValues]]></Param>
-                <Param><![CDATA[false]]></Param>
+                <Param><![CDATA[authors]]></Param>
                 <Param><![CDATA[true]]></Param>
+                <Param><![CDATA[false]]></Param>
+              </Expression>
+            </Action>
+          </ActionSet>
+        </Condition>
+        <Condition>
+          <Expression>
+            <Param><![CDATA[true]]></Param>
+          </Expression>
+          <ActionSet>
+            <Action DefId="A1">
+              <Expression>
+                <Param><![CDATA[approvers]]></Param>
+                <Param><![CDATA[true]]></Param>
+                <Param><![CDATA[false]]></Param>
               </Expression>
             </Action>
           </ActionSet>

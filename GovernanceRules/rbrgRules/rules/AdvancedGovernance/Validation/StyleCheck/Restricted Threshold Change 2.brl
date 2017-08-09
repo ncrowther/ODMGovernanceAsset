@@ -12,7 +12,7 @@
     set warning to "Change variance " + 'variance' + "% is beyond threshold of " + 
     	'change threshold' + "% for the Debt to income: min column.";
 if
-	the string rulePackage is "eligibility"
+	the string rulePackage is "D01DEADQ"
 	and 'variance' above 'change threshold'
 then
      set validationError as warning ;    	

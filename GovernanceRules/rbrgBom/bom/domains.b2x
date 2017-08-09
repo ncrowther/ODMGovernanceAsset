@@ -291,6 +291,12 @@
             return "permissionGranted";
             ]]></getter>
         </attribute>
+        <attribute>
+            <name>triggerBuild</name>
+            <getter language="irl"><![CDATA[
+            return "triggerBuild";
+            ]]></getter>
+        </attribute>
     </class>
     <class>
         <businessName>dynamic.dt.parameters.DecisionTableParameter</businessName>
@@ -323,10 +329,28 @@
             return "logicalOperatorCount";
             ]]></getter>
         </attribute>
+        <attribute>
+            <name>migrationFlag</name>
+            <getter language="irl"><![CDATA[
+            return "migrationFlag";
+            ]]></getter>
+        </attribute>
     </class>
     <class>
         <businessName>dynamic.dt.parameters.ListParameter</businessName>
         <executionName>java.lang.String</executionName>
+        <attribute>
+            <name>approvers</name>
+            <getter language="irl"><![CDATA[
+            return "approvers";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>authors</name>
+            <getter language="irl"><![CDATA[
+            return "authors";
+            ]]></getter>
+        </attribute>
         <attribute>
             <name>roles</name>
             <getter language="irl"><![CDATA[
@@ -368,6 +392,12 @@
             ]]></getter>
         </attribute>
         <attribute>
+            <name>buildPath</name>
+            <getter language="irl"><![CDATA[
+            return "buildPath";
+            ]]></getter>
+        </attribute>
+        <attribute>
             <name>createdBy</name>
             <getter language="irl"><![CDATA[
             return "createdBy";
@@ -389,6 +419,12 @@
             <name>definition</name>
             <getter language="irl"><![CDATA[
             return "definition";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>deploymentName</name>
+            <getter language="irl"><![CDATA[
+            return "deploymentName";
             ]]></getter>
         </attribute>
         <attribute>
@@ -470,9 +506,21 @@
             ]]></getter>
         </attribute>
         <attribute>
+            <name>parent</name>
+            <getter language="irl"><![CDATA[
+            return "parent";
+            ]]></getter>
+        </attribute>
+        <attribute>
             <name>project</name>
             <getter language="irl"><![CDATA[
             return "project";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>projectName</name>
+            <getter language="irl"><![CDATA[
+            return "projectName";
             ]]></getter>
         </attribute>
         <attribute>
@@ -500,6 +548,18 @@
             ]]></getter>
         </attribute>
         <attribute>
+            <name>sourceBranch</name>
+            <getter language="irl"><![CDATA[
+            return "sourceBranch";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>sourceRuleProject</name>
+            <getter language="irl"><![CDATA[
+            return "sourceRuleProject";
+            ]]></getter>
+        </attribute>
+        <attribute>
             <name>status</name>
             <getter language="irl"><![CDATA[
             return "status";
@@ -524,9 +584,21 @@
             ]]></getter>
         </attribute>
         <attribute>
+            <name>updateType</name>
+            <getter language="irl"><![CDATA[
+            return "updateType";
+            ]]></getter>
+        </attribute>
+        <attribute>
             <name>validationError</name>
             <getter language="irl"><![CDATA[
             return "validationError";
+            ]]></getter>
+        </attribute>
+        <attribute>
+            <name>versionComment</name>
+            <getter language="irl"><![CDATA[
+            return "versionComment";
             ]]></getter>
         </attribute>
     </class>

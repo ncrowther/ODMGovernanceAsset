@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-   Licensed Materials - Property of IBM
-   5725-B69 5655-Y31 5655-Y17
-   Copyright IBM Corp. 1987, 2016 All Rights Reserved
-   US Government Users Restricted Rights - Use, duplication or
-   disclosure restricted by GSA ADP Schedule Contract with
-   IBM Corp.
--->
 <data:extension-data xmlns:data="http://ilog.rules.brms.extension/data" modelNsURI="http://ilog.rules.brms.extension/default">
-	<enum-data name="Status">
-		<item>new</item>
-		<item>defined</item>
-		<item>validated</item>
-		<item>rejected</item>
-		<item>deployable</item>
-	</enum-data>
+  <enum-data name="Status">
+    <item>new</item>
+    <item>defined</item>
+    <item>tested</item>
+    <item>rekeyed</item>    
+    <item>reviewed</item>    
+    <item>deployable</item>
+    <item>refused</item>
+    <item>retired</item>
+  </enum-data>
 </data:extension-data>

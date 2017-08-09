@@ -25,6 +25,11 @@ import ilog.rules.teamserver.model.IlrSessionHelper;
 import ilog.rules.teamserver.model.permissions.IlrPermissionException;
 import ilog.rules.teamserver.web.dt.IlrDTDiff;
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +60,7 @@ public class ChangeControlSessionController extends RBRGSessionController {
 	private final static String PERSISTED_DT = "persistedDT";
 	private final static String EDITED_DT = "editedDT";
 	private final static String ACTION_RULE_BODY = "actionRuleBody";
-	private final static String SEND_NOTIFICATION = "sendNotification";
+	private final static String TRIGGER_BUILD = "triggerBuild";
 	private final static String NOTIFICATION_RECIPIENT = "notificationRecipient";
 	private final static String NOTIFICATION_SUBJECT = "notificationSubject";
 	private final static String NOTIFICATION_BODY = "notificationBody";
@@ -97,7 +102,9 @@ public class ChangeControlSessionController extends RBRGSessionController {
 		vars.put(EDITED_DT, bodyInfo.editedDt);
 		vars.put(ACTION_RULE_BODY, bodyInfo.actionRuleBody);	
 		String baselineName = getBaselineName();
-		vars.put(BASELINE, baselineName);	
+		vars.put(BASELINE, baselineName);
+		
+		addBaselineDetails(vars);
 		
 		createNotificationEvent(cobject, bodyInfo);
 	}	
@@ -126,13 +133,12 @@ public class ChangeControlSessionController extends RBRGSessionController {
 		vars.put(LOGIN_USER, session.getUserName());
 		vars.put(DELTA_REPORT, notification.getDeltaReport() );
 		
-
-		//checkIfReversionRequested(cobject, newHandle, response);
 	}
 	
 	/**
 	 * Implement notifications here.  For example email notifications.  It is invoked at the end of the element being committed
 	 */
+	/*
 	@Override
 	protected void checkIfNotificationRequested(java.util.Map<String, Object> response) {
 		
@@ -166,7 +172,93 @@ public class ChangeControlSessionController extends RBRGSessionController {
 			notificationListener.notify(session, notification);
 		}
 	}
+	
+	*/
 
+	
+	@Override
+	protected void checkIfNotificationRequested(java.util.Map<String, Object> response) {
+		
+		if (log.isLoggable(Level.INFO)) {
+			log.log(Level.INFO, "checkIfNotificationRequested ");
+		}
+		
+		boolean triggerBuild = false;
+		Object triggerBuildObj = response.get(TRIGGER_BUILD);
+
+		if (triggerBuildObj instanceof Boolean) {
+			triggerBuild = (Boolean) triggerBuildObj;
+		}
+		
+		
+		if (triggerBuild) {
+			
+			
+			createBuildPropertiesFile(response);
+			
+			/*
+			notification.setRecipient((String) response
+					.get(NOTIFICATION_RECIPIENT));
+			notification
+					.setSubject((String) response.get(NOTIFICATION_SUBJECT));
+			notification.setMessageBody((String) response
+					.get(NOTIFICATION_BODY));
+
+			notificationListener.notify(session, notification);
+			*/
+		}
+	}
+	
+	private void createBuildPropertiesFile(java.util.Map<String, Object> response) {
+		
+		String release = "UNKNOWN";
+		Object releaseObj = response.get("baseline");
+		if (releaseObj instanceof String) {
+			release = (String) releaseObj;
+		}
+		
+		String buildPath = ".";
+		Object buildPathObj = response.get("buildPath");
+		if (buildPathObj instanceof String) {
+			buildPath = (String) buildPathObj;
+		}
+		
+		String projectName = ".";
+		Object projectNameObj = response.get("projectName");
+		if (projectNameObj instanceof String) {
+			projectName = (String) projectNameObj;
+		}
+		
+		String deploymentName = ".";
+		Object deploymentNameObj = response.get("deploymentName");
+		if (deploymentNameObj instanceof String) {
+			deploymentName = (String) deploymentNameObj;
+		}		
+
+		if (log.isLoggable(Level.INFO)) {
+			log.log(Level.INFO, "Governance Rules: Createing release properties for " +
+					projectName + ":" + release + " in path " + buildPath);
+		}
+		
+		Writer writer = null;
+
+		final String releaseFilename = "release.properties";
+		try {			
+		    writer = new BufferedWriter(new OutputStreamWriter(
+		          new FileOutputStream(buildPath + "/" + releaseFilename), "utf-8"));
+		    
+		    writer.write("# Generated release properties\n");
+		    writer.write("\nproject.name=" + projectName);
+		    writer.write("\nrelease.name=" + release);
+		    writer.write("\ndeployment.name=" + deploymentName);
+		    
+		} catch (IOException ex) {
+			log.log(Level.INFO, "Governance Rules: Failed to write build file  "
+					+ releaseFilename);
+		} finally {
+		   try {writer.close();} catch (Exception ex) {/*ignore*/}
+		}
+	}
 	
 	/**
 	 * Creates an event.
@@ -511,6 +603,26 @@ public class ChangeControlSessionController extends RBRGSessionController {
 		String blName = (String) branch.getRawValue(f);
 
 		return blName;
+	}
+	
+
+	/**
+	 * Returns the name of the current branch
+	 * 
+	 * @return current branch name
+	 */
+	private void addBaselineDetails(java.util.Map<String, Object>vars) {
+		IlrBaseline branch = session.getWorkingBaseline();
+
+		// Get the artifact type (Rule, Function, ...)
+		if (branch == null) {
+			return;
+		}
+		
+		java.util.Map<String, Object>baselineVars = getMetadata(branch);
+		
+		vars.putAll(baselineVars);
+
 	}
 
 	private static Object getModifiedElement(IlrCommitableObject cobject,

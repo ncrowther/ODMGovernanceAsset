@@ -7,7 +7,7 @@
   <uuid>31407894-cdb1-48f7-be55-f4e588077f9d</uuid>
   <locale>en_GB</locale>
   <definition>
-<DT Version="7.0" xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable">
+<DT xmlns="http://schemas.ilog.com/Rules/7.0/DecisionTable" Version="7.0">
   <Body>
     <Properties>
       <Property Name="Check.Gap" Type="xs:boolean"><![CDATA[false]]></Property>
@@ -41,7 +41,7 @@
           <ActionSet>
             <Action DefId="A1">
               <Expression>
-                <Param><![CDATA[logicalOperatorCount]]></Param>
+                <Param><![CDATA[migrationFlag]]></Param>
                 <Param><![CDATA[0]]></Param>
                 <Param><![CDATA[true]]></Param>
                 <Param><![CDATA[false]]></Param>

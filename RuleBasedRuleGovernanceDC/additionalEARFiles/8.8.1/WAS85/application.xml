@@ -26,36 +26,4 @@
   <security-role>
     <role-name>rtsInstaller</role-name>
   </security-role>
-  <!-- RGA Project Roles -->
-  <security-role>
-    <role-name>rbrgRules</role-name>
-  </security-role>
-  <security-role>
-    <role-name>MiniLoanRules</role-name>
-  </security-role>
-  <!-- RGA Operational Roles -->
-  <security-role>
-    <role-name>odmAdministrator</role-name>
-  </security-role>
-  <security-role>
-    <role-name>odmBusinessAuthor</role-name>
-  </security-role>  
-  <security-role>
-    <role-name>odmBusinessReviewer</role-name>
-  </security-role>  
-  <security-role>
-    <role-name>odmBusinessTester</role-name>
-  </security-role>  
-  <security-role>
-    <role-name>odmDecisionServiceOwner</role-name>
-  </security-role>
-  <security-role>
-    <role-name>odmItAuthor</role-name>
-  </security-role>  
-  <security-role>
-    <role-name>odmItDeployer</role-name>
-  </security-role>  
-  <security-role>
-    <role-name>odmItTester</role-name>
-  </security-role>    
 </application>

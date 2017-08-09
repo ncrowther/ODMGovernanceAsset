@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-   Licensed Materials - Property of IBM
-   5725-B69 5655-Y31 5655-Y17
-   Copyright IBM Corp. 1987, 2016 All Rights Reserved
-   US Government Users Restricted Rights - Use, duplication or
-   disclosure restricted by GSA ADP Schedule Contract with
-   IBM Corp.
--->
 <model:extension-model xmlns:model="http://ilog.rules.brms.extension/model" name="defaultExtension" nsURI="http://ilog.rules.brms.extension/default">
-	<add-property className="BusinessRule"/>
 	<add-property className="Rule">
 		<property extractable="true" name="effectiveDate" type="Date">
 			<annotation id="validator-class" value="ilog.rules.teamserver.web.validator.IlrComparablePropertyValidator" />
@@ -17,16 +8,12 @@
 		</property>
 		<property extractable="true" name="expirationDate" type="Date" />
 		<property extractable="true" name="status" type="Status" />
-	</add-property>
-	<add-property className="EventArtifact">
-		<property name="effectiveDate" type="Date">
-			<annotation id="validator-class" value="ilog.rules.teamserver.web.validator.IlrComparablePropertyValidator" />
-			<annotation id="validator-compared-property" value="expirationDate" />
-			<annotation id="validator-constraint" value="LESSTHAN" />
+		<property editorname="IlrDocumentationEditorRenderer" name="statuscomment" type="String">
+			<annotation id="column-length" value="255" />
 		</property>
-		<property name="expirationDate" type="Date" />
-		<property name="status" required="true" type="Status" />
+		<property editorname="IlrDocumentationEditorRenderer" name="Receiving Bic 8" type="String">
+			<annotation id="column-length" value="255" />
+		</property>
 	</add-property>
 	<enum name="Status" />
-	<avoidValidate>true</avoidValidate>
 </model:extension-model>

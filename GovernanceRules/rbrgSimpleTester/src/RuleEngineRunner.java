@@ -19,10 +19,14 @@ import ilog.rules.engine.IlrRulesetArchiveParser;
 import ilog.rules.engine.IlrUndefinedMainTaskException;
 import ilog.rules.engine.IlrUserRuntimeException;
 
+import java.awt.List;
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.jar.JarInputStream;
 
 public class RuleEngineRunner {
@@ -175,39 +179,117 @@ public class RuleEngineRunner {
 			// create some test data for testing inside RS
 			java.util.Map<String, Object> vars = new java.util.HashMap<String, Object>();
 
-		
+		    // D:\ic\GovernanceAsset\github\GovernanceRules\rbrgSimpleTester\rbrgRules.jar
 			
-			vars.put("oldDate","null"); 
-			vars.put("oldProperty","ReadyForApproval"); 
+			// replace \[.*\*  with ""
+			// replace / with \
+			
+			ArrayList values = new java.util.ArrayList();
+		
+			Object o = new Object();
+			
+			o.
+			
+			values.add("Paul");
+			vars.put("baselineKind","Branch"); 
+			vars.put("readableVersion","4"); 
 			vars.put("type","brm.ActivityCommentEvent"); 
-			vars.put("updateType","ActivityStatusUpdate"); 
-			vars.put("lastChangedOn","Fri Aug 04 09:19:21 BST 2017"); 
-			vars.put("editedDT","null"); 
 			vars.put("versionComment","null"); 
+			vars.put("authors","[Paul:Working]"); 
+			vars.put("groups","[]"); 
+			vars.put("status","InProgress"); 
+			vars.put("sourceRuleProject","RoutingAndSecurity"); 
+			vars.put("parent","Jan Release"); 
+			vars.put("minorVersion","0"); 
+			vars.put("createdOn","Tue Aug 08 18:09:14 BST 2017"); 
+			vars.put("persistedDT","null"); 
+			vars.put("createdBy","Bea"); 
+			vars.put("owner","Bea"); 
+			vars.put("uuid","ce0fe9bf-4e07-455f-88a4-0e35d62e97b8"); 
+			vars.put("maxVersionId","898"); 
+			vars.put("newDesc","null"); 
+			vars.put("approvers","[Paul:NotReviewed]"); 
+			vars.put("oldProperty","null"); 
+			vars.put("oldDate","null"); 
+			vars.put("depName","null"); 
+			vars.put("frozen","true"); 
+			vars.put("updateType","ActivityAuthorAssign"); 
+			vars.put("lastChangedOn","Tue Aug 08 18:09:14 BST 2017"); 
+			vars.put("editedDT","null"); 
+			vars.put("eventIdString","null"); 
 			vars.put("actionRuleBody",""); 
 			vars.put("sourceArtifact","0"); 
-			vars.put("additionalDetails","autoStatusUpdate=true"); 
-			vars.put("baseline","Nov Release"); 
+			vars.put("name","Jan Activity"); 
+			vars.put("additionalDetails","null"); 
+			vars.put("baseline","Jan Activity"); 
 			vars.put("lastChangedBy","null"); 
-			vars.put("loginUser","authorizedUser:4b77df43-95bc-4256-8be2-cd47af6dd82f"); 
-			vars.put("majorVersion","0"); 
+			vars.put("loginUser","Bea"); 
 			vars.put("forUser","null"); 
+			vars.put("majorVersion","0"); 
 			vars.put("sourceRuleArtifactId","0"); 
-			vars.put("sourceRuleProject","MortgageSegmentationService"); 
 			vars.put("sourceRuleArtifact","null"); 
-			vars.put("newProperty","Complete"); 
-			vars.put("minorVersion","0"); 
+			vars.put("newProperty","Abu"); 
 			vars.put("requestType","ONCOMMIT"); 
+			vars.put("securityEnforced","false"); 
 			vars.put("oldName","null"); 
-			vars.put("createdOn","Fri Aug 04 09:19:21 BST 2017"); 
+			vars.put("securityInherited","true"); 
 			vars.put("oldDesc","null"); 
 			vars.put("sourceArtifactId","0"); 
-			vars.put("persistedDT","null"); 
-			vars.put("createdBy","authorizedUser:4b77df43-95bc-4256-8be2-cd47af6dd82f"); 
 			vars.put("newDate","null"); 
 			vars.put("sourceBranch","null"); 
-			vars.put("sourceArtifactType","0"); 
-			vars.put("newDesc","null"); 
+			vars.put("targetDate","Tue Aug 22 00:00:00 BST 2017"); 
+			vars.put("documentation",""); 
+			vars.put("sourceArtifactType","0");  
+			/*
+			Map edt = new HashMap();
+			ArrayList values = new java.util.ArrayList();
+			values.add("A");
+			
+			edt.put("Receiving Bic 8", values);
+			vars.put("baselineKind","Branch"); 
+			vars.put("approvers","[Bea:NotReviewed]"); 
+			vars.put("readableVersion","4"); 
+			vars.put("locale","en_US"); 
+			vars.put("depName","null"); 
+			vars.put("frozen","true"); 
+			vars.put("type","brm.DecisionTable"); 
+			vars.put("lastChangedOn","Tue Aug 08 10:45:04 BST 2017"); 
+			vars.put("editedDT", edt);
+		    vars.put("eventIdString","null"); 
+			vars.put("authors","[Bea:Working]"); 
+			vars.put("actionRuleBody",""); 
+			vars.put("priority","null"); 
+			vars.put("name","D01DEADQ - DEVICE"); 
+			vars.put("baseline","Jan Activity"); 
+			vars.put("effectiveDate","null"); 
+			vars.put("rulePackage","D01DEADQ"); 
+			vars.put("overriddenRules","null"); 
+			vars.put("groups","[]"); 
+			vars.put("lastChangedBy","rtsAdmin"); 
+			vars.put("loginUser","Bea"); 
+			vars.put("template","null"); 
+			vars.put("tags", "null"); 
+			vars.put("expirationDate","null"); 
+			vars.put("definition","null"); 
+			vars.put("status","new"); 
+			vars.put("parent","Jan Release"); 
+			vars.put("requestType","ONCOMMIT"); 
+			vars.put("securityEnforced","false"); 
+			vars.put("securityInherited","true"); 
+			vars.put("createdOn","Tue Aug 08 10:45:04 BST 2017"); 
+			vars.put("project","RoutingDs"); 
+			vars.put("createdBy","rtsAdmin"); 
+			vars.put("persistedDT","{Message Type=[103, 202, 103, 202, 103, 202, 202, 103, 202], Receiving Bic 8=[CHASCN2G, CHASCN2G, CHASCNBC , CHASCNBC , CHASCNBJ , CHASCNBJ , CHASCNBJ , CHASCNSH, CHASCNSH], End Point_Reason=[, , , , , , , , ], End Point_Routes=[CPSDQLB, CPSDQLB, CPSDQLB, CPSDQLB, CPSDQLB, CPSDQLB, CPSDQLB, CPSDQLB, CPSDQLB], End Point_Devices=[DQLB, DQLB, DQLB, DQLB, DQLB, DQLB, DQLB, DQLB, DQLB], Sending Branch=[TRO, TRO, TRO, TRO, TRO, TRO, XXX, TRO, TRO], Sending Bic 8=[CHASCN2G, CHASCN2G, CHASCNBC, CHASCNBC, CHASCNBJ, CHASCNBJ, CHASCNBJ, CHASCNSH, CHASCNSH], Receiving Branch=[XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX, XXX], End Point_Exclusivity=[false, false, false, false, false, false, false, false, false], Currency=[CNY, CNY, CNY, CNY, CNY, CNY, CNY, CNY, CNY]}"); 
+			vars.put("targetDate","Tue Aug 22 00:00:00 BST 2017"); 
+			vars.put("documentation","null"); 
+			vars.put("owner","Bea"); 
+			vars.put("active","true"); 
+			vars.put("categories","[]"); 
+			vars.put("maxVersionId","564"); 
+			vars.put("uuid","cdd59d01-90a5-448b-a29d-7892a6cc5874"); 
+			vars.put("group","null"); 
+			*/
+
 
 			System.out.println("Request = " + vars);
 			runner.inputs.setParameter("request", vars);

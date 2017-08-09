@@ -15,13 +15,15 @@ Object value = (Object)vars.get(name);
 //   throw new java.util.NoSuchElementException ("Undeclared input var " + name + ".  Add it to " + paramType + " parameters Decision Table");
 // } 	
 
+//System.out.println("****Name: " + name + " Value=" + value + ": " + value.class);
+
+
 if (value == null) {
 	value = paramType.newInstance();
 }
-  
-if (Logger.isFineLoggable()) {
-	Logger.logFine("****Name: " + name + " Value=" + value + ": " + value.class);
-}
+
+
+
   
 return value;]]></definition>
   <imports>import java.util.Map;</imports>

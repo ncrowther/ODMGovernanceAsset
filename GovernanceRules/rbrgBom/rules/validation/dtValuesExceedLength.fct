@@ -2,27 +2,18 @@
 <ilog.rules.studio.model.rule:Function xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.rule="http://ilog.rules.studio/model/rule.ecore">
   <name>dtValuesExceedLength</name>
   <uuid>f4070a2a-6998-44a9-9e0c-0ef5d52c9031</uuid>
-  <returnType>java.lang.String</returnType>
+  <returnType>java.lang.Boolean</returnType>
   <definition><![CDATA[List editedRow = null;
-StringBuffer values = new StringBuffer();
 
 if (editDT != null) {
 	editedRow = (List) editDT.get(colName);
 }
 
 if (editedRow == null) {
-	return "";
+	return false;
 }
 
-for (Iterator editedRowIter = editedRow.iterator(); editedRowIter.hasNext();) {
-	String cellStr = (String) editedRowIter.next();
-	if (cellStr.length() > maxLen) {
-		values.append(cellStr);
-		values.append(";");	
-	}
-}
-
-return values.toString();
+return editedRow.size() > maxLen;
 ]]></definition>
   <imports>import java.util.List;</imports>
   <imports>import java.util.Set;</imports>

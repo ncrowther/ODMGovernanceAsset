@@ -6,4 +6,5 @@
   <variables name="outputParamNames" type="java.util.Set" initialValue="new java.util.HashSet()" verbalization=""/>
   <variables name="inputParamNames" type="java.util.Set" initialValue="new java.util.HashSet()" verbalization=""/>
   <variables name="errors" type="java.util.List" initialValue="new java.util.ArrayList()" verbalization=""/>
+  <variables name="tags" type="java.util.Map" initialValue="new java.util.HashMap()" verbalization=""/>
 </ilog.rules.studio.model.base:VariableSet>
