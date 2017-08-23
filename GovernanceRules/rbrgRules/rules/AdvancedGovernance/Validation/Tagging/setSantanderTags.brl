@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
+  <name>setSantanderTags</name>
+  <uuid>cf0f4ee3-2e6c-473e-9779-16116450d844</uuid>
+  <documentation><![CDATA[]]></documentation>
+  <locale>en_US</locale>
+  <definition><![CDATA[if
+    the string type is "brm.DecisionTable"
+then
+    setTag "Bands" to get values from editedDT for column "0 < Balance LTV < 60000" ; 
+    
+]]></definition>
+</ilog.rules.studio.model.brl:ActionRule>
