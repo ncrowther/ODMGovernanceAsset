@@ -5,7 +5,9 @@
   <documentation><![CDATA[]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[if
-     the count of the list approvers is less than 1
+    the string name does not contain "initialRelease"
+    and the string status is not "Canceled"
+    and the count of the list approvers is less than 1
 then
     set validationError as "At least one approver is required" ;]]></definition>
 </ilog.rules.studio.model.brl:ActionRule>

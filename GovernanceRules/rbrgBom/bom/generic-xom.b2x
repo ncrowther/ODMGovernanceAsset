@@ -206,7 +206,7 @@ return !edt.equals(pdt);
             <name>getBoolean</name>
             <parameter type="dynamic.dt.parameters.BooleanParameter"/>
             <body language="irl"><![CDATA[
-            String value = (String)context.invokeFunction("getParam", new Object[] {paramName, String.class});
+            Boolean value = (Boolean)context.invokeFunction("getParam", new Object[] {paramName, String.class});
 
 if (value == null) {
 	return false;
@@ -214,12 +214,7 @@ if (value == null) {
 	
 	System.out.println("***BOOL: " + value);
 
-	if (value.equalsIgnoreCase("true")) {
-		return Boolean.TRUE;
-	} else {
-		return Boolean.FALSE;
-	}
-	//return Boolean.valueOf(value);
+	return value;
 }
             ]]></body>
         </method>

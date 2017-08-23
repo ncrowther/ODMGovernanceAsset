@@ -286,6 +286,12 @@
             ]]></getter>
         </attribute>
         <attribute>
+            <name>decisionService</name>
+            <getter language="irl"><![CDATA[
+            return "decisionService";
+            ]]></getter>
+        </attribute>
+        <attribute>
             <name>permissionGranted</name>
             <getter language="irl"><![CDATA[
             return "permissionGranted";

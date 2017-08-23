@@ -72,6 +72,7 @@ dynamic.dt.StringDomains.TypeDomain.VariableSet#instance.label = VariableSet
 dynamic.dt.parameters.BooleanParameter#concept.label = dynamic.dt.parameters.BooleanParameter
 dynamic.dt.parameters.BooleanParameter.Deployed#instance.label = Deployed
 dynamic.dt.parameters.BooleanParameter.active#instance.label = active
+dynamic.dt.parameters.BooleanParameter.decisionService#instance.label = decisionService
 dynamic.dt.parameters.BooleanParameter.permissionGranted#instance.label = permissionGranted
 dynamic.dt.parameters.BooleanParameter.triggerBuild#instance.label = triggerBuild
 

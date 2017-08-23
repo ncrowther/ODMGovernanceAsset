@@ -147,9 +147,10 @@ public class BooleanParameter
         property domainProviderResource "Domains.xlsx"
         property domainValueProviderName "com.ibm.rules.domainProvider.msexcel2007"
 {
-    domain {static active, static Deployed, static permissionGranted, static triggerBuild}
+    domain {static active, static Deployed, static permissionGranted, static triggerBuild, static decisionService}
     public static final readonly dynamic.dt.parameters.BooleanParameter Deployed;
     public static final readonly dynamic.dt.parameters.BooleanParameter active;
+    public static final readonly dynamic.dt.parameters.BooleanParameter decisionService;
     public static final readonly dynamic.dt.parameters.BooleanParameter permissionGranted;
     public static final readonly dynamic.dt.parameters.BooleanParameter triggerBuild;
 }

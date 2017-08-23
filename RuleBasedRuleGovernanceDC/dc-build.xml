@@ -23,12 +23,8 @@
 	<import file="${rbrg.gov.base.dir}/jrules-was85-config.xml" />	
 	
 	  <!-- COMMENT OUT IF NOT USING WAS -->
-	  <property file="${dc.home}/shared/samplesServer/was/build.properties"/>
+	  <property file="${odm.home.dir}/shared/samplesServer/was/build.properties"/>
 	  <property file="${data.home}/was.properties"/>	
-	
-	
-	  <property name="jrules.was.scripts.dir" value="${dc.home}/shared/samplesServer/was" />
-	  <import file="${jrules.was.scripts.dir}/build.xml"/>
 
 	  <import file="${teamserver.home}/lib/classpath-teamserver.xml"/>
 	  <import file="${teamserver.home}/bin/build.xml"/>
@@ -43,9 +39,6 @@
 	  <property name="jar"              location="${build.dir}/lib/rulegov.jar"/>
 	  <property name="rssjar"           location="${lib.dir}/rome-0.8.jar"/>
 	  <property name="teamserver.appli.name" value="jrules-teamserver-${application.server.name}.ear"/>
-	
-	
-	<property name="odm.home.dir" value="${odm.home}" />
 	
 	<property name="decisionserver.websphere.dir" location="${odm.home.dir}/teamserver/applicationservers/${websphere.dir.name}" />
 	<property name="executionserver.lib.dir" location="${odm.home.dir}/executionserver/lib" />

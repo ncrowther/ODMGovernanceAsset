@@ -2,10 +2,16 @@
 <ilog.rules.studio.model.brl:ActionRule xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ilog.rules.studio.model.brl="http://ilog.rules.studio/model/brl.ecore">
   <name>at least one Author</name>
   <uuid>cb8e5ea9-6ea5-427e-bc18-8a3af25fa257</uuid>
-  <documentation><![CDATA[]]></documentation>
+  <documentation><![CDATA[if
+     the boolean decisionService is false
+    and the count of the list authors is less than 1
+then
+    set validationError as "At least one author is required" ;]]></documentation>
   <locale>en_US</locale>
   <definition><![CDATA[if
-    the string parent ends with "Release"
+    the boolean decisionService is false
+    and the string name does not contain "Release"
+    and the string status is not "Canceled"
     and the count of the list authors is less than 1
 then
     set validationError as "At least one author is required" ;]]></definition>
